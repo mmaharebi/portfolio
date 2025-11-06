@@ -2,7 +2,8 @@
 
 import { motion, AnimatePresence } from "motion/react";
 import { Calendar, Award, GraduationCap, Briefcase, ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef, useLayoutEffect, useEffect } from "react";
+import Portal from "./Portal";
 
 export interface BriefTimelineItem {
   year: string;
@@ -50,6 +51,45 @@ const colorMap = {
 export default function BriefTimeline({ items }: BriefTimelineProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [tooltipRect, setTooltipRect] = useState<{ x: number; y: number; w: number; h: number } | null>(null);
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const titleRefs = useRef<(HTMLParagraphElement | null)[]>([]);
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+  const activeItem = expandedIndex !== null ? items[expandedIndex] : null;
+  type PaletteKey = keyof typeof colorMap;
+  const activePalette = activeItem
+    ? colorMap[(activeItem.color || "primary") as PaletteKey]
+    : null;
+
+  // Recompute tooltip position when expandedIndex changes or on layout changes
+  useLayoutEffect(() => {
+    if (expandedIndex === null) {
+      setTooltipRect(null);
+      return;
+    }
+    const el = titleRefs.current[expandedIndex] || itemRefs.current[expandedIndex];
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    // position tooltip centered below the title block
+    setTooltipRect({ x: rect.left + rect.width / 2, y: rect.bottom, w: rect.width, h: rect.height });
+  }, [expandedIndex]);
+
+  // Update on scroll / resize to keep portal tooltip synced
+  useEffect(() => {
+    if (expandedIndex === null) return;
+    const handler = () => {
+      const el = titleRefs.current[expandedIndex] || itemRefs.current[expandedIndex];
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      setTooltipRect({ x: rect.left + rect.width / 2, y: rect.bottom, w: rect.width, h: rect.height });
+    };
+    window.addEventListener("resize", handler);
+    window.addEventListener("scroll", handler, true);
+    return () => {
+      window.removeEventListener("resize", handler);
+      window.removeEventListener("scroll", handler, true);
+    };
+  }, [expandedIndex]);
 
   return (
     <div className="w-full max-w-full overflow-visible">
@@ -82,7 +122,7 @@ export default function BriefTimeline({ items }: BriefTimelineProps) {
         </svg>
         
         {/* Timeline Items Container */}
-        <div className="overflow-x-auto overflow-y-visible scrollbar-hide -mx-6 px-6 pb-4">
+        <div ref={scrollContainerRef} className="overflow-x-auto overflow-y-visible scrollbar-hide -mx-6 px-6 pb-4">
           <div className="flex justify-between items-start gap-6 md:gap-8 min-w-max md:min-w-0 min-h-full py-4 pt-8">
             {items.map((item, index) => {
               const Icon = iconMap[item.icon || "milestone"];
@@ -104,7 +144,22 @@ export default function BriefTimeline({ items }: BriefTimelineProps) {
                   onHoverStart={() => setHoveredIndex(index)}
                   onHoverEnd={() => setHoveredIndex(null)}
                   onClick={() => setExpandedIndex(isExpanded ? null : index)}
-                  className="flex flex-col items-center gap-3 w-36 md:w-auto md:flex-1 shrink-0 cursor-pointer group relative"
+                  className="flex flex-col items-center gap-3 w-36 md:w-auto md:flex-1 shrink-0 cursor-pointer group relative focus:outline-none"
+                  ref={(el) => {
+                    itemRefs.current[index] = el;
+                  }}
+                  role={item.hint ? "button" : undefined}
+                  tabIndex={0}
+                  aria-expanded={isExpanded}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      setExpandedIndex(isExpanded ? null : index);
+                    }
+                    if (e.key === "Escape" && isExpanded) {
+                      setExpandedIndex(null);
+                    }
+                  }}
                 >
                   {/* Floating particles effect on hover */}
                   <AnimatePresence>
@@ -150,12 +205,11 @@ export default function BriefTimeline({ items }: BriefTimelineProps) {
                   {/* Icon Circle with pulse effect */}
                   <motion.div
                     animate={{
-                      scale: isHovered ? 1.15 : 1,
-                      rotateY: isHovered ? 360 : 0,
+                      scale: isHovered ? 1.08 : 1,
+                      rotate: isHovered ? [0, -2, 2, 0] : 0,
                     }}
-                    transition={{ 
-                      scale: { duration: 0.3 },
-                      rotateY: { duration: 0.8, ease: "easeInOut" }
+                    transition={{
+                      duration: 0.4,
                     }}
                     className="relative z-10"
                   >
@@ -210,7 +264,12 @@ export default function BriefTimeline({ items }: BriefTimelineProps) {
                     }}
                     className="flex flex-col items-center gap-1 w-full"
                   >
-                    <p className="text-center text-xs md:text-sm font-semibold text-foreground leading-tight line-clamp-2 w-full px-1">
+                    <p
+                      className="text-center text-xs md:text-sm font-semibold text-foreground leading-tight line-clamp-2 w-full px-1"
+                      ref={(el) => {
+                        titleRefs.current[index] = el;
+                      }}
+                    >
                       {item.title}
                     </p>
                     
@@ -227,33 +286,13 @@ export default function BriefTimeline({ items }: BriefTimelineProps) {
                     )}
                   </motion.div>
 
-                  {/* Expandable hint tooltip */}
-                  <AnimatePresence>
-                    {isExpanded && item.hint && (
-                      <motion.div
-                        initial={{ opacity: 0, y: -10, scale: 0.9 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: -10, scale: 0.9 }}
-                        transition={{ duration: 0.2 }}
-                        className={`absolute top-full mt-2 ${colors.bg} ${colors.border} border-2 rounded-xl p-3 shadow-xl backdrop-blur-sm z-20 w-48 md:w-56`}
-                      >
-                        <p className={`text-xs ${colors.text} block leading-relaxed`}>
-                          {item.hint}
-                        </p>
-                        {/* Arrow pointer */}
-                        <div className={`absolute -top-2 left-1/2 -translate-x-1/2 w-3 h-3 ${colors.bg} ${colors.border} border-t-2 border-l-2 rotate-45`} />
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  {/* Removed inline tooltip; now rendered via portal */}
 
-                  {/* Progress indicator */}
+                  {/* Progress indicator repositioned */}
                   <motion.div
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-current to-transparent"
-                    initial={{ scaleX: 0, opacity: 0 }}
-                    animate={{ 
-                      scaleX: isHovered ? 1 : 0,
-                      opacity: isHovered ? 0.5 : 0
-                    }}
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-20 h-px bg-linear-to-r from-transparent via-current to-transparent"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: isHovered ? 0.6 : 0 }}
                     transition={{ duration: 0.3 }}
                     style={{ color: colors.icon }}
                   />
@@ -263,6 +302,40 @@ export default function BriefTimeline({ items }: BriefTimelineProps) {
           </div>
         </div>
       </div>
+      {/* Portal Tooltip */}
+      <Portal>
+        <AnimatePresence>
+          {expandedIndex !== null && tooltipRect && activeItem && activeItem.hint && activePalette && (
+            <motion.div
+              key={expandedIndex}
+              initial={{ opacity: 0, scale: 0.95, x: "-50%", y: -8 }}
+              animate={{ opacity: 1, scale: 1, x: "-50%", y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, x: "-50%", y: -8 }}
+              transition={{ duration: 0.18 }}
+              style={{
+                position: "fixed",
+                top: tooltipRect.y + 8,
+                left: tooltipRect.x,
+                pointerEvents: "auto",
+              }}
+              className={`${activePalette.bg} ${activePalette.border} border-2 rounded-xl p-4 shadow-2xl backdrop-blur-sm w-60 md:w-72`}
+            >
+              <p className={`text-xs leading-relaxed ${activePalette.text}`}>{activeItem.hint}</p>
+              <div
+                style={{
+                  position: "absolute",
+                  top: -6,
+                  left: "50%",
+                  transform: "translateX(-50%) rotate(45deg)",
+                  width: 12,
+                  height: 12,
+                }}
+                className={`${activePalette.bg} ${activePalette.border} border-t-2 border-l-2`}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </Portal>
     </div>
   );
 }
