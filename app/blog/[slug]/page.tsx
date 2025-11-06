@@ -1,22 +1,12 @@
-import fs from 'fs';
-import path from 'path';
 import { notFound } from 'next/navigation';
-import MDXContent from '@/components/MDXContent';
-import Math from '@/components/Math';
 import { Metadata } from 'next';
+import { getPostBySlug, getAllPostSlugs } from '@/lib/utils';
+import BlogPostContent from '@/components/BlogPostContent';
 
 // Generate static params for all posts
 export async function generateStaticParams() {
-  const postsDirectory = path.join(process.cwd(), 'content', 'posts');
-  
-  try {
-    const filenames = fs.readdirSync(postsDirectory);
-    return filenames.map((filename) => ({
-      slug: filename.replace(/\.mdx$/, ''),
-    }));
-  } catch (error) {
-    return [];
-  }
+  const slugs = getAllPostSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 // Generate metadata for SEO
@@ -26,17 +16,26 @@ export async function generateMetadata({
   params: Promise<{ slug: string }> 
 }): Promise<Metadata> {
   const { slug } = await params;
+  const post = getPostBySlug(slug);
   
-  const title = slug
-    .split('-')
-    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-    .join(' ');
+  if (!post) {
+    return {
+      title: 'Post Not Found',
+    };
+  }
   
   return {
-    title,
-    description: `Blog post: ${title}`,
+    title: post.title,
+    description: post.description || `Blog post: ${post.title}`,
     alternates: {
       canonical: `/blog/${slug}`,
+    },
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      type: 'article',
+      publishedTime: post.date,
+      tags: post.tags,
     },
   };
 }
@@ -47,25 +46,12 @@ export default async function BlogPost({
   params: Promise<{ slug: string }> 
 }) {
   const { slug } = await params;
-  const filePath = path.join(process.cwd(), 'content', 'posts', `${slug}.mdx`);
+  const post = getPostBySlug(slug);
   
-  // Check if file exists
-  if (!fs.existsSync(filePath)) {
+  // Check if post exists
+  if (!post) {
     notFound();
   }
   
-  // Read MDX content
-  const source = fs.readFileSync(filePath, 'utf8');
-  
-  return (
-    <article>
-      <MDXContent 
-        source={source}
-        components={{
-          Math,
-          // Add more custom components here
-        }}
-      />
-    </article>
-  );
+  return <BlogPostContent post={post} />;
 }

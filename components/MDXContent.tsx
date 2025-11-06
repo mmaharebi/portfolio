@@ -1,3 +1,5 @@
+"use client";
+
 import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote/rsc';
 import remarkMath from 'remark-math';
 import remarkGfm from 'remark-gfm';
