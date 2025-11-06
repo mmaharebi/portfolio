@@ -16,39 +16,39 @@ interface HomeContentProps {
 // Brief timeline data for home page
 const briefTimelineData: BriefTimelineItem[] = [
   {
-    year: "2012",
-    title: "Physics Olympiad",
+    year: "2017",
+    title: "Physics Olympiad (Silver Medal)",
     icon: "award",
     color: "primary",
-    hint: "Silver medal at Iran's National Physics Olympiad - A pivotal moment that shaped my technical journey.",
+    hint: "Silver Medal at Iran's National Physics Olympiad. Recognized by Iran's National Elites Foundation (Bonyad-e Melli-ye Nokhbegan). Sparked my lifelong pursuit of physics and engineering.",
   },
   {
-    year: "2013",
-    title: "Sharif University",
+    year: "2017-2023",
+    title: "Sharif University of Technology (B.Sc., EE)",
     icon: "education",
     color: "secondary",
-    hint: "B.Sc. in Electrical Engineering at Iran's top technical university. Focus on electromagnetics and signal processing.",
+    hint: "Focused on electromagnetics, microwave circuits, and signal processing. Developed strong foundations in analytical methods and computational modeling.",
   },
   {
-    year: "2017",
-    title: "Research Assistant",
+    year: "2019",
+    title: "Industry Internship (MTCI / Hamrah-e Aval)",
     icon: "work",
     color: "accent",
-    hint: "Antenna design and RF engineering research. Developed computational EM models using MATLAB.",
+    hint: "Built and programmed a motion-controlled demo system for Iran's first 5G showcase. Combined software and hardware integration with real-time control.",
   },
   {
-    year: "2020",
-    title: "Uni Kassel",
+    year: "2021 - 2023",
+    title: "Teaching Assistant",
     icon: "education",
     color: "secondary",
-    hint: "M.Sc. in Electrical Communication Engineering. Specializing in 5G systems and digital communications.",
+    hint: "Teaching Assistant for EE & CE core courses; Circuit Theory and Object-Oriented Programming (Java). Guided students in analytical and coding assignments.",
   },
   {
-    year: "2022",
-    title: "R&D Engineer",
-    icon: "work",
+    year: "2024 - Present",
+    title: "Uni Kassel",
+    icon: "education",
     color: "primary",
-    hint: "Combining research with software development. Building simulation tools and modern web applications.",
+    hint: "Specializing in communication systems, RF/microwave design, and computational electromagnetics. Researching signal optimization and modeling.",
   },
 ];
 
@@ -85,13 +85,16 @@ export default function HomeContent({ recentPosts }: HomeContentProps) {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-terracotta/10 rounded-full mb-6">
               <User className="w-4 h-4 text-terracotta" />
-              <span className="text-sm font-semibold text-terracotta">Career Journey</span>
+              <span className="text-sm font-semibold text-terracotta">
+                Career Journey
+              </span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-stone-800 mb-4">
-              My Technical Path
+              Academic & Research Journey
             </h2>
             <p className="text-lg text-stone-600 max-w-2xl mx-auto">
-              From physics olympiads to cutting-edge engineering research
+              From theoretical physics to applied electromagnetic and
+              communication research.
             </p>
           </motion.div>
 
@@ -175,8 +178,8 @@ export default function HomeContent({ recentPosts }: HomeContentProps) {
                 Let's Build Something Amazing
               </h3>
               <p className="text-lg text-stone-600 mb-8 max-w-2xl mx-auto">
-                Have a project in mind or just want to discuss ideas? I'm always open to
-                interesting collaborations and conversations.
+                Have a project in mind or just want to discuss ideas? I'm always
+                open to interesting collaborations and conversations.
               </p>
 
               <div className="flex flex-wrap gap-4 justify-center">

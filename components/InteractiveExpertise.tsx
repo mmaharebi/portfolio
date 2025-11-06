@@ -17,38 +17,55 @@ const expertiseData: ExpertiseArea[] = [
   {
     icon: Radio,
     title: "Communication Systems",
-    shortDesc: "5G/6G signal processing & system optimization",
+    shortDesc: "5G/6G signal processing & optimization",
     fullDesc:
-      "Digital modulation, signal processing, and system optimization. Experienced in MATLAB & Python for high-performance communication systems.",
+      "Advancing signal processing and system optimization for next-generation networks.",
     color: "primary",
-    skills: ["5G/6G Systems", "Digital Modulation", "MATLAB", "Python", "System Optimization"],
+    skills: [
+      "5G/6G",
+      "Digital Modulation",
+      "Channel Estimation",
+      "MATLAB",
+      "Python",
+    ],
   },
   {
     icon: Zap,
-    title: "RF Engineering",
-    shortDesc: "Microwave circuits & antenna design",
+    title: "RF & Microwave Engineering",
+    shortDesc: "Antenna & circuit design via EM simulation",
     fullDesc:
-      "Microwave circuits, antenna design, and RF front-ends. Skilled in EM theory, numerical methods, and simulation-based design.",
+      "Designing microwave circuits, antennas, and front-end systems through EM simulation and numerical methods.",
     color: "accent",
-    skills: ["Antenna Design", "EM Simulation", "CST Studio", "HFSS", "RF Circuits"],
+    skills: [
+      "CST Studio",
+      "HFSS",
+      "Antenna Design",
+      "RF Circuits",
+      "EM Theory",
+    ],
   },
   {
     icon: Calculator,
-    title: "Math & Physics",
-    shortDesc: "Bridging theory with engineering practice",
+    title: "Computational Electromagnetics & Modeling",
+    shortDesc: "Wave analysis & numerical simulation",
     fullDesc:
-      "Linear algebra, probability, quantum & statistical mechanics. Bridging abstract theory with practical engineering through computational modeling.",
+      "Developing and applying computational models to analyze electromagnetic wave behavior and optimize device performance.",
     color: "secondary",
-    skills: ["Linear Algebra", "Probability", "Quantum Mechanics", "Numerical Methods"],
+    skills: ["FDTD", "FEM", "MATLAB", "Python", "Numerical Analysis"],
   },
   {
     icon: Layers,
-    title: "Software Engineering",
-    shortDesc: "Full-stack development & scientific computing",
+    title: "Mathematical Foundations",
+    shortDesc: "Theory underlying modern communication & EM",
     fullDesc:
-      "Full-stack web apps and simulation environments. Building scalable architectures for research and engineering applications.",
+      "Bridging abstract theory and practical engineering through applied mathematics and physics.",
     color: "terracotta",
-    skills: ["Next.js", "React", "TypeScript", "Tailwind", "Python", "Scientific Computing"],
+    skills: [
+      "Linear Algebra",
+      "Probability",
+      "Quantum Mechanics",
+      "Numerical Analysis",
+    ],
   },
 ];
 
