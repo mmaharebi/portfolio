@@ -25,9 +25,9 @@ const skillsData: SkillCategory[] = [
     color: "primary",
     skills: [
       { name: "Python", level: 95, category: "languages" },
-      { name: "JavaScript/TypeScript", level: 90, category: "languages" },
-      { name: "MATLAB", level: 85, category: "languages" },
-      { name: "C++", level: 75, category: "languages" },
+      { name: "MATLAB", level: 90, category: "languages" },
+      { name: "JavaScript / TypeScript", level: 85, category: "languages" },
+      { name: "C++", level: 72, category: "languages" },
     ],
   },
   {
@@ -35,10 +35,10 @@ const skillsData: SkillCategory[] = [
     icon: Layers,
     color: "secondary",
     skills: [
-      { name: "React & Next.js", level: 92, category: "frameworks" },
-      { name: "NumPy & SciPy", level: 88, category: "frameworks" },
-      { name: "Tailwind CSS", level: 90, category: "frameworks" },
-      { name: "Framer Motion", level: 85, category: "frameworks" },
+      { name: "NumPy / SciPy (SciPy Stack)", level: 92, category: "frameworks" },
+      { name: "MATLAB Signal Processing & Optimization", level: 88, category: "frameworks" },
+      { name: "React & Next.js", level: 82, category: "frameworks" },
+      { name: "Tailwind CSS", level: 85, category: "frameworks" },
     ],
   },
   {
@@ -46,10 +46,10 @@ const skillsData: SkillCategory[] = [
     icon: Cpu,
     color: "accent",
     skills: [
-      { name: "Git & GitHub", level: 90, category: "tools" },
-      { name: "VSCode", level: 95, category: "tools" },
-      { name: "LaTeX", level: 88, category: "tools" },
+      { name: "Git & GitHub", level: 92, category: "tools" },
       { name: "Jupyter", level: 92, category: "tools" },
+      { name: "VS Code", level: 95, category: "tools" },
+      { name: "LaTeX", level: 90, category: "tools" },
     ],
   },
   {
@@ -57,13 +57,14 @@ const skillsData: SkillCategory[] = [
     icon: Radio,
     color: "primary",
     skills: [
-      { name: "CST Studio", level: 85, category: "research" },
-      { name: "HFSS", level: 80, category: "research" },
-      { name: "COMSOL", level: 75, category: "research" },
-      { name: "5G/6G Systems", level: 82, category: "research" },
+      { name: "Antenna Design & Arrays", level: 90, category: "research" },
+      { name: "Digital Communications & DSP", level: 88, category: "research" },
+      { name: "EM Simulation (CST / HFSS / ADS)", level: 87, category: "research" },
+      { name: "5G/6G Systems & Link Concepts", level: 84, category: "research" },
     ],
   },
 ];
+
 
 const colorMap = {
   primary: {
