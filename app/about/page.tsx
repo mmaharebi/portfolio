@@ -78,7 +78,7 @@ const detailedTimelineData: DetailedTimelineItem[] = [
     color: "accent",
   },
   {
-    year: "2022-Present",
+    year: "2024-Present",
     title: "Research & Development Engineer",
     subtitle: "Communication Systems & Software Engineering",
     location: "Kassel, Germany",
