@@ -65,6 +65,30 @@ const skillsData: SkillCategory[] = [
   },
 ];
 
+const researchInterests = [
+  {
+    name: "5G/6G Communication Systems",
+    description:
+      "Signal processing, system modeling, and link-level optimization for next-generation wireless networks.",
+  },
+  {
+    name: "Applied Electromagnetics & RF Design",
+    description:
+      "Antenna arrays, microwave circuits, and electromagnetic wave propagation analysis through simulation and measurement.",
+  },
+  {
+    name: "Signal Processing & Optimization",
+    description:
+      "Algorithm design for detection, estimation, and adaptive filtering with applications in communication and sensing.",
+  },
+  {
+    name: "Computational Electromagnetics & Simulation",
+    description:
+      "Numerical modeling (FEM, FDTD) and multi-domain simulation for microwave and communication system analysis.",
+  },
+];
+
+
 
 const colorMap = {
   primary: {
@@ -281,50 +305,52 @@ export default function InteractiveSkills() {
       >
         <div className="flex items-center gap-3 mb-6">
           <motion.div
-            animate={{
-              rotate: [0, 360],
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-            className="w-12 h-12 rounded-xl bg-terracotta/10 border-2 border-terracotta flex items-center justify-center"
+        animate={{
+          rotate: [0, 360],
+        }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+        className="w-12 h-12 rounded-xl bg-terracotta/10 border-2 border-terracotta flex items-center justify-center"
           >
-            <Brain className="w-6 h-6 text-terracotta" />
+        <Brain className="w-6 h-6 text-terracotta" />
           </motion.div>
           <h3 className="text-2xl font-bold text-stone-800">Research Interests</h3>
         </div>
 
         <div className="grid sm:grid-cols-2 gap-4">
-          {[
-            "5G/6G Communication Systems",
-            "Applied Electromagnetics & RF Design",
-            "Signal Processing & Optimization",
-            "Scientific Computing & Simulation",
-          ].map((interest, index) => (
+          {researchInterests.map((interest, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: index * 0.1 }}
+          whileHover={{ x: 10, scale: 1.02 }}
+          className="flex flex-col gap-2 p-4 bg-white/60 rounded-xl border border-stone-200 hover:border-terracotta/40 transition-all cursor-default group"
+        >
+          <div className="flex items-center gap-3">
             <motion.div
-              key={index}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              whileHover={{ x: 10, scale: 1.02 }}
-              className="flex items-center gap-3 p-3 bg-white/60 rounded-xl border border-stone-200 hover:border-terracotta/40 transition-all cursor-default"
-            >
-              <motion.div
-                animate={{
-                  scale: [1, 1.2, 1],
-                }}
-                transition={{
-                  duration: 2,
-                  delay: index * 0.3,
-                  repeat: Infinity,
-                }}
-                className="w-2 h-2 rounded-full bg-terracotta"
-              />
-              <span className="text-sm font-medium text-stone-700">{interest}</span>
-            </motion.div>
+          animate={{
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: 2,
+            delay: index * 0.3,
+            repeat: Infinity,
+          }}
+          className="w-2 h-2 rounded-full bg-terracotta shrink-0"
+            />
+            <span className="text-sm font-semibold text-stone-800 group-hover:text-terracotta transition-colors">
+          {interest.name}
+            </span>
+          </div>
+          <p className="text-xs text-stone-600 leading-relaxed pl-5">
+            {interest.description}
+          </p>
+        </motion.div>
           ))}
         </div>
       </motion.div>
