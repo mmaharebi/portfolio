@@ -139,10 +139,11 @@ export default function AboutPage() {
             </h1>
 
             <p className="text-base sm:text-lg md:text-xl text-stone-700 leading-relaxed max-w-3xl mx-auto">
-              M.Sc. student in Electrical and Computer Engineering at the
-              University of Kassel, Germany, passionate about bridging
-              theoretical foundations with practical applications in
-              communication systems and RF engineering.
+              I’m an engineer who enjoys turning theory into working systems. My
+              interests sit at the intersection of communication systems,
+              applied electromagnetics, and scientific software. I like clean
+              models, reproducible simulations, and clear writing that others
+              can build on.
             </p>
           </motion.div>
         </div>
@@ -171,7 +172,7 @@ export default function AboutPage() {
 
           <motion.div
             variants={itemVariants}
-            className="prose prose-lg max-w-none"
+            className="prose prose-lg max-w-none mx-auto"
           >
             <p className="text-stone-700 leading-relaxed text-base md:text-lg mb-5 md:mb-6">
               My fascination with electrical engineering began with a simple

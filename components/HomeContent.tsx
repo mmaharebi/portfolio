@@ -48,7 +48,7 @@ export default function HomeContent({ recentPosts }: HomeContentProps) {
     <div className="min-h-screen bg-linear-to-b from-amber-50 to-cream-50">
       {/* Hero Section */}
       <motion.section
-        className="relative py-16 md:py-32 overflow-hidden"
+        className="relative pt-16 pb-8 md:pt-32 md:pb-20 overflow-hidden"
         initial="hidden"
         animate="visible"
         variants={containerVariants}
@@ -79,7 +79,6 @@ export default function HomeContent({ recentPosts }: HomeContentProps) {
             delay: 1,
           }}
         />
-
         <div className="relative max-w-4xl mx-auto px-6 text-center">
           <motion.div
             variants={itemVariants}
@@ -97,7 +96,7 @@ export default function HomeContent({ recentPosts }: HomeContentProps) {
             variants={itemVariants}
             className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 md:mb-6"
           >
-            <span className="text-amber-700">Mahdi Maharebi</span>
+            <span className="text-amber-700">Mahdy M.</span>
           </motion.h1>
 
           <motion.p
@@ -111,9 +110,8 @@ export default function HomeContent({ recentPosts }: HomeContentProps) {
             variants={itemVariants}
             className="text-base sm:text-lg md:text-xl text-stone-600 mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed"
           >
-            Passionate about electromagnetic systems, signal processing, and
-            computational modeling. Bridging theory and simulation to design
-            efficient, intelligent engineering solutions.
+            Blending electromagnetics, mathematics, and code to design smarter
+            engineering systems.
           </motion.p>
 
           <motion.div
@@ -140,7 +138,7 @@ export default function HomeContent({ recentPosts }: HomeContentProps) {
       {/* Recent Posts */}
       {recentPosts.length > 0 && (
         <motion.section
-          className="py-16 md:py-20 px-6"
+          className="px-6 pt-6"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
