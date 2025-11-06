@@ -1,5 +1,6 @@
 import './prose.css';
 import 'katex/dist/katex.min.css'; // ⭐ CRITICAL: KaTeX CSS
+import AnimatedWrapper from '@/components/AnimatedWrapper';
 
 export default function BlogLayout({
   children,
@@ -7,10 +8,8 @@ export default function BlogLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900">
-      <main className="mx-auto max-w-4xl px-4 py-8">
-        {children}
-      </main>
-    </div>
+    <AnimatedWrapper>
+      {children}
+    </AnimatedWrapper>
   );
 }

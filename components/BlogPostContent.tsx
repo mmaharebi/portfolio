@@ -1,72 +1,28 @@
-"use client";
-
-import { motion } from "motion/react";
-import { Calendar, User, Tag, ArrowLeft } from "lucide-react";
+import { Calendar, User, Tag } from "lucide-react";
 import Link from "next/link";
 import MDXContent from "@/components/MDXContent";
 import Math from "@/components/Math";
+import { AnimatedSection } from "@/components/AnimatedWrapper";
 import type { BlogPost } from "@/lib/utils";
 
 interface BlogPostContentProps {
   post: BlogPost;
 }
 
-export default function BlogPostContent({ post }: BlogPostContentProps) {
+export default async function BlogPostContent({ post }: BlogPostContentProps) {
   return (
-    <div className="min-h-screen bg-linear-to-b from-amber-50 to-cream-50">
-      {/* Decorative background */}
-      <motion.div
-        className="fixed top-20 -right-20 w-64 h-64 bg-linear-to-br from-terracotta/20 to-amber-200/20 rounded-full blur-3xl pointer-events-none"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-      <motion.div
-        className="fixed bottom-20 -left-20 w-80 h-80 bg-linear-to-tr from-amber-300/20 to-terracotta/20 rounded-full blur-3xl pointer-events-none"
-        animate={{
-          scale: [1, 1.3, 1],
-          opacity: [0.2, 0.4, 0.2],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 1,
-        }}
-      />
-
-      <article className="relative max-w-4xl mx-auto px-6 py-12 md:py-16">
-        {/* Header */}
-        <motion.header
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-10 md:mb-12"
-        >
-          <motion.h1
-            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-stone-800"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
+    <article className="relative max-w-4xl mx-auto px-6 py-8 md:py-16">
+      {/* Title and Metadata */}
+      <AnimatedSection delay={0}>
+        <header className="mb-12 md:mb-16">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8 text-stone-800 leading-tight">
             {post.title}
-          </motion.h1>
+          </h1>
 
-          <motion.div
-            className="flex flex-wrap items-center gap-3 md:gap-4 text-sm text-stone-600 mb-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <span className="flex items-center gap-1.5">
-              <Calendar className="w-4 h-4 text-terracotta" />
-              <time dateTime={post.date}>
+          <div className="flex flex-wrap items-center gap-3 md:gap-4 mb-6">
+            <span className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 backdrop-blur-sm rounded-full text-sm md:text-base border border-primary/20">
+              <Calendar className="w-4 h-4 text-primary" />
+              <time dateTime={post.date} className="text-foreground-secondary font-medium">
                 {new Date(post.date).toLocaleDateString("en-US", {
                   year: "numeric",
                   month: "long",
@@ -75,67 +31,52 @@ export default function BlogPostContent({ post }: BlogPostContentProps) {
               </time>
             </span>
             {post.author && (
-              <span className="flex items-center gap-1.5">
-                <User className="w-4 h-4 text-terracotta" />
-                {post.author}
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 backdrop-blur-sm rounded-full text-sm md:text-base border border-primary/20">
+                <User className="w-4 h-4 text-primary" />
+                <span className="text-foreground-secondary font-medium">{post.author}</span>
               </span>
             )}
-          </motion.div>
+          </div>
 
           {post.tags && post.tags.length > 0 && (
-            <motion.div
-              className="flex flex-wrap gap-2"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              {post.tags.map((tag, index) => (
-                <motion.span
+            <div className="flex flex-wrap gap-2">
+              {post.tags.map((tag) => (
+                <span
                   key={tag}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3, delay: 0.3 + index * 0.1 }}
-                  className="flex items-center gap-1 px-3 py-1 bg-terracotta/10 text-terracotta text-xs md:text-sm rounded-full font-medium"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 backdrop-blur-sm text-primary text-xs md:text-sm rounded-full font-medium border border-primary/20 hover:bg-primary/20 transition-colors"
                 >
                   <Tag className="w-3 h-3" />
                   {tag}
-                </motion.span>
+                </span>
               ))}
-            </motion.div>
+            </div>
           )}
-        </motion.header>
+        </header>
+      </AnimatedSection>
 
-        {/* Content */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 lg:p-10 shadow-sm border-2 border-stone-200"
-        >
+      {/* Content */}
+      <AnimatedSection delay={0.1}>
+        <div className="prose-wrapper">
           <MDXContent
             source={post.content}
             components={{
               Math,
             }}
           />
-        </motion.div>
+        </div>
+      </AnimatedSection>
 
-        {/* Footer - Back to blog link */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="mt-10 md:mt-12 pt-8 border-t-2 border-stone-200 text-center"
-        >
+      {/* Bottom Navigation */}
+      <AnimatedSection delay={0.2}>
+        <div className="mt-16 md:mt-20 pt-10 text-center">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-linear-to-r from-terracotta to-amber-600 text-white rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-300 font-semibold"
+            className="inline-flex items-center gap-2 px-6 md:px-8 py-3 md:py-3.5 bg-linear-to-r from-primary to-amber-600 text-white text-base md:text-lg rounded-xl hover:shadow-xl hover:scale-105 transition-all duration-300 font-semibold shadow-lg"
           >
-            <ArrowLeft className="w-4 h-4" />
-            View All Posts
+            ← View All Posts
           </Link>
-        </motion.div>
-      </article>
-    </div>
+        </div>
+      </AnimatedSection>
+    </article>
   );
 }

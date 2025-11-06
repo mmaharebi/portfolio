@@ -32,14 +32,13 @@ export default function BlogContent({ posts }: BlogContentProps) {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-b from-amber-50 to-cream-50">
-      <div className="max-w-4xl mx-auto px-6 py-16 md:py-20">
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-10 md:mb-14 text-center"
-        >
+    <div className="max-w-4xl mx-auto px-6 py-16 md:py-20">
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="mb-10 md:mb-14 text-center"
+      >
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-terracotta/10 rounded-full mb-4">
             <BookOpen className="w-4 h-4 text-terracotta" />
             <span className="text-sm font-semibold text-terracotta">Articles</span>
@@ -119,7 +118,6 @@ export default function BlogContent({ posts }: BlogContentProps) {
             ))}
           </motion.div>
         )}
-      </div>
     </div>
   );
 }

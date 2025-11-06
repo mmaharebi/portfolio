@@ -1,5 +1,3 @@
-"use client";
-
 import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote/rsc';
 import remarkMath from 'remark-math';
 import remarkGfm from 'remark-gfm';
@@ -12,6 +10,7 @@ interface MDXContentProps {
 
 /**
  * Core MDX renderer with KaTeX and GFM support
+ * Server Component - use in server contexts only
  * 
  * @param source - Raw MDX string content
  * @param components - Custom React components to use in MDX
@@ -24,7 +23,7 @@ interface MDXContentProps {
  * />
  * ```
  */
-export default function MDXContent({ source, components }: MDXContentProps) {
+export default async function MDXContent({ source, components }: MDXContentProps) {
   return (
     <div className="prose prose-lg dark:prose-invert max-w-none">
       <MDXRemote
