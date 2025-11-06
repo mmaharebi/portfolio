@@ -1,4 +1,6 @@
-import SerpentineTimeline, { type DetailedTimelineItem } from "@/components/SerpentineTimeline";
+import InteractiveJourney from "@/components/InteractiveJourney";
+import InteractiveSkills from "@/components/InteractiveSkills";
+import type { DetailedTimelineItem } from "@/components/SerpentineTimeline";
 import Link from "next/link";
 import { ArrowLeft, User } from "lucide-react";
 
@@ -65,9 +67,9 @@ export default function AboutPage() {
     <div className="min-h-screen bg-linear-to-b from-amber-50 via-orange-50 to-stone-50">
       {/* Hero Section */}
       <section className="relative pt-24 pb-16 px-6 overflow-hidden">
-        {/* Decorative background */}
-        <div className="absolute top-20 -right-20 md:right-10 w-64 h-64 bg-linear-to-br from-terracotta/20 to-amber-200/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 -left-20 md:left-10 w-80 h-80 bg-linear-to-tr from-amber-300/20 to-terracotta/20 rounded-full blur-3xl" />
+        {/* Decorative background - animated blobs */}
+        <div className="absolute top-20 -right-20 md:right-10 w-64 h-64 bg-linear-to-br from-terracotta/20 to-amber-200/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: "4s" }} />
+        <div className="absolute bottom-20 -left-20 md:left-10 w-80 h-80 bg-linear-to-tr from-amber-300/20 to-terracotta/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: "5s", animationDelay: "1s" }} />
         
         <div className="relative max-w-4xl mx-auto">
           {/* Back Button */}
@@ -105,51 +107,14 @@ export default function AboutPage() {
       {/* Timeline Section */}
       <section className="px-6 pb-24">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-stone-800 mb-4">
-              My Technical Journey
-            </h2>
-            <p className="text-base md:text-lg text-stone-600 max-w-2xl mx-auto">
-              Every milestone shaped who I am today
-            </p>
-          </div>
-
-          <SerpentineTimeline items={detailedTimelineData} />
+          <InteractiveJourney items={detailedTimelineData} />
         </div>
       </section>
 
       {/* Skills & Expertise Section */}
-      <section className="px-6 pb-24 bg-white/50">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-stone-800 mb-4">
-              Core Competencies
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {/* Technical Skills */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border-2 border-stone-200 shadow-sm">
-              <h3 className="text-xl font-bold text-stone-800 mb-4">Technical Skills</h3>
-              <div className="space-y-2 text-stone-600">
-                <p>• <strong>Languages:</strong> Python, MATLAB, JavaScript/TypeScript, C++</p>
-                <p>• <strong>Frameworks:</strong> Next.js, React, Tailwind CSS, NumPy, SciPy</p>
-                <p>• <strong>Tools:</strong> Git, VSCode, LaTeX, Jupyter</p>
-                <p>• <strong>EM Simulation:</strong> CST, HFSS, COMSOL</p>
-              </div>
-            </div>
-
-            {/* Research Interests */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border-2 border-stone-200 shadow-sm">
-              <h3 className="text-xl font-bold text-stone-800 mb-4">Research Interests</h3>
-              <div className="space-y-2 text-stone-600">
-                <p>• 5G/6G Communication Systems</p>
-                <p>• Applied Electromagnetics & RF Design</p>
-                <p>• Signal Processing & Optimization</p>
-                <p>• Scientific Computing & Simulation</p>
-              </div>
-            </div>
-          </div>
+      <section className="px-6 pb-24">
+        <div className="max-w-6xl mx-auto">
+          <InteractiveSkills />
         </div>
       </section>
     </div>
