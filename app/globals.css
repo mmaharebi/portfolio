@@ -1,26 +1,98 @@
 @import "tailwindcss";
 
+/* Warm Theme Color Palette */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Backgrounds - Warm tones */
+  --background: #FFF8F0;
+  --surface: #FFFFFF;
+  --surface-hover: #FFF5EB;
+  
+  /* Text colors - Rich warm tones */
+  --foreground: #2D1810;
+  --foreground-secondary: #5C4033;
+  --foreground-muted: #8B7355;
+  
+  /* Accent colors - Warm palette */
+  --primary: #D97757;
+  --primary-hover: #C86442;
+  --secondary: #E8B17A;
+  --accent: #A86843;
+  
+  /* Semantic colors */
+  --border: #E8D5C4;
+  --shadow: rgba(209, 119, 87, 0.1);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #1A1110;
+    --surface: #2D1810;
+    --surface-hover: #3D2418;
+    --foreground: #F5E6D3;
+    --foreground-secondary: #D4C4B0;
+    --foreground-muted: #A89580;
+    --primary: #E8915F;
+    --primary-hover: #F5A573;
+    --secondary: #D4A574;
+    --accent: #C88A5F;
+    --border: #4A3628;
+    --shadow: rgba(232, 145, 95, 0.2);
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+  background-color: var(--primary);
+  color: white;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
+}
+
+/* Gradient backgrounds for decorative elements */
+.warm-gradient {
+  background: linear-gradient(135deg, #FFE5D4 0%, #FFD4BA 50%, #FFC4A3 100%);
+}
+
+.warm-gradient-text {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
