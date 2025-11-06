@@ -17,30 +17,35 @@ const briefTimelineData: BriefTimelineItem[] = [
     title: "Physics Olympiad",
     icon: "award",
     color: "primary",
+    hint: "Silver medal at Iran's National Physics Olympiad - A pivotal moment that shaped my technical journey.",
   },
   {
     year: "2013",
     title: "Sharif University",
     icon: "education",
     color: "secondary",
+    hint: "B.Sc. in Electrical Engineering at Iran's top technical university. Focus on electromagnetics and signal processing.",
   },
   {
     year: "2017",
     title: "Research Assistant",
     icon: "work",
     color: "accent",
+    hint: "Antenna design and RF engineering research. Developed computational EM models using MATLAB.",
   },
   {
     year: "2020",
     title: "Uni Kassel",
     icon: "education",
     color: "secondary",
+    hint: "M.Sc. in Electrical Communication Engineering. Specializing in 5G systems and digital communications.",
   },
   {
     year: "2022",
     title: "R&D Engineer",
     icon: "work",
     color: "primary",
+    hint: "Combining research with software development. Building simulation tools and modern web applications.",
   },
 ];
 
@@ -375,13 +380,13 @@ export default function HomeContent({ recentPosts }: HomeContentProps) {
 
       {/* Brief Timeline & Who Am I Section */}
       <motion.section
-        className="py-16 md:py-24 px-6 bg-linear-to-b from-amber-50/50 to-transparent"
+        className="py-16 md:py-24 px-6 bg-linear-to-b from-amber-50/50 to-transparent overflow-visible"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
         variants={containerVariants}
       >
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto overflow-visible">
           <motion.div
             variants={itemVariants}
             className="text-center mb-12 md:mb-16"
