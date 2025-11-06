@@ -7,6 +7,8 @@ import Link from "next/link";
 
 export default function ArtisticHero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
+  const [mounted, setMounted] = useState(false);
   const { scrollY } = useScroll();
   
   const y1 = useTransform(scrollY, [0, 300], [0, 100]);
@@ -14,16 +16,47 @@ export default function ArtisticHero() {
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
   useEffect(() => {
+    // Set initial window size
+    setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+    setMounted(true);
+
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
+
+    const handleResize = () => {
+      setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+    };
+
     window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   // Parallax effect for decorative elements
-  const parallaxX = (mousePosition.x - window.innerWidth / 2) / 50;
-  const parallaxY = (mousePosition.y - window.innerHeight / 2) / 50;
+  const parallaxX = mounted && windowSize.width ? (mousePosition.x - windowSize.width / 2) / 50 : 0;
+  const parallaxY = mounted && windowSize.height ? (mousePosition.y - windowSize.height / 2) / 50 : 0;
+
+  // Don't render dynamic content until mounted to avoid hydration mismatch
+  if (!mounted) {
+    return (
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-linear-to-br from-amber-50 via-orange-50 to-stone-50">
+        <div className="relative z-10 text-center px-6 max-w-5xl">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6">
+            <span className="bg-clip-text text-transparent bg-linear-to-r from-primary via-amber-600 to-secondary">
+              Mahdy M.
+            </span>
+          </h1>
+          <p className="text-xl md:text-2xl lg:text-3xl text-stone-700 font-semibold mb-8">
+            Enthusiastic Engineer
+          </p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <motion.section
@@ -340,33 +373,33 @@ export default function ArtisticHero() {
             </motion.div>
           ))}
         </div>
+      </div>
 
-        {/* Scroll indicator */}
+      {/* Scroll indicator - outside content div, positioned at bottom of hero section */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.5 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
+      >
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.5 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="flex flex-col items-center gap-2 text-stone-400"
         >
+          <span className="text-xs font-medium">Scroll to explore</span>
           <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="flex flex-col items-center gap-2 text-stone-400"
+            className="w-6 h-10 border-2 border-stone-300 rounded-full flex justify-center pt-2"
+            whileHover={{ borderColor: "var(--primary)" }}
           >
-            <span className="text-xs font-medium">Scroll to explore</span>
             <motion.div
-              className="w-6 h-10 border-2 border-stone-300 rounded-full flex justify-center pt-2"
-              whileHover={{ borderColor: "var(--primary)" }}
-            >
-              <motion.div
-                className="w-1.5 h-1.5 bg-primary rounded-full"
-                animate={{ y: [0, 12, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              />
-            </motion.div>
+              className="w-1.5 h-1.5 bg-primary rounded-full"
+              animate={{ y: [0, 12, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            />
           </motion.div>
         </motion.div>
-      </div>
+      </motion.div>
     </motion.section>
   );
 }
