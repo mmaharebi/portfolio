@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio Blog
+
+A clean, modern portfolio blog built with Next.js 16, featuring MDX support and beautiful mathematical equations with KaTeX.
+
+## ✨ Features
+
+- **MDX Support** - Write blog posts with full React component support
+- **KaTeX Math** - Beautiful mathematical notation (inline: `$E=mc^2$`, display: `$$...$$`)
+- **GitHub Flavored Markdown** - Tables, strikethrough, task lists, etc.
+- **SEO Optimized** - Metadata, sitemap, and robots.txt included
+- **Static Generation** - Fast, pre-rendered pages
+- **Dark Mode** - CSS supports dark mode
+- **TypeScript** - Full type safety
 
 ## Getting Started
 
 First, run the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Visit [http://localhost:3000/blog](http://localhost:3000/blog) to see the blog with the example post.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📝 Creating Blog Posts
 
-## Learn More
+1. Create a new `.mdx` file in `content/posts/`:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+touch content/posts/my-post.mdx
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Add your content with markdown and math:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```markdown
+# My Blog Post
+
+This is a blog post with **bold** text and *italic* text.
+
+Inline math: $E = mc^2$
+
+Display math:
+$$
+\int_0^\infty f(x)dx
+$$
+```
+
+3. Your post will be automatically available at `/blog/my-post`
+
+## 📁 Project Structure
+
+```
+portfolio/
+├── app/blog/          # Blog pages and styling
+├── components/        # React components (MDX renderer, Math)
+├── content/posts/     # Your blog posts (.mdx files)
+└── lib/              # Utilities (SEO helpers)
+```
+
+## 🎨 Customization
+
+- **Site Metadata**: Edit `app/layout.tsx`
+- **Blog Styling**: Edit `app/blog/prose.css`
+- **Math Examples**: See `content/posts/first-post.mdx`
+
+## 📚 Math Syntax
+
+### Inline Math
+```markdown
+The equation $E = mc^2$ is famous.
+```
+
+### Display Math
+```markdown
+$$
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+$$
+```
+
+**Important**: In MDX files, use **single backslash** `\` for LaTeX commands.
+
+## 🛠️ Tech Stack
+
+- **Next.js 16** with App Router
+- **React 19**
+- **TypeScript**
+- **Tailwind CSS 4**
+- **MDX** via next-mdx-remote
+- **KaTeX** for math typesetting
+
+## 📖 Documentation
+
+See `SETUP.md` for comprehensive setup guide and advanced configuration.
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
