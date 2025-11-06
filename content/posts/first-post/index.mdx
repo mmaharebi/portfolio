@@ -1,0 +1,100 @@
+---
+slug: "first-post"
+title: "Welcome to My Portfolio Blog"
+date: "2024-01-15"
+description: "Your first blog post with MDX and KaTeX support"
+tags: ["mdx", "katex", "markdown", "math"]
+---
+
+This is your first blog post with **MDX** and **KaTeX** support!
+
+## Features
+
+This blog supports:
+
+1. **Markdown** formatting (bold, italic, lists, etc.)
+2. **Mathematical equations** with KaTeX
+3. **GitHub Flavored Markdown** (tables, strikethrough, etc.)
+4. **Organized assets** - Each post has its own `images/`, `files/`, and `assets/` folders
+
+## Asset Organization
+
+You can now organize your post content with:
+
+- **Images**: `./images/` - Add screenshots, diagrams, photos
+- **Files**: `./files/` - Share code, datasets, PDFs
+- **Assets**: `./assets/` - Videos, design files, etc.
+
+Reference them with relative paths:
+```markdown
+![My Image](./images/example.jpg)
+[Download Code](./files/script.m)
+```
+
+## Math Examples
+
+### Inline Math
+
+The famous equation by Einstein: $E = mc^2$
+
+The Pythagorean theorem states that $a^2 + b^2 = c^2$ for right triangles.
+
+### Display Math
+
+The quadratic formula:
+
+$$
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+$$
+
+Euler's identity, one of the most beautiful equations:
+
+$$
+e^{i\pi} + 1 = 0
+$$
+
+An integral:
+
+$$
+\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
+$$
+
+## Code Example
+
+```javascript
+function calculateQuadratic(a, b, c) {
+  const discriminant = b * b - 4 * a * c;
+  const x1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+  const x2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+  return [x1, x2];
+}
+```
+
+## Table Example
+
+| Feature | Supported |
+|---------|-----------|
+| Markdown | ✅ |
+| KaTeX | ✅ |
+| Tables | ✅ |
+| Code Blocks | ✅ |
+| Assets | ✅ |
+
+## Conclusion
+
+You now have a fully functional blog with MDX and KaTeX support! 🚀
+
+Create more posts by adding `.mdx` files to the `content/posts/` directory.
+
+**New Structure**: Each post now has its own folder:
+```
+content/posts/[post-slug]/
+  ├── index.mdx
+  ├── images/
+  ├── files/
+  └── assets/
+```
+
+Check `content/posts/README.md` for complete documentation!
+
+```
