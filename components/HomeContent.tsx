@@ -2,12 +2,47 @@
 
 import Link from "next/link";
 import { motion } from "motion/react";
-import { Sparkles, BookOpen, Code, Lightbulb, Radio, Zap, Calculator, Layers } from "lucide-react";
+import { Sparkles, BookOpen, Code, Radio, Zap, Calculator, Layers, User } from "lucide-react";
 import type { BlogPostMetadata } from "@/lib/utils";
+import BriefTimeline, { type BriefTimelineItem } from "./BriefTimeline";
 
 interface HomeContentProps {
   recentPosts: BlogPostMetadata[];
 }
+
+// Brief timeline data for home page
+const briefTimelineData: BriefTimelineItem[] = [
+  {
+    year: "2012",
+    title: "Physics Olympiad",
+    icon: "award",
+    color: "primary",
+  },
+  {
+    year: "2013",
+    title: "Sharif University",
+    icon: "education",
+    color: "secondary",
+  },
+  {
+    year: "2017",
+    title: "Research Assistant",
+    icon: "work",
+    color: "accent",
+  },
+  {
+    year: "2020",
+    title: "Uni Kassel",
+    icon: "education",
+    color: "secondary",
+  },
+  {
+    year: "2022",
+    title: "R&D Engineer",
+    icon: "work",
+    color: "primary",
+  },
+];
 
 export default function HomeContent({ recentPosts }: HomeContentProps) {
   // Animation variants
@@ -334,6 +369,58 @@ export default function HomeContent({ recentPosts }: HomeContentProps) {
                 </p>
               </div>
             </motion.div>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Brief Timeline & Who Am I Section */}
+      <motion.section
+        className="py-16 md:py-24 px-6 bg-linear-to-b from-amber-50/50 to-transparent"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={containerVariants}
+      >
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            variants={itemVariants}
+            className="text-center mb-12 md:mb-16"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-terracotta/10 rounded-full mb-4">
+              <User className="w-4 h-4 text-terracotta" />
+              <span className="text-sm font-semibold text-terracotta">
+                My Journey
+              </span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-stone-800 mb-3 md:mb-4">
+              Technical Path
+            </h2>
+            <p className="text-stone-600 text-base md:text-lg max-w-2xl mx-auto mb-8">
+              From physics olympiads to cutting-edge engineering research
+            </p>
+          </motion.div>
+
+          <BriefTimeline items={briefTimelineData} />
+
+          {/* Who Am I Button */}
+          <motion.div
+            variants={itemVariants}
+            className="flex justify-center mt-12"
+          >
+            <Link
+              href="/about"
+              className="group inline-flex items-center gap-2 px-6 md:px-8 py-3 md:py-4 bg-linear-to-r from-primary to-amber-600 text-white text-sm md:text-base rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-300 font-semibold"
+            >
+              <User className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+              Who Am I? - Full Resume
+              <motion.span
+                className="inline-block"
+                animate={{ x: [0, 5, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              >
+                →
+              </motion.span>
+            </Link>
           </motion.div>
         </div>
       </motion.section>
