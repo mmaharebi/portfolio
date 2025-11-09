@@ -100,7 +100,7 @@ export default function BlogContent({ posts }: BlogContentProps) {
           </motion.div>
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
-            <span className="bg-clip-text text-transparent bg-linear-to-r from-terracotta via-primary to-amber-600">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-terracotta via-primary to-amber-600">
               Blog & Articles
             </span>
           </h1>
@@ -247,7 +247,7 @@ export default function BlogContent({ posts }: BlogContentProps) {
                     className="group relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 md:p-10 shadow-xl border-2 border-primary/30 hover:border-primary hover:shadow-2xl transition-all duration-300 overflow-hidden"
                   >
                     {/* Decorative corner accent */}
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-linear-to-bl from-primary/20 to-transparent rounded-bl-full" />
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-primary/20 to-transparent rounded-bl-full" />
                     
                     {/* Glowing orb on hover */}
                     <motion.div
@@ -325,7 +325,7 @@ export default function BlogContent({ posts }: BlogContentProps) {
                   >
                     {/* Hover gradient overlay */}
                     <motion.div
-                      className="absolute inset-0 bg-linear-to-br from-terracotta/5 to-amber-100/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      className="absolute inset-0 bg-gradient-to-br from-terracotta/5 to-amber-100/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     />
 
                     {/* Corner sparkle */}

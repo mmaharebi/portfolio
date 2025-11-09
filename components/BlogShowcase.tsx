@@ -80,7 +80,7 @@ export default function BlogShowcase({ posts }: BlogShowcaseProps) {
                   >
                     {/* Animated gradient overlay */}
                     <motion.div
-                      className="absolute inset-0 bg-linear-to-br from-primary/5 to-amber-400/5 rounded-3xl opacity-0"
+                      className="absolute inset-0 bg-gradient-to-br from-primary/5 to-amber-400/5 rounded-3xl opacity-0"
                       animate={{
                         opacity: isHovered ? 1 : 0,
                       }}
@@ -144,7 +144,7 @@ export default function BlogShowcase({ posts }: BlogShowcaseProps) {
 
                     {/* Decorative corner */}
                     <motion.div
-                      className="absolute top-4 right-4 w-8 h-8 rounded-full bg-linear-to-br from-primary/20 to-amber-400/20 flex items-center justify-center"
+                      className="absolute top-4 right-4 w-8 h-8 rounded-full bg-gradient-to-br from-primary/20 to-amber-400/20 flex items-center justify-center"
                       animate={{
                         scale: isHovered ? [1, 1.2, 1] : 1,
                         rotate: isHovered ? [0, 180] : 0,
@@ -171,7 +171,7 @@ export default function BlogShowcase({ posts }: BlogShowcaseProps) {
           >
             <Link href="/blog">
               <motion.button
-                className="group inline-flex items-center gap-3 px-8 py-4 bg-linear-to-r from-primary to-amber-600 text-white rounded-2xl font-semibold shadow-xl hover:shadow-2xl transition-shadow"
+                className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary to-amber-600 text-white rounded-2xl font-semibold shadow-xl hover:shadow-2xl transition-shadow"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >

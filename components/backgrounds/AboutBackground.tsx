@@ -16,10 +16,10 @@ export default function AboutBackground() {
   }, []);
 
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden bg-linear-to-br from-cream via-stone-50 to-amber-50/50">
+    <div className="fixed inset-0 -z-10 overflow-hidden bg-gradient-to-br from-cream via-stone-50 to-amber-50/50">
       {/* Extended gradient orbs with parallax scroll effect */}
       <motion.div
-        className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-linear-to-br from-terracotta/20 via-primary/15 to-amber-400/10 rounded-full blur-3xl"
+        className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-gradient-to-br from-terracotta/20 via-primary/15 to-amber-400/10 rounded-full blur-3xl"
         style={{
           y: scrollY * 0.3,
         }}
@@ -31,7 +31,7 @@ export default function AboutBackground() {
       />
 
       <motion.div
-        className="absolute top-1/4 -right-60 w-[600px] h-[600px] bg-linear-to-bl from-amber-300/15 via-terracotta/12 to-primary/8 rounded-full blur-3xl"
+        className="absolute top-1/4 -right-60 w-[600px] h-[600px] bg-gradient-to-bl from-amber-300/15 via-terracotta/12 to-primary/8 rounded-full blur-3xl"
         style={{
           y: scrollY * 0.2,
         }}
@@ -43,7 +43,7 @@ export default function AboutBackground() {
       />
 
       <motion.div
-        className="absolute top-1/2 left-1/4 w-[450px] h-[450px] bg-linear-to-tr from-primary/12 via-amber-400/10 to-terracotta/8 rounded-full blur-3xl"
+        className="absolute top-1/2 left-1/4 w-[450px] h-[450px] bg-gradient-to-tr from-primary/12 via-amber-400/10 to-terracotta/8 rounded-full blur-3xl"
         style={{
           y: scrollY * 0.15,
         }}
@@ -55,7 +55,7 @@ export default function AboutBackground() {
       />
 
       <motion.div
-        className="absolute bottom-20 left-1/3 w-[550px] h-[550px] bg-linear-to-tl from-terracotta/18 via-amber-500/12 to-primary/10 rounded-full blur-3xl"
+        className="absolute bottom-20 left-1/3 w-[550px] h-[550px] bg-gradient-to-tl from-terracotta/18 via-amber-500/12 to-primary/10 rounded-full blur-3xl"
         style={{
           y: scrollY * 0.25,
         }}
@@ -67,7 +67,7 @@ export default function AboutBackground() {
       />
 
       <motion.div
-        className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-linear-to-br from-amber-400/14 via-primary/11 to-terracotta/9 rounded-full blur-3xl"
+        className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-gradient-to-br from-amber-400/14 via-primary/11 to-terracotta/9 rounded-full blur-3xl"
         style={{
           y: scrollY * 0.18,
         }}

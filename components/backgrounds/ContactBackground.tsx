@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 
 export default function ContactBackground() {
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden bg-linear-to-br from-amber-50/50 via-cream to-stone-50">
+    <div className="fixed inset-0 -z-10 overflow-hidden bg-gradient-to-br from-amber-50/50 via-cream to-stone-50">
       {/* Radial gradient mesh */}
       <motion.div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-radial-gradient from-terracotta/8 via-primary/5 to-transparent rounded-full blur-3xl"
@@ -124,7 +124,7 @@ export default function ContactBackground() {
 
       {/* Subtle corner accents */}
       <motion.div
-        className="absolute -top-20 -left-20 w-64 h-64 bg-linear-to-br from-primary/10 to-transparent rounded-full blur-2xl"
+        className="absolute -top-20 -left-20 w-64 h-64 bg-gradient-to-br from-primary/10 to-transparent rounded-full blur-2xl"
         animate={{
           scale: [1, 1.3, 1],
           rotate: [0, 180, 0],
@@ -133,7 +133,7 @@ export default function ContactBackground() {
       />
 
       <motion.div
-        className="absolute -bottom-20 -right-20 w-64 h-64 bg-linear-to-tl from-terracotta/10 to-transparent rounded-full blur-2xl"
+        className="absolute -bottom-20 -right-20 w-64 h-64 bg-gradient-to-tl from-terracotta/10 to-transparent rounded-full blur-2xl"
         animate={{
           scale: [1, 1.3, 1],
           rotate: [0, -180, 0],

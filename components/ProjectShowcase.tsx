@@ -187,7 +187,7 @@ export default function ProjectShowcase({ projects }: ProjectShowcaseProps) {
                 }
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm transition-all ${
                   selectedCategory === category
-                    ? `bg-linear-to-r ${colors.bg} ${colors.text} border-2 ${colors.border} shadow-lg`
+                    ? `bg-gradient-to-r ${colors.bg} ${colors.text} border-2 ${colors.border} shadow-lg`
                     : "bg-white/80 text-stone-600 border-2 border-stone-200 hover:border-primary"
                 }`}
               >
@@ -228,17 +228,17 @@ export default function ProjectShowcase({ projects }: ProjectShowcaseProps) {
                     className={`group relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 border-2 ${colors.border} shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden`}
                   >
                     {/* Decorative corner */}
-                    <div className={`absolute top-0 right-0 w-32 h-32 bg-linear-to-bl ${colors.bg} rounded-bl-full opacity-50`} />
+                    <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl ${colors.bg} rounded-bl-full opacity-50`} />
 
                     {/* Hover glow effect */}
                     <motion.div
-                      className={`absolute -inset-1 bg-linear-to-r ${colors.bg} rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+                      className={`absolute -inset-1 bg-gradient-to-r ${colors.bg} rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
                       style={{ zIndex: -1 }}
                     />
 
                     <div className="relative z-10">
                       {/* Category Badge */}
-                      <div className={`inline-flex items-center gap-2 px-3 py-1.5 bg-linear-to-r ${colors.bg} ${colors.text} rounded-full mb-4 text-xs font-bold border ${colors.border}`}>
+                      <div className={`inline-flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r ${colors.bg} ${colors.text} rounded-full mb-4 text-xs font-bold border ${colors.border}`}>
                         <Icon className="w-3.5 h-3.5" />
                         {project.category}
                       </div>
@@ -375,7 +375,7 @@ export default function ProjectShowcase({ projects }: ProjectShowcaseProps) {
                 >
                   {/* Hover gradient overlay */}
                   <motion.div
-                    className={`absolute inset-0 bg-linear-to-br ${colors.bg} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+                    className={`absolute inset-0 bg-gradient-to-br ${colors.bg} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
                   />
 
                   <div className="relative z-10">

@@ -235,7 +235,7 @@ export function Card({
       className={cn(
         "rounded-3xl p-6 transition-all duration-300",
         variant === "default" && "bg-white/80 backdrop-blur-sm border-2 border-stone-200 shadow-lg",
-        variant === "gradient" && "bg-gradient-to-br from-primary/10 via-amber-100/20 to-secondary/10",
+        variant === "gradient" && "bg-linear-to-br from-primary/10 via-amber-100/20 to-secondary/10",
         variant === "bordered" && "border-2 border-stone-200",
         hover && "hover:shadow-xl hover:-translate-y-2",
         glow && "shadow-2xl",
@@ -306,7 +306,7 @@ export function Section({ children, className, id, background = "default" }: Sec
       id={id}
       className={cn(
         "relative py-16 md:py-20 px-4 sm:px-6 overflow-hidden",
-        background === "gradient" && "bg-gradient-to-b from-stone-50 to-white",
+        background === "gradient" && "bg-linear-to-b from-stone-50 to-white",
         className
       )}
     >

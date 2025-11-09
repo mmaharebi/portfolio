@@ -122,7 +122,7 @@ export default function HomeContent({ recentPosts }: HomeContentProps) {
                 whileTap={{ scale: 0.95 }}
               >
                 <motion.div
-                  className="absolute inset-0 bg-linear-to-r from-primary/10 to-amber-400/10"
+                  className="absolute inset-0 bg-gradient-to-r from-primary/10 to-amber-400/10"
                   initial={{ x: "-100%" }}
                   whileHover={{ x: "100%" }}
                   transition={{ duration: 0.6 }}
@@ -156,7 +156,7 @@ export default function HomeContent({ recentPosts }: HomeContentProps) {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative bg-linear-to-br from-primary/10 via-amber-100/20 to-secondary/10 rounded-3xl p-12 border-2 border-primary/20 shadow-2xl overflow-hidden"
+            className="relative bg-gradient-to-br from-primary/10 via-amber-100/20 to-secondary/10 rounded-3xl p-12 border-2 border-primary/20 shadow-2xl overflow-hidden"
           >
             {/* Decorative elements */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
@@ -188,7 +188,7 @@ export default function HomeContent({ recentPosts }: HomeContentProps) {
               <div className="flex flex-wrap gap-4 justify-center">
                 <Link href="/contact">
                   <motion.button
-                    className="px-8 py-4 bg-linear-to-r from-primary to-amber-600 text-white rounded-2xl font-semibold text-lg shadow-xl"
+                    className="px-8 py-4 bg-gradient-to-r from-primary to-amber-600 text-white rounded-2xl font-semibold text-lg shadow-xl"
                     whileHover={{
                       scale: 1.05,
                       boxShadow: "0 20px 40px rgba(217, 119, 87, 0.4)",

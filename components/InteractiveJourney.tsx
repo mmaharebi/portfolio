@@ -72,7 +72,7 @@ export default function InteractiveJourney({ items }: InteractiveJourneyProps) {
       {/* Timeline */}
       <div className="relative max-w-4xl mx-auto px-4">
         {/* Vertical Line - Responsive positioning */}
-        <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-linear-to-b from-primary via-secondary to-accent opacity-30 md:-translate-x-px" />
+        <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-secondary to-accent opacity-30 md:-translate-x-px" />
 
         {/* Timeline Items */}
         <div className="space-y-8 md:space-y-12">
@@ -289,7 +289,7 @@ export default function InteractiveJourney({ items }: InteractiveJourneyProps) {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="absolute left-8 md:left-1/2 md:-translate-x-1/2 bottom-0 translate-y-12"
         >
-          <div className="w-4 h-4 rounded-full bg-linear-to-br from-primary via-secondary to-accent shadow-lg" />
+          <div className="w-4 h-4 rounded-full bg-gradient-to-br from-primary via-secondary to-accent shadow-lg" />
         </motion.div>
       </div>
     </div>

@@ -124,7 +124,7 @@ export default function InteractiveExpertise() {
             <span className="text-sm font-semibold text-terracotta">What I Do</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 px-4">
-            <span className="bg-clip-text text-transparent bg-linear-to-r from-stone-800 to-stone-600">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-stone-800 to-stone-600">
               Fields of Expertise
             </span>
           </h2>
@@ -159,7 +159,7 @@ export default function InteractiveExpertise() {
               >
                 {/* Animated background gradient */}
                 <motion.div
-                  className={`absolute inset-0 bg-linear-to-br ${colors.gradient} opacity-0 rounded-2xl md:rounded-3xl`}
+                  className={`absolute inset-0 bg-gradient-to-br ${colors.gradient} opacity-0 rounded-2xl md:rounded-3xl`}
                   animate={{
                     opacity: isHovered || isExpanded ? 0.05 : 0,
                   }}
@@ -191,7 +191,7 @@ export default function InteractiveExpertise() {
                       transition={{ duration: 0.5 }}
                     >
                       <div
-                        className={`w-14 h-14 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-linear-to-br ${colors.gradient} p-0.5`}
+                        className={`w-14 h-14 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-gradient-to-br ${colors.gradient} p-0.5`}
                       >
                         <div className="w-full h-full bg-white rounded-xl md:rounded-2xl flex items-center justify-center">
                           <Icon className={`w-7 h-7 md:w-8 md:h-8 ${colors.text}`} />

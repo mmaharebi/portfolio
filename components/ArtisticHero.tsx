@@ -46,7 +46,7 @@ export default function ArtisticHero() {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="relative z-10 text-center px-6 max-w-5xl">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6">
-            <span className="bg-clip-text text-transparent bg-linear-to-r from-primary via-amber-600 to-secondary">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-amber-600 to-secondary">
               Mahdy M.
             </span>
           </h1>
@@ -84,7 +84,7 @@ export default function ArtisticHero() {
         />
 
         <motion.div
-          className="absolute top-1/4 right-4 sm:right-10 md:right-32 w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 bg-linear-to-br from-secondary/30 to-amber-400/20 rounded-full"
+          className="absolute top-1/4 right-4 sm:right-10 md:right-32 w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 bg-gradient-to-br from-secondary/30 to-amber-400/20 rounded-full"
           animate={{
             y: [0, -30, 0],
             scale: [1, 1.2, 1],
@@ -124,7 +124,7 @@ export default function ArtisticHero() {
 
         {/* Animated gradient orbs */}
         <motion.div
-          className="absolute top-40 right-1/4 w-48 sm:w-56 md:w-64 h-48 sm:h-56 md:h-64 bg-linear-to-br from-terracotta/40 to-transparent rounded-full blur-3xl"
+          className="absolute top-40 right-1/4 w-48 sm:w-56 md:w-64 h-48 sm:h-56 md:h-64 bg-gradient-to-br from-terracotta/40 to-transparent rounded-full blur-3xl"
           animate={{
             scale: [1, 1.3, 1],
             opacity: [0.4, 0.7, 0.4],
@@ -138,7 +138,7 @@ export default function ArtisticHero() {
         />
 
         <motion.div
-          className="absolute bottom-40 left-1/3 w-72 sm:w-80 md:w-96 h-72 sm:h-80 md:h-96 bg-linear-to-tr from-amber-300/30 to-transparent rounded-full blur-3xl"
+          className="absolute bottom-40 left-1/3 w-72 sm:w-80 md:w-96 h-72 sm:h-80 md:h-96 bg-gradient-to-tr from-amber-300/30 to-transparent rounded-full blur-3xl"
           animate={{
             scale: [1, 1.4, 1],
             opacity: [0.3, 0.6, 0.3],
@@ -261,7 +261,7 @@ export default function ArtisticHero() {
         >
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-2">
             <motion.span
-              className="inline-block bg-clip-text text-transparent bg-linear-to-r from-terracotta via-primary to-amber-600"
+              className="inline-block bg-clip-text text-transparent bg-gradient-to-r from-terracotta via-primary to-amber-600"
               animate={{
                 backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
               }}
@@ -328,7 +328,7 @@ export default function ArtisticHero() {
           transition={{ duration: 0.6, delay: 1 }}
           className="mb-10 max-w-3xl mx-auto"
         >
-          <div className="relative bg-linear-to-r from-primary/10 via-amber-100/30 to-secondary/10 backdrop-blur-sm border-2 border-primary/30 rounded-2xl p-6 md:p-8 shadow-xl">
+          <div className="relative bg-gradient-to-r from-primary/10 via-amber-100/30 to-secondary/10 backdrop-blur-sm border-2 border-primary/30 rounded-2xl p-6 md:p-8 shadow-xl">
             {/* Decorative corner glow */}
             <div className="absolute -top-2 -right-2 w-20 h-20 bg-primary/20 rounded-full blur-2xl" />
             
@@ -370,7 +370,7 @@ export default function ArtisticHero() {
         >
           <Link href="/blog">
             <motion.button
-              className="group relative px-8 py-4 bg-linear-to-r from-primary to-amber-600 text-white rounded-2xl font-semibold text-base md:text-lg overflow-hidden shadow-xl"
+              className="group relative px-8 py-4 bg-gradient-to-r from-primary to-amber-600 text-white rounded-2xl font-semibold text-base md:text-lg overflow-hidden shadow-xl"
               whileHover={{
                 scale: 1.05,
                 boxShadow: "0 20px 40px rgba(217, 119, 87, 0.4)",

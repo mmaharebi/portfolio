@@ -250,7 +250,7 @@ export default function InteractiveSkills() {
                       <div className="relative h-2 bg-stone-200 rounded-full overflow-hidden">
                         {/* Background shimmer */}
                         <motion.div
-                          className="absolute inset-0 bg-linear-to-r from-transparent via-white/40 to-transparent"
+                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
                           animate={{
                             x: isHovered ? ['-100%', '200%'] : '-100%',
                           }}
@@ -301,7 +301,7 @@ export default function InteractiveSkills() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.4 }}
-        className="mt-12 bg-linear-to-br from-terracotta/5 via-amber-50/50 to-stone-50/50 rounded-2xl p-8 border-2 border-terracotta/20"
+        className="mt-12 bg-gradient-to-br from-terracotta/5 via-amber-50/50 to-stone-50/50 rounded-2xl p-8 border-2 border-terracotta/20"
       >
         <div className="flex items-center gap-3 mb-6">
           <motion.div

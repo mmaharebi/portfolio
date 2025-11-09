@@ -321,7 +321,7 @@ export default function ContactForm() {
                 ? "bg-green-500 hover:bg-green-600"
                 : status === "loading"
                 ? "bg-primary/70 cursor-not-allowed"
-                : "bg-linear-to-r from-primary to-amber-600 hover:shadow-lg hover:shadow-primary/30"
+                : "bg-gradient-to-r from-primary to-amber-600 hover:shadow-lg hover:shadow-primary/30"
             }`}
           >
             <AnimatePresence mode="wait">

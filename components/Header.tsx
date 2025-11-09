@@ -97,7 +97,7 @@ export default function Header({ showBackButton = false }: HeaderProps) {
                   >
                     <Sparkles className="w-6 h-6 text-terracotta" />
                   </motion.div>
-                  <span className="text-xl font-bold bg-clip-text text-transparent bg-linear-to-r from-terracotta via-primary to-amber-600 group-hover:scale-105 transition-transform duration-300">
+                  <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-terracotta via-primary to-amber-600 group-hover:scale-105 transition-transform duration-300">
                     Mahdy
                   </span>
                 </Link>
@@ -131,7 +131,7 @@ export default function Header({ showBackButton = false }: HeaderProps) {
                     {active && (
                       <motion.div
                         layoutId="activeBackground"
-                        className="absolute inset-0 bg-linear-to-r from-terracotta to-primary rounded-xl shadow-lg"
+                        className="absolute inset-0 bg-gradient-to-r from-terracotta to-primary rounded-xl shadow-lg"
                         transition={{ type: "spring", stiffness: 380, damping: 30 }}
                       />
                     )}
@@ -143,7 +143,7 @@ export default function Header({ showBackButton = false }: HeaderProps) {
             {/* Mobile Menu Button - Creative Morph Animation */}
             <motion.button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden relative w-12 h-12 rounded-xl bg-linear-to-br from-terracotta/10 to-amber-100 hover:from-terracotta/20 hover:to-amber-200 flex items-center justify-center transition-all duration-300"
+              className="md:hidden relative w-12 h-12 rounded-xl bg-gradient-to-br from-terracotta/10 to-amber-100 hover:from-terracotta/20 hover:to-amber-200 flex items-center justify-center transition-all duration-300"
               whileTap={{ scale: 0.9 }}
               aria-label="Toggle menu"
             >
@@ -181,7 +181,7 @@ export default function Header({ showBackButton = false }: HeaderProps) {
               initial={{ backdropFilter: "blur(0px)" }}
               animate={{ backdropFilter: "blur(20px)" }}
               exit={{ backdropFilter: "blur(0px)" }}
-              className="absolute inset-0 bg-linear-to-br from-amber-50/95 via-orange-50/95 to-terracotta/20"
+              className="absolute inset-0 bg-gradient-to-br from-amber-50/95 via-orange-50/95 to-terracotta/20"
               onClick={() => setIsMobileMenuOpen(false)}
             />
 
@@ -194,7 +194,7 @@ export default function Header({ showBackButton = false }: HeaderProps) {
                   opacity: [0.3, 0.5, 0.3],
                 }}
                 transition={{ duration: 8, repeat: Infinity }}
-                className="absolute top-20 right-10 w-64 h-64 bg-linear-to-br from-terracotta/30 to-primary/20 rounded-full blur-3xl"
+                className="absolute top-20 right-10 w-64 h-64 bg-gradient-to-br from-terracotta/30 to-primary/20 rounded-full blur-3xl"
               />
               <motion.div
                 animate={{
@@ -203,7 +203,7 @@ export default function Header({ showBackButton = false }: HeaderProps) {
                   opacity: [0.2, 0.4, 0.2],
                 }}
                 transition={{ duration: 10, repeat: Infinity, delay: 1 }}
-                className="absolute bottom-20 left-10 w-80 h-80 bg-linear-to-tr from-amber-400/20 to-orange-300/30 rounded-full blur-3xl"
+                className="absolute bottom-20 left-10 w-80 h-80 bg-gradient-to-tr from-amber-400/20 to-orange-300/30 rounded-full blur-3xl"
               />
             </div>
 
@@ -243,7 +243,7 @@ export default function Header({ showBackButton = false }: HeaderProps) {
                           {/* Glow effect on active */}
                           {active && (
                             <motion.div
-                              className="absolute -inset-1 bg-linear-to-r from-terracotta via-primary to-amber-600 rounded-2xl blur opacity-30"
+                              className="absolute -inset-1 bg-gradient-to-r from-terracotta via-primary to-amber-600 rounded-2xl blur opacity-30"
                               animate={{
                                 opacity: [0.3, 0.5, 0.3],
                               }}
@@ -261,8 +261,8 @@ export default function Header({ showBackButton = false }: HeaderProps) {
                               transition={{ duration: 0.6 }}
                               className={`w-14 h-14 rounded-xl flex items-center justify-center ${
                                 active
-                                  ? "bg-linear-to-br from-terracotta to-primary"
-                                  : "bg-linear-to-br from-amber-100 to-orange-100 group-hover:from-terracotta/20 group-hover:to-primary/20"
+                                  ? "bg-gradient-to-br from-terracotta to-primary"
+                                  : "bg-gradient-to-br from-amber-100 to-orange-100 group-hover:from-terracotta/20 group-hover:to-primary/20"
                               }`}
                             >
                               <Icon className={`w-7 h-7 ${active ? "text-white" : "text-terracotta"}`} />
@@ -272,7 +272,7 @@ export default function Header({ showBackButton = false }: HeaderProps) {
                             <div className="flex-1">
                               <h3 className={`text-2xl font-bold ${
                                 active 
-                                  ? "bg-clip-text text-transparent bg-linear-to-r from-terracotta via-primary to-amber-600" 
+                                  ? "bg-clip-text text-transparent bg-gradient-to-r from-terracotta via-primary to-amber-600" 
                                   : "text-stone-800"
                               }`}>
                                 {item.label}

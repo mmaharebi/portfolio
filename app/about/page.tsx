@@ -218,7 +218,7 @@ export default function AboutPage() {
 
               <div className="relative bg-white/60 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-xl border border-stone-200/50">
                 {/* Top accent line */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-linear-to-r from-transparent via-terracotta to-transparent rounded-full" />
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-transparent via-terracotta to-transparent rounded-full" />
 
                 <div className="space-y-6 text-stone-700">
                   <p className="text-lg md:text-xl leading-relaxed">
@@ -240,7 +240,7 @@ export default function AboutPage() {
                     .
                   </p>
 
-                  <div className="h-px bg-linear-to-r from-transparent via-stone-300 to-transparent" />
+                  <div className="h-px bg-gradient-to-r from-transparent via-stone-300 to-transparent" />
 
                   <p className="text-lg md:text-xl leading-relaxed">
                     My journey began with a{" "}
@@ -255,7 +255,7 @@ export default function AboutPage() {
                     engineering.
                   </p>
 
-                  <div className="h-px bg-linear-to-r from-transparent via-stone-300 to-transparent" />
+                  <div className="h-px bg-gradient-to-r from-transparent via-stone-300 to-transparent" />
 
                   <p className="text-lg md:text-xl leading-relaxed">
                     I'm currently seeking a{" "}
@@ -268,7 +268,7 @@ export default function AboutPage() {
                 </div>
 
                 {/* Bottom accent line */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-linear-to-r from-transparent via-terracotta to-transparent rounded-full" />
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-transparent via-terracotta to-transparent rounded-full" />
               </div>
             </div>
           </div>

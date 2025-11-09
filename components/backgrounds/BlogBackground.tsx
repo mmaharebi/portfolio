@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 
 export default function BlogBackground() {
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden bg-linear-to-br from-stone-50 via-cream to-amber-50/40">
+    <div className="fixed inset-0 -z-10 overflow-hidden bg-gradient-to-br from-stone-50 via-cream to-amber-50/40">
       {/* Geometric grid pattern with parallax layers */}
       <svg className="absolute inset-0 w-full h-full opacity-40" xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -29,7 +29,7 @@ export default function BlogBackground() {
         {[...Array(6)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute h-full w-px bg-linear-to-b from-transparent via-terracotta/10 to-transparent"
+            className="absolute h-full w-px bg-gradient-to-b from-transparent via-terracotta/10 to-transparent"
             style={{
               left: `${15 + i * 15}%`,
               transform: "rotate(15deg)",
@@ -57,7 +57,7 @@ export default function BlogBackground() {
         }}
         transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
       >
-        <div className="w-full h-full bg-linear-to-br from-terracotta/5 to-transparent rounded-full blur-2xl" />
+        <div className="w-full h-full bg-gradient-to-br from-terracotta/5 to-transparent rounded-full blur-2xl" />
       </motion.div>
 
       <motion.div
@@ -68,7 +68,7 @@ export default function BlogBackground() {
         }}
         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
       >
-        <div className="w-full h-full bg-linear-to-tl from-amber-400/6 to-transparent rounded-full blur-2xl" />
+        <div className="w-full h-full bg-gradient-to-tl from-amber-400/6 to-transparent rounded-full blur-2xl" />
       </motion.div>
 
       {/* Wavy lines */}

@@ -287,7 +287,7 @@ export default function BriefTimeline({ items }: BriefTimelineProps) {
                   >
                     {isHovered && (
                       <motion.div
-                        className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent"
+                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
                         initial={{ x: '-100%' }}
                         animate={{ x: '200%' }}
                         transition={{ duration: 1, repeat: Infinity, repeatDelay: 1 }}
@@ -330,7 +330,7 @@ export default function BriefTimeline({ items }: BriefTimelineProps) {
 
                   {/* Progress indicator repositioned */}
                   <motion.div
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-20 h-px bg-linear-to-r from-transparent via-current to-transparent"
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-20 h-px bg-gradient-to-r from-transparent via-current to-transparent"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: isHovered ? 0.6 : 0 }}
                     transition={{ duration: 0.3 }}
