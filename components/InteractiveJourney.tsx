@@ -55,27 +55,27 @@ export default function InteractiveJourney({ items }: InteractiveJourneyProps) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="text-center mb-16"
+        className="text-center mb-12 md:mb-16 px-4"
       >
         <div className="inline-flex items-center gap-2 px-4 py-2 bg-terracotta/10 rounded-full mb-4">
           <Sparkles className="w-4 h-4 text-terracotta" />
           <span className="text-sm font-semibold text-terracotta">Career Path</span>
         </div>
-        <h2 className="text-3xl md:text-4xl font-bold text-stone-800 mb-4">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-stone-800 mb-4">
           My Technical Journey
         </h2>
-        <p className="text-base md:text-lg text-stone-600 max-w-2xl mx-auto">
+        <p className="text-sm md:text-base lg:text-lg text-stone-600 max-w-2xl mx-auto">
           Every milestone shaped who I am today
         </p>
       </motion.div>
 
       {/* Timeline */}
-      <div className="relative max-w-4xl mx-auto">
-        {/* Vertical Line */}
-        <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-linear-to-b from-primary via-secondary to-accent opacity-30 md:-translate-x-px" />
+      <div className="relative max-w-4xl mx-auto px-4">
+        {/* Vertical Line - Responsive positioning */}
+        <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-linear-to-b from-primary via-secondary to-accent opacity-30 md:-translate-x-px" />
 
         {/* Timeline Items */}
-        <div className="space-y-12">
+        <div className="space-y-8 md:space-y-12">
           {items.map((item, index) => {
             const Icon = iconMap[item.icon || "milestone"];
             const colors = colorMap[item.color || "primary"];
@@ -90,12 +90,19 @@ export default function InteractiveJourney({ items }: InteractiveJourneyProps) {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`relative flex items-start gap-8 ${
+                className={`relative flex items-start gap-4 md:gap-8 pl-14 md:pl-0 ${
                   isEven ? "md:flex-row" : "md:flex-row-reverse"
                 }`}
                 onHoverStart={() => setHoveredIndex(index)}
                 onHoverEnd={() => setHoveredIndex(null)}
               >
+                {/* Timeline Dot */}
+                <motion.div
+                  className="absolute left-6 md:left-1/2 w-3 h-3 md:w-4 md:h-4 bg-terracotta rounded-full border-2 md:border-4 border-cream shadow-lg z-10 md:-translate-x-1/2"
+                  whileHover={{ scale: 1.2 }}
+                  animate={isExpanded ? { scale: 1.3 } : { scale: 1 }}
+                />
+
                 {/* Content Card */}
                 <motion.div
                   className="flex-1 md:w-[calc(50%-4rem)]"
@@ -105,7 +112,7 @@ export default function InteractiveJourney({ items }: InteractiveJourneyProps) {
                   transition={{ duration: 0.3 }}
                 >
                   <div
-                    className={`relative bg-white rounded-2xl p-6 border-2 transition-all duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 ${
+                    className={`relative bg-white rounded-xl md:rounded-2xl p-4 md:p-6 border-2 transition-all duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 ${
                       isExpanded
                         ? `${colors.border} shadow-xl ${colors.glow} focus:ring-${item.color}`
                         : `border-stone-200 hover:border-stone-300 shadow-md hover:shadow-lg focus:ring-stone-400`
@@ -168,35 +175,35 @@ export default function InteractiveJourney({ items }: InteractiveJourneyProps) {
                       animate={{
                         scale: isHovered ? 1.05 : 1,
                       }}
-                      className={`inline-flex items-center gap-2 px-3 py-1.5 ${colors.bg} ${colors.text} rounded-full border-2 ${colors.border} mb-4 font-bold text-sm`}
+                      className={`inline-flex items-center gap-1.5 md:gap-2 px-2.5 md:px-3 py-1 md:py-1.5 ${colors.bg} ${colors.text} rounded-full border-2 ${colors.border} mb-3 md:mb-4 font-bold text-xs md:text-sm`}
                     >
-                      <Calendar className="w-3.5 h-3.5" />
+                      <Calendar className="w-3 h-3 md:w-3.5 md:h-3.5" />
                       {item.year}
                     </motion.div>
 
                     {/* Title */}
-                    <h3 className="text-xl font-bold text-stone-800 mb-2">{item.title}</h3>
+                    <h3 className="text-lg md:text-xl font-bold text-stone-800 mb-2">{item.title}</h3>
 
                     {/* Subtitle */}
                     {item.subtitle && (
-                      <p className={`text-sm font-semibold ${colors.text} mb-2`}>
+                      <p className={`text-xs md:text-sm font-semibold ${colors.text} mb-2`}>
                         {item.subtitle}
                       </p>
                     )}
 
                     {/* Location */}
                     {item.location && (
-                      <div className="flex items-center gap-1.5 text-stone-600 text-sm mb-4">
-                        <MapPin className="w-3.5 h-3.5" />
+                      <div className="flex items-center gap-1.5 text-stone-600 text-xs md:text-sm mb-3 md:mb-4">
+                        <MapPin className="w-3 h-3 md:w-3.5 md:h-3.5" />
                         <span>{item.location}</span>
                       </div>
                     )}
 
                     {/* Description Preview */}
                     <motion.p
-                      className="text-stone-600 text-sm leading-relaxed"
+                      className="text-stone-600 text-xs md:text-sm leading-relaxed"
                       animate={{
-                        height: isExpanded ? "auto" : "3rem",
+                        height: isExpanded ? "auto" : "2.5rem",
                       }}
                       style={{ overflow: "hidden" }}
                     >
@@ -205,7 +212,7 @@ export default function InteractiveJourney({ items }: InteractiveJourneyProps) {
 
                     {/* Expand Button */}
                     <motion.button
-                      className={`mt-4 flex items-center gap-2 text-sm font-semibold ${colors.text} hover:underline`}
+                      className={`mt-3 md:mt-4 flex items-center gap-2 text-xs md:text-sm font-semibold ${colors.text} hover:underline`}
                       whileHover={{ x: 5 }}
                     >
                       <span>{isExpanded ? "Show less" : "Read more"}</span>
@@ -213,14 +220,14 @@ export default function InteractiveJourney({ items }: InteractiveJourneyProps) {
                         animate={{ rotate: isExpanded ? 180 : 0 }}
                         transition={{ duration: 0.3 }}
                       >
-                        <ChevronDown className="w-4 h-4" />
+                        <ChevronDown className="w-3.5 h-3.5 md:w-4 md:h-4" />
                       </motion.div>
                     </motion.button>
                   </div>
                 </motion.div>
 
-                {/* Center Icon Circle */}
-                <div className="absolute left-8 md:left-1/2 md:-translate-x-1/2 z-10">
+                {/* Center Icon Circle - Hidden on mobile, visible on md+ */}
+                <div className="hidden md:block absolute md:left-1/2 md:-translate-x-1/2 z-10">
                   <motion.div
                     animate={{
                       scale: isHovered ? 1.2 : 1,
@@ -253,7 +260,7 @@ export default function InteractiveJourney({ items }: InteractiveJourneyProps) {
 
                     {/* Icon container */}
                     <div
-                      className={`w-16 h-16 rounded-full ${colors.bg} border-4 ${colors.border} bg-white flex items-center justify-center shadow-lg`}
+                      className={`w-14 h-14 md:w-16 md:h-16 rounded-full ${colors.bg} border-4 ${colors.border} bg-white flex items-center justify-center shadow-lg`}
                     >
                       <motion.div
                         animate={{
@@ -261,13 +268,13 @@ export default function InteractiveJourney({ items }: InteractiveJourneyProps) {
                         }}
                         transition={{ duration: 0.6 }}
                       >
-                        <Icon className={`w-7 h-7 ${colors.text}`} />
+                        <Icon className={`w-6 h-6 md:w-7 md:h-7 ${colors.text}`} />
                       </motion.div>
                     </div>
                   </motion.div>
                 </div>
 
-                {/* Spacer for alignment */}
+                {/* Spacer for alignment - only visible on desktop */}
                 <div className="hidden md:block flex-1 md:w-[calc(50%-4rem)]" />
               </motion.div>
             );
