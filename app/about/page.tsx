@@ -166,7 +166,7 @@ const projectsData: Project[] = [
     year: "2025",
     category: "Research",
     githubUrl: "https://github.com/mmaharebi/fdtd-pec-cavity",
-    demoUrl: "/blog/fdtd-pec-cavity", // if keeping the blog slug
+    demoUrl: "/blog/fdtd2d-pec-cavity", // if keeping the blog slug
   },
   {
     title: "5G Demo Platform (Internship)",
