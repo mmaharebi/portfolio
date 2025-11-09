@@ -105,7 +105,7 @@ export default function Header({ showBackButton = false }: HeaderProps) {
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-2">
+            <nav className="hidden md:flex items-center gap-2 relative">
               {navItems.map((item) => {
                 const Icon = item.icon;
                 const active = isActive(item.href) && (item.href === "/" ? pathname === "/" : true);
@@ -119,10 +119,10 @@ export default function Header({ showBackButton = false }: HeaderProps) {
                     <motion.div
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className={`px-4 py-2 rounded-xl font-medium transition-all duration-300 flex items-center gap-2 ${
+                      className={`relative px-4 py-2 rounded-xl font-medium transition-colors duration-300 flex items-center gap-2 z-10 ${
                         active
-                          ? "bg-linear-to-r from-terracotta to-primary text-white shadow-lg"
-                          : "text-stone-600 hover:text-terracotta hover:bg-amber-50"
+                          ? "text-white"
+                          : "text-stone-600 hover:text-terracotta"
                       }`}
                     >
                       <Icon className="w-4 h-4" />
@@ -130,8 +130,8 @@ export default function Header({ showBackButton = false }: HeaderProps) {
                     </motion.div>
                     {active && (
                       <motion.div
-                        layoutId="activeTab"
-                        className="absolute -bottom-1 left-0 right-0 h-1 bg-linear-to-r from-terracotta to-primary rounded-full"
+                        layoutId="activeBackground"
+                        className="absolute inset-0 bg-linear-to-r from-terracotta to-primary rounded-xl shadow-lg"
                         transition={{ type: "spring", stiffness: 380, damping: 30 }}
                       />
                     )}
