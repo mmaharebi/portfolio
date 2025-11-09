@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://your-domain.com';
+  const baseUrl = 'https://mahdymahareb.de';
   
   // Get all blog posts
   const postsDirectory = path.join(process.cwd(), 'content', 'posts');

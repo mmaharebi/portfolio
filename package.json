@@ -1,6 +1,14 @@
 {
-  "name": "portfolio",
-  "version": "0.1.0",
+  "name": "mahdy-mahareb-portfolio",
+  "version": "1.0.0",
+  "description": "Personal portfolio and blog of Mahdy Mahareb - Communication & RF Engineering",
+  "author": "Mahdy Mahareb <contact@mahdymahareb.de>",
+  "license": "MIT",
+  "homepage": "https://mahdymahareb.de",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mmaharebi/portfolio"
+  },
   "private": true,
   "scripts": {
     "predev": "bash scripts/copy-post-assets.sh",

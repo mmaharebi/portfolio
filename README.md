@@ -1,16 +1,35 @@
-# Portfolio Blog
+# Mahdy Mahareb - Portfolio
 
-A clean, modern portfolio blog built with Next.js 16, featuring MDX support and beautiful mathematical equations with KaTeX.
+Personal portfolio and blog of Mahdy Mahareb (Mohammadmahdi Maharebi), M.Sc. student in Electrical Communication Engineering at University of Kassel.
+
+**Live Site:** [mahdymahareb.de](https://mahdymahareb.de)
+
+## 🎯 About
+
+This portfolio showcases my work in:
+- Communication Systems
+- RF/Microwave Engineering
+- Applied Electromagnetics
+- Signal Processing
+- Computational Modeling
 
 ## ✨ Features
 
-- **MDX Support** - Write blog posts with full React component support
-- **KaTeX Math** - Beautiful mathematical notation (inline: `$E=mc^2$`, display: `$$...$$`)
-- **GitHub Flavored Markdown** - Tables, strikethrough, task lists, etc.
-- **SEO Optimized** - Metadata, sitemap, and robots.txt included
-- **Static Generation** - Fast, pre-rendered pages
-- **Dark Mode** - CSS supports dark mode
+- **Modern Design** - Artistic, interactive UI with smooth animations
+- **MDX Blog** - Technical articles with KaTeX math support
+- **Project Showcase** - Interactive portfolio of research and course projects
+- **Responsive** - Works beautifully on all devices
+- **SEO Optimized** - Metadata, sitemap, and robots.txt
+- **Performance** - Built with Next.js 16 for optimal speed
 - **TypeScript** - Full type safety
+
+## 🛠 Tech Stack
+
+- **Framework:** Next.js 16 (App Router)
+- **UI:** React 19, Motion (Framer Motion), Tailwind CSS v4
+- **Content:** MDX with KaTeX for mathematics
+- **Deployment:** Vercel
+- **Language:** TypeScript
 
 ## Getting Started
 

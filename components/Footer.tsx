@@ -14,17 +14,20 @@ export default function Footer() {
           {/* About Section */}
           <div>
             <h3 className="text-lg font-semibold mb-4 text-foreground">
-              mmaharebi
+              Mahdy Mahareb (Mohammadmahdi Maharebi)
             </h3>
             <p className="text-sm text-foreground-secondary leading-relaxed">
-              ECE student at University of Kassel, Germany. Passionate about electrical engineering,
-              embedded systems, and software development.
+              Electrical Communication Engineering student at the University of
+              Kassel. Exploring communication systems, signal processing, and
+              software design.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-foreground">Quick Links</h3>
+            <h3 className="text-lg font-semibold mb-4 text-foreground">
+              Quick Links
+            </h3>
             <ul className="space-y-2">
               <li>
                 <Link
@@ -63,7 +66,9 @@ export default function Footer() {
 
           {/* Connect Section */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-foreground">Connect</h3>
+            <h3 className="text-lg font-semibold mb-4 text-foreground">
+              Connect
+            </h3>
             <div className="flex gap-4">
               <motion.a
                 href="https://github.com/mahdi"
@@ -86,7 +91,7 @@ export default function Footer() {
                 <Linkedin className="w-5 h-5" />
               </motion.a>
               <motion.a
-                href="mailto:mahdi@example.com"
+                href="mailto:contact@mahdymahareb.de"
                 className="w-10 h-10 rounded-full bg-surface-hover border border-border flex items-center justify-center text-foreground-secondary hover:text-primary hover:border-primary transition-all"
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 whileTap={{ scale: 0.95 }}
@@ -104,7 +109,7 @@ export default function Footer() {
         <div className="pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-foreground-muted flex items-center gap-1">
-              © {currentYear} mmaharebi. Built with
+              © {currentYear} Mahdy Mahareb. Built with
               <Heart className="w-4 h-4 text-red-500 inline-block" />
               using Next.js
             </p>

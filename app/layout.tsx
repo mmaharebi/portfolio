@@ -15,28 +15,27 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://your-domain.com'),
+  metadataBase: new URL('https://mahdymahareb.de'),
   title: {
-    default: 'Portfolio Blog',
-    template: '%s | Portfolio Blog',
+    default: 'Mahdy Mahareb',
+    template: '%s | Mahdy Mahareb',
   },
-  description: 'A modern portfolio blog with MDX and KaTeX math support',
-  keywords: ['blog', 'portfolio', 'MDX', 'KaTeX', 'mathematics', 'Next.js'],
-  authors: [{ name: 'Your Name' }],
-  creator: 'Your Name',
+  description: 'Mahdy Mahareb (Mohammadmahdi Maharebi) - M.Sc. Electrical Communication Engineering student at University of Kassel. Seeking funded master\'s thesis opportunities in communication systems and RF engineering.',
+  keywords: ['RF Engineering', 'Communication Systems', 'Electromagnetics', '5G', 'Antenna Design', 'Signal Processing', 'MATLAB', 'Python', 'HFSS', 'Microwave Circuits'],
+  authors: [{ name: 'Mahdy Mahareb' }],
+  creator: 'Mahdy Mahareb',
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://your-domain.com',
-    title: 'Portfolio Blog',
-    description: 'A modern portfolio blog with MDX and KaTeX math support',
-    siteName: 'Portfolio Blog',
+    url: 'https://mahdymahareb.de',
+    title: 'Mahdy Mahareb - Communication & RF Engineering',
+    description: 'M.Sc. student in Electrical Communication Engineering. Specialized in communication systems, applied electromagnetics, and computational modeling.',
+    siteName: 'Mahdy Mahareb Portfolio',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Portfolio Blog',
-    description: 'A modern portfolio blog with MDX and KaTeX math support',
-    creator: '@yourhandle',
+    title: 'Mahdy Mahareb',
+    description: 'Communication & RF Engineering Researcher',
   },
   robots: {
     index: true,

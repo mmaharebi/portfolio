@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useMotionValue, useTransform } from "motion/react";
-import { Mail, Github, Linkedin, Twitter, MapPin, Clock, Sparkles, ArrowLeft, Send } from "lucide-react";
+import { Mail, Github, Linkedin, MapPin, Clock, Sparkles, ArrowLeft, Send } from "lucide-react";
 import { useState, useEffect } from "react";
 import ContactForm from "@/components/ContactForm";
 import Link from "next/link";
@@ -22,8 +22,8 @@ export default function ContactPage() {
     {
       icon: Mail,
       label: "Email",
-      value: "mahdi@example.com",
-      href: "mailto:mahdi@example.com",
+      value: "contact@mahdymahareb.de",
+      href: "mailto:contact@mahdymahareb.de",
       description: "Drop me a line anytime",
       color: "from-primary to-amber-600",
       hoverColor: "group-hover:text-primary",
@@ -31,8 +31,8 @@ export default function ContactPage() {
     {
       icon: Github,
       label: "GitHub",
-      value: "@mahdi",
-      href: "https://github.com/mahdi",
+      value: "@mmaharebi",
+      href: "https://github.com/mmaharebi",
       description: "Check out my repositories",
       color: "from-stone-700 to-stone-900",
       hoverColor: "group-hover:text-stone-800",
@@ -40,20 +40,11 @@ export default function ContactPage() {
     {
       icon: Linkedin,
       label: "LinkedIn",
-      value: "/in/mahdi",
-      href: "https://linkedin.com/in/mahdi",
+      value: "/in/mmaharebi",
+      href: "https://linkedin.com/in/mmaharebi",
       description: "Let's connect professionally",
       color: "from-blue-600 to-blue-800",
       hoverColor: "group-hover:text-blue-700",
-    },
-    {
-      icon: Twitter,
-      label: "Twitter",
-      value: "@mahdi",
-      href: "https://twitter.com/mahdi",
-      description: "Follow my updates",
-      color: "from-sky-500 to-blue-600",
-      hoverColor: "group-hover:text-sky-600",
     },
   ];
 
@@ -186,7 +177,7 @@ export default function ContactPage() {
             <p className="text-stone-600">Choose your preferred platform</p>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {contactLinks.map((link, index) => {
               const Icon = link.icon;
               const isHovered = hoveredCard === index;
@@ -218,7 +209,7 @@ export default function ContactPage() {
                     }}
                   />
 
-                  <div className="relative bg-white/90 backdrop-blur-sm rounded-2xl p-6 border-2 border-stone-200 group-hover:border-white shadow-lg group-hover:shadow-2xl transition-all duration-300">
+                  <div className="relative bg-white/90 backdrop-blur-sm rounded-2xl p-8 border-2 border-stone-200 group-hover:border-white shadow-lg group-hover:shadow-2xl transition-all duration-300 aspect-square flex flex-col items-center justify-center text-center">
                     {/* Icon */}
                     <motion.div
                       className="mb-4"
@@ -228,9 +219,9 @@ export default function ContactPage() {
                       }}
                       transition={{ duration: 0.5 }}
                     >
-                      <div className={`w-14 h-14 rounded-xl bg-linear-to-br ${link.color} p-0.5`}>
+                      <div className={`w-16 h-16 rounded-xl bg-linear-to-br ${link.color} p-0.5`}>
                         <div className="w-full h-full bg-white rounded-xl flex items-center justify-center">
-                          <Icon className={`w-7 h-7 text-stone-700 transition-colors ${link.hoverColor}`} />
+                          <Icon className={`w-8 h-8 text-stone-700 transition-colors ${link.hoverColor}`} />
                         </div>
                       </div>
                     </motion.div>
@@ -238,16 +229,16 @@ export default function ContactPage() {
                     {/* Content */}
                     <h3 className="text-xl font-bold text-stone-800 mb-2">{link.label}</h3>
                     <p className="text-sm text-stone-600 mb-3">{link.description}</p>
-                    <p className="text-xs font-mono text-stone-500 truncate">{link.value}</p>
+                    <p className="text-xs font-mono text-stone-500 break-all px-2">{link.value}</p>
 
                     {/* Hover arrow */}
                     <motion.div
-                      className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100"
+                      className="absolute top-4 right-4 opacity-0 group-hover:opacity-100"
                       initial={{ x: -10 }}
                       animate={{ x: isHovered ? 0 : -10 }}
                     >
-                      <div className="w-6 h-6 rounded-full bg-stone-100 flex items-center justify-center">
-                        <span className="text-xs">→</span>
+                      <div className="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center">
+                        <span className="text-sm">→</span>
                       </div>
                     </motion.div>
                   </div>

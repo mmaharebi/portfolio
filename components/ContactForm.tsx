@@ -148,7 +148,7 @@ export default function ContactForm() {
               htmlFor="name"
               className="block text-sm font-semibold text-stone-700 mb-2"
             >
-              Your Name
+              Name
             </label>
             <motion.div
               animate={{
@@ -207,7 +207,7 @@ export default function ContactForm() {
                 onFocus={() => setFocusedField("email")}
                 onBlur={() => setFocusedField(null)}
                 className={inputClasses("email")}
-                placeholder="john@example.com"
+                placeholder="your.email@example.com"
                 disabled={status === "loading" || status === "success"}
               />
             </motion.div>
