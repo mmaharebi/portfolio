@@ -94,30 +94,67 @@ export default function BriefTimeline({ items }: BriefTimelineProps) {
   return (
     <div className="w-full max-w-full overflow-hidden">
       <div className="relative py-12 pb-8 min-h-[280px] md:min-h-80 overflow-visible">
-        {/* Animated Horizontal Line - Desktop only */}
+        {/* Animated Wavy Connecting Lines - Desktop only */}
         <svg 
-          className="absolute top-1/3 md:top-1/2 left-8 right-8 h-1 -translate-y-1/2 hidden md:block pointer-events-none"
+          className="absolute top-1/3 md:top-1/2 left-0 right-0 h-24 -translate-y-1/2 hidden md:block pointer-events-none"
           preserveAspectRatio="none"
-          viewBox="0 0 100 2"
+          viewBox="0 0 1200 100"
         >
           <defs>
-            <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="var(--primary)" stopOpacity="0.2" />
-              <stop offset="50%" stopColor="var(--secondary)" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="var(--accent)" stopOpacity="0.2" />
+            <linearGradient id="wavyLineGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#D97757" stopOpacity="0.3" />
+              <stop offset="50%" stopColor="#E8B17A" stopOpacity="0.5" />
+              <stop offset="100%" stopColor="#A86843" stopOpacity="0.3" />
+            </linearGradient>
+            <linearGradient id="wavyLineGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#E8B17A" stopOpacity="0.2" />
+              <stop offset="50%" stopColor="#D97757" stopOpacity="0.4" />
+              <stop offset="100%" stopColor="#E8B17A" stopOpacity="0.2" />
             </linearGradient>
           </defs>
-          <motion.line
-            x1="0"
-            y1="1"
-            x2="100"
-            y2="1"
-            stroke="url(#lineGradient)"
+          
+          {/* Main wavy line */}
+          <motion.path
+            d="M0,50 Q200,30 400,50 T800,50 T1200,50"
+            fill="none"
+            stroke="url(#wavyLineGradient1)"
             strokeWidth="2"
-            strokeDasharray="4,2"
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ pathLength: 1, opacity: 1 }}
-            transition={{ duration: 2, ease: "easeInOut" }}
+            strokeLinecap="round"
+            animate={{
+              d: [
+                "M0,50 Q200,30 400,50 T800,50 T1200,50",
+                "M0,50 Q200,70 400,50 T800,50 T1200,50",
+                "M0,50 Q200,30 400,50 T800,50 T1200,50",
+              ],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+
+          {/* Secondary wavy line for depth */}
+          <motion.path
+            d="M0,50 Q200,60 400,50 T800,50 T1200,50"
+            fill="none"
+            stroke="url(#wavyLineGradient2)"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            opacity="0.6"
+            animate={{
+              d: [
+                "M0,50 Q200,60 400,50 T800,50 T1200,50",
+                "M0,50 Q200,40 400,50 T800,50 T1200,50",
+                "M0,50 Q200,60 400,50 T800,50 T1200,50",
+              ],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1,
+            }}
           />
         </svg>
         
