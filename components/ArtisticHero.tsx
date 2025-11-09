@@ -43,7 +43,7 @@ export default function ArtisticHero() {
   // Don't render dynamic content until mounted to avoid hydration mismatch
   if (!mounted) {
     return (
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-linear-to-br from-amber-50 via-orange-50 to-stone-50">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="relative z-10 text-center px-6 max-w-5xl">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6">
             <span className="bg-clip-text text-transparent bg-linear-to-r from-primary via-amber-600 to-secondary">

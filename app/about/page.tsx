@@ -1,6 +1,9 @@
+"use client";
+
 import InteractiveJourney from "@/components/InteractiveJourney";
 import InteractiveSkills from "@/components/InteractiveSkills";
 import ProjectShowcase, { type Project } from "@/components/ProjectShowcase";
+import AboutBackground from "@/components/backgrounds/AboutBackground";
 import type { DetailedTimelineItem } from "@/components/SerpentineTimeline";
 import Link from "next/link";
 import { ArrowLeft, User } from "lucide-react";
@@ -179,20 +182,12 @@ const projectsData: Project[] = [
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-linear-to-b from-amber-50 via-orange-50 to-stone-50">
-      {/* Hero Section */}
-      <section className="relative pt-24 pb-16 px-4 sm:px-6 overflow-hidden">
-        {/* Decorative background - animated blobs */}
-        <div
-          className="absolute top-20 right-0 md:right-10 w-48 md:w-64 h-48 md:h-64 bg-linear-to-br from-terracotta/20 to-amber-200/20 rounded-full blur-3xl animate-pulse"
-          style={{ animationDuration: "4s" }}
-        />
-        <div
-          className="absolute bottom-20 left-0 md:left-10 w-56 md:w-80 h-56 md:h-80 bg-linear-to-tr from-amber-300/20 to-terracotta/20 rounded-full blur-3xl animate-pulse"
-          style={{ animationDuration: "5s", animationDelay: "1s" }}
-        />
-
-        <div className="relative max-w-4xl mx-auto">
+    <>
+      <AboutBackground />
+      <div className="min-h-screen relative">
+        {/* Hero Section */}
+        <section className="relative pt-24 pb-16 px-4 sm:px-6 overflow-hidden">
+          <div className="relative max-w-4xl mx-auto">
           {/* Back Button */}
           <Link
             href="/"
@@ -300,6 +295,7 @@ export default function AboutPage() {
           <InteractiveSkills />
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }

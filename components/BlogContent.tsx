@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { Calendar, User, Tag, BookOpen, Search, Sparkles, ArrowRight, Filter, X } from "lucide-react";
 import { BlogPostMetadata } from "@/lib/utils";
 import { useState, useMemo, useEffect } from "react";
+import BlogBackground from "./backgrounds/BlogBackground";
 
 interface BlogContentProps {
   posts: BlogPostMetadata[];
@@ -66,43 +67,10 @@ export default function BlogContent({ posts }: BlogContentProps) {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-b from-amber-50 via-orange-50 to-stone-50 relative overflow-hidden">
-      {/* Artistic Background Layers */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Top gradient orb */}
-        <motion.div
-          className="absolute -top-20 right-20 w-96 h-96 bg-linear-to-br from-terracotta/20 to-amber-300/15 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        
-        {/* Middle left orb */}
-        <motion.div
-          className="absolute top-1/3 -left-32 w-80 h-80 bg-linear-to-tr from-primary/15 to-amber-400/10 rounded-full blur-3xl"
-          animate={{
-            y: [0, 50, 0],
-            opacity: [0.2, 0.4, 0.2],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1,
-          }}
-        />
-
-        {/* Bottom right orb */}
-        <div className="absolute bottom-20 right-10 w-72 h-72 bg-linear-to-tl from-secondary/20 to-orange-200/15 rounded-full blur-3xl opacity-40" />
-      </div>
-
-      <div className="relative max-w-7xl mx-auto px-6 py-16 md:py-24">
+    <>
+      <BlogBackground />
+      <div className="min-h-screen relative overflow-hidden">
+        <div className="relative max-w-7xl mx-auto px-6 py-16 md:py-24">
         {/* Header Section */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -429,7 +397,8 @@ export default function BlogContent({ posts }: BlogContentProps) {
             </motion.div>
           </motion.div>
         )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

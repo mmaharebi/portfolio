@@ -8,6 +8,7 @@ import BriefTimeline, { type BriefTimelineItem } from "./BriefTimeline";
 import ArtisticHero from "./ArtisticHero";
 import InteractiveExpertise from "./InteractiveExpertise";
 import BlogShowcase from "./BlogShowcase";
+import HomeBackground from "./backgrounds/HomeBackground";
 
 interface HomeContentProps {
   recentPosts: BlogPostMetadata[];
@@ -54,14 +55,16 @@ const briefTimelineData: BriefTimelineItem[] = [
 
 export default function HomeContent({ recentPosts }: HomeContentProps) {
   return (
-    <div className="min-h-screen bg-linear-to-b from-amber-50 via-orange-50 to-stone-50">
-      {/* Artistic Hero Section */}
-      <ArtisticHero />
+    <>
+      <HomeBackground />
+      <div className="min-h-screen relative">
+        {/* Artistic Hero Section */}
+        <ArtisticHero />
 
-      {/* Interactive Expertise Section */}
-      <InteractiveExpertise />
+        {/* Interactive Expertise Section */}
+        <InteractiveExpertise />
 
-      {/* Blog Showcase */}
+        {/* Blog Showcase */}
       <BlogShowcase posts={recentPosts} />
 
       {/* Timeline Section */}
@@ -213,6 +216,7 @@ export default function HomeContent({ recentPosts }: HomeContentProps) {
           </motion.div>
         </div>
       </motion.section>
-    </div>
+      </div>
+    </>
   );
 }

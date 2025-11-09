@@ -4,6 +4,7 @@ import { motion, useMotionValue, useTransform } from "motion/react";
 import { Mail, Github, Linkedin, MapPin, Clock, Sparkles, ArrowLeft, Send } from "lucide-react";
 import { useState, useEffect } from "react";
 import ContactForm from "@/components/ContactForm";
+import ContactBackground from "@/components/backgrounds/ContactBackground";
 import Link from "next/link";
 
 export default function ContactPage() {
@@ -49,54 +50,12 @@ export default function ContactPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-linear-to-b from-amber-50 via-orange-50 to-stone-50 relative overflow-hidden">
-      {/* Decorative background - smooth gradient orbs */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-        {/* Top right warm glow */}
-        <div className="absolute -top-20 -right-20 md:top-10 md:right-20 w-96 h-96 bg-linear-to-br from-terracotta/30 to-amber-200/20 rounded-full blur-3xl opacity-60" />
-        
-        {/* Top left soft accent */}
-        <div className="absolute top-40 -left-32 md:top-60 md:left-0 w-80 h-80 bg-linear-to-tr from-amber-300/25 to-orange-200/15 rounded-full blur-3xl opacity-50" />
-        
-        {/* Middle right floating orb */}
-        <motion.div
-          className="absolute top-1/3 -right-24 md:right-10 w-72 h-72 bg-linear-to-bl from-primary/20 to-amber-400/15 rounded-full blur-3xl"
-          animate={{
-            y: [0, 30, 0],
-            opacity: [0.4, 0.6, 0.4],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        
-        {/* Bottom left large glow */}
-        <div className="absolute bottom-20 -left-40 md:bottom-40 md:left-10 w-[500px] h-[500px] bg-linear-to-tr from-terracotta/25 to-amber-300/20 rounded-full blur-3xl opacity-50" />
-        
-        {/* Bottom right subtle accent */}
-        <motion.div
-          className="absolute bottom-10 right-0 md:bottom-20 md:right-40 w-64 h-64 bg-linear-to-tl from-secondary/20 to-orange-200/15 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.15, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2,
-          }}
-        />
-        
-        {/* Center subtle depth layer */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-linear-to-r from-amber-100/10 via-orange-100/15 to-stone-100/10 rounded-full blur-3xl opacity-40" />
-      </div>
-
-      {/* Hero Section */}
-      <section className="relative pt-24 pb-16 px-6 z-10">
-        <div className="max-w-6xl mx-auto">
+    <>
+      <ContactBackground />
+      <div className="min-h-screen relative overflow-hidden">
+        {/* Hero Section */}
+        <section className="relative pt-24 pb-16 px-6 z-10">
+          <div className="max-w-6xl mx-auto">
           {/* Back Button */}
           <Link
             href="/"
@@ -302,6 +261,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }
