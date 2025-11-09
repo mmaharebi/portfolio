@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "motion/react";
 import { useState } from "react";
-import { Radio, Zap, Calculator, Layers, Sparkles, ArrowRight } from "lucide-react";
+import { Radio, Zap, Calculator, Layers, Sparkles, ArrowRight, ChevronDown } from "lucide-react";
 
 interface ExpertiseArea {
   icon: typeof Radio;
@@ -105,10 +105,10 @@ export default function InteractiveExpertise() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="relative py-20 px-6 overflow-hidden">
+    <section className="relative py-16 md:py-20 px-4 sm:px-6 overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
+      <div className="absolute top-0 left-1/4 w-64 md:w-96 h-64 md:h-96 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-64 md:w-96 h-64 md:h-96 bg-secondary/5 rounded-full blur-3xl" />
 
       <div className="relative max-w-7xl mx-auto z-10">
         {/* Header */}
@@ -117,24 +117,24 @@ export default function InteractiveExpertise() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-terracotta/10 rounded-full mb-6">
             <Sparkles className="w-4 h-4 text-terracotta" />
             <span className="text-sm font-semibold text-terracotta">What I Do</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 px-4">
             <span className="bg-clip-text text-transparent bg-linear-to-r from-stone-800 to-stone-600">
               Fields of Expertise
             </span>
           </h2>
-          <p className="text-lg text-stone-600 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-stone-600 max-w-2xl mx-auto px-4">
             Combining rigorous theoretical foundations with hands-on engineering
           </p>
         </motion.div>
 
-        {/* Expertise Grid */}
-        <div className="grid md:grid-cols-2 gap-6">
+        {/* Mobile: Vertical Stack / Desktop: Grid */}
+        <div className="flex flex-col md:grid md:grid-cols-2 gap-4 md:gap-6 max-w-full">
           {expertiseData.map((area, index) => {
             const Icon = area.icon;
             const colors = colorMap[area.color];
@@ -151,15 +151,15 @@ export default function InteractiveExpertise() {
                 onHoverStart={() => setHoveredIndex(index)}
                 onHoverEnd={() => setHoveredIndex(null)}
                 onClick={() => setExpandedIndex(isExpanded ? null : index)}
-                className={`group relative cursor-pointer rounded-3xl p-8 border-2 transition-all duration-500 ${
+                className={`group relative cursor-pointer rounded-2xl md:rounded-3xl p-6 md:p-8 border-2 transition-all duration-500 w-full ${
                   isExpanded
-                    ? `${colors.border} ${colors.glow} shadow-2xl scale-105`
+                    ? `${colors.border} ${colors.glow} shadow-2xl md:scale-105`
                     : `border-stone-200 hover:border-stone-300 shadow-lg hover:shadow-xl`
                 }`}
               >
                 {/* Animated background gradient */}
                 <motion.div
-                  className={`absolute inset-0 bg-linear-to-br ${colors.gradient} opacity-0 rounded-3xl`}
+                  className={`absolute inset-0 bg-linear-to-br ${colors.gradient} opacity-0 rounded-2xl md:rounded-3xl`}
                   animate={{
                     opacity: isHovered || isExpanded ? 0.05 : 0,
                   }}
@@ -173,35 +173,49 @@ export default function InteractiveExpertise() {
                       initial={{ scale: 0, opacity: 0 }}
                       animate={{ scale: 1, opacity: 0.3 }}
                       exit={{ scale: 0, opacity: 0 }}
-                      className={`absolute -top-10 -right-10 w-32 h-32 ${colors.bg} rounded-full blur-2xl`}
+                      className={`absolute -top-6 md:-top-10 -right-6 md:-right-10 w-24 md:w-32 h-24 md:h-32 ${colors.bg} rounded-full blur-2xl`}
                     />
                   )}
                 </AnimatePresence>
 
                 <div className="relative">
-                  {/* Icon */}
-                  <motion.div
-                    className="mb-6"
-                    animate={{
-                      rotate: isHovered ? [0, -10, 10, 0] : 0,
-                      scale: isExpanded ? 1.1 : 1,
-                    }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <div
-                      className={`w-16 h-16 rounded-2xl bg-linear-to-br ${colors.gradient} p-0.5`}
+                  {/* Mobile: Horizontal layout with icon left, text right, chevron */}
+                  <div className="flex items-start gap-4 md:block">
+                    {/* Icon */}
+                    <motion.div
+                      className="shrink-0 md:mb-6"
+                      animate={{
+                        rotate: isHovered ? [0, -10, 10, 0] : 0,
+                        scale: isExpanded ? 1.1 : 1,
+                      }}
+                      transition={{ duration: 0.5 }}
                     >
-                      <div className="w-full h-full bg-white rounded-2xl flex items-center justify-center">
-                        <Icon className={`w-8 h-8 ${colors.text}`} />
+                      <div
+                        className={`w-14 h-14 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-linear-to-br ${colors.gradient} p-0.5`}
+                      >
+                        <div className="w-full h-full bg-white rounded-xl md:rounded-2xl flex items-center justify-center">
+                          <Icon className={`w-7 h-7 md:w-8 md:h-8 ${colors.text}`} />
+                        </div>
                       </div>
+                    </motion.div>
+
+                    <div className="flex-1 min-w-0">
+                      {/* Title */}
+                      <h3 className="text-lg md:text-2xl font-bold text-stone-800 mb-2 md:mb-3">{area.title}</h3>
+
+                      {/* Short description - visible on mobile */}
+                      <p className="text-sm md:text-base text-stone-600 mb-0 md:mb-4 line-clamp-2 md:line-clamp-none">{area.shortDesc}</p>
                     </div>
-                  </motion.div>
 
-                  {/* Title */}
-                  <h3 className="text-2xl font-bold text-stone-800 mb-3">{area.title}</h3>
-
-                  {/* Short description */}
-                  <p className="text-stone-600 mb-4">{area.shortDesc}</p>
+                    {/* Chevron indicator - mobile only */}
+                    <motion.div
+                      animate={{ rotate: isExpanded ? 180 : 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="md:hidden shrink-0"
+                    >
+                      <ChevronDown className={`w-5 h-5 ${colors.text}`} />
+                    </motion.div>
+                  </div>
 
                   {/* Expanded content */}
                   <AnimatePresence>
@@ -213,21 +227,23 @@ export default function InteractiveExpertise() {
                         transition={{ duration: 0.3 }}
                         className="overflow-hidden"
                       >
-                        <p className="text-stone-700 mb-4 leading-relaxed">{area.fullDesc}</p>
+                        <div className="pt-4 md:pt-0">
+                          <p className="text-sm md:text-base text-stone-700 mb-4 leading-relaxed">{area.fullDesc}</p>
 
-                        {/* Skills tags */}
-                        <div className="flex flex-wrap gap-2">
+                          {/* Skills tags */}
+                          <div className="flex flex-wrap gap-2">
                           {area.skills.map((skill, i) => (
                             <motion.span
                               key={skill}
                               initial={{ opacity: 0, scale: 0.8 }}
                               animate={{ opacity: 1, scale: 1 }}
                               transition={{ delay: i * 0.05 }}
-                              className={`px-3 py-1.5 ${colors.bg} ${colors.text} rounded-full text-sm font-medium border ${colors.border}`}
+                              className={`px-2.5 md:px-3 py-1 md:py-1.5 ${colors.bg} ${colors.text} rounded-full text-xs md:text-sm font-medium border ${colors.border}`}
                             >
                               {skill}
                             </motion.span>
                           ))}
+                        </div>
                         </div>
                       </motion.div>
                     )}

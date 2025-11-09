@@ -60,14 +60,14 @@ export default function ArtisticHero() {
 
   return (
     <motion.section
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen w-full flex items-center justify-center overflow-x-hidden"
       style={{ opacity }}
     >
       {/* Artistic Background Shapes */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Floating geometric shapes */}
+      <div className="absolute inset-0 w-full overflow-hidden pointer-events-none">
+        {/* Floating geometric shapes - responsive positioning */}
         <motion.div
-          className="absolute top-20 left-20 w-32 h-32 border-4 border-primary/20 rounded-2xl"
+          className="absolute top-20 left-4 sm:left-10 md:left-20 w-20 sm:w-24 md:w-32 h-20 sm:h-24 md:h-32 border-4 border-primary/20 rounded-2xl"
           animate={{
             rotate: [0, 90, 0],
             scale: [1, 1.1, 1],
@@ -84,7 +84,7 @@ export default function ArtisticHero() {
         />
 
         <motion.div
-          className="absolute top-1/4 right-32 w-24 h-24 bg-linear-to-br from-secondary/30 to-amber-400/20 rounded-full"
+          className="absolute top-1/4 right-4 sm:right-10 md:right-32 w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 bg-linear-to-br from-secondary/30 to-amber-400/20 rounded-full"
           animate={{
             y: [0, -30, 0],
             scale: [1, 1.2, 1],
@@ -101,7 +101,7 @@ export default function ArtisticHero() {
         />
 
         <motion.div
-          className="absolute bottom-32 left-1/4 w-40 h-40 border-4 border-accent/20"
+          className="absolute bottom-32 left-1/4 w-32 sm:w-36 md:w-40 h-32 sm:h-36 md:h-40 border-4 border-accent/20"
           style={{
             borderRadius: "60% 40% 30% 70%/60% 30% 70% 40%",
             x: parallaxX,
@@ -124,7 +124,7 @@ export default function ArtisticHero() {
 
         {/* Animated gradient orbs */}
         <motion.div
-          className="absolute top-40 right-1/4 w-64 h-64 bg-linear-to-br from-terracotta/40 to-transparent rounded-full blur-3xl"
+          className="absolute top-40 right-1/4 w-48 sm:w-56 md:w-64 h-48 sm:h-56 md:h-64 bg-linear-to-br from-terracotta/40 to-transparent rounded-full blur-3xl"
           animate={{
             scale: [1, 1.3, 1],
             opacity: [0.4, 0.7, 0.4],
@@ -138,7 +138,7 @@ export default function ArtisticHero() {
         />
 
         <motion.div
-          className="absolute bottom-40 left-1/3 w-96 h-96 bg-linear-to-tr from-amber-300/30 to-transparent rounded-full blur-3xl"
+          className="absolute bottom-40 left-1/3 w-72 sm:w-80 md:w-96 h-72 sm:h-80 md:h-96 bg-linear-to-tr from-amber-300/30 to-transparent rounded-full blur-3xl"
           animate={{
             scale: [1, 1.4, 1],
             opacity: [0.3, 0.6, 0.3],
@@ -174,22 +174,28 @@ export default function ArtisticHero() {
           />
         ))}
 
-        {/* Curved lines */}
-        <svg className="absolute inset-0 w-full h-full opacity-10">
+        {/* Curved lines - Responsive SVG */}
+        <svg 
+          className="absolute inset-0 w-full h-full opacity-10" 
+          viewBox="0 0 100 100" 
+          preserveAspectRatio="none"
+        >
           <motion.path
-            d="M0,300 Q400,100 800,300 T1600,300"
+            d="M0,30 Q25,10 50,30 T100,30"
             stroke="url(#gradient1)"
-            strokeWidth="3"
+            strokeWidth="0.3"
             fill="none"
+            vectorEffect="non-scaling-stroke"
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
             transition={{ duration: 3, ease: "easeInOut" }}
           />
           <motion.path
-            d="M0,500 Q400,700 800,500 T1600,500"
+            d="M0,50 Q25,70 50,50 T100,50"
             stroke="url(#gradient2)"
-            strokeWidth="3"
+            strokeWidth="0.3"
             fill="none"
+            vectorEffect="non-scaling-stroke"
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
             transition={{ duration: 3, delay: 0.5, ease: "easeInOut" }}
@@ -216,7 +222,7 @@ export default function ArtisticHero() {
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 text-center">
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -253,7 +259,7 @@ export default function ArtisticHero() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mb-6"
         >
-          <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold mb-2">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-2">
             <motion.span
               className="inline-block bg-clip-text text-transparent bg-linear-to-r from-terracotta via-primary to-amber-600"
               animate={{
@@ -280,7 +286,7 @@ export default function ArtisticHero() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="mb-6"
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-stone-800 mb-4">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-stone-800 mb-4">
             <span className="inline-block">
               Communication & RF Engineering Researcher
             </span>
@@ -304,7 +310,7 @@ export default function ArtisticHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="text-lg md:text-xl text-stone-600 mb-8 max-w-3xl mx-auto leading-relaxed"
+          className="text-base md:text-lg lg:text-xl text-stone-600 mb-8 max-w-3xl mx-auto leading-relaxed"
         >
           Exploring{" "}
           <span className="font-semibold text-primary">electromagnetics</span>,{" "}

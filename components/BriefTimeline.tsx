@@ -92,9 +92,9 @@ export default function BriefTimeline({ items }: BriefTimelineProps) {
   }, [expandedIndex]);
 
   return (
-    <div className="w-full max-w-full overflow-visible">
+    <div className="w-full max-w-full overflow-hidden">
       <div className="relative py-12 pb-8 min-h-[280px] md:min-h-80 overflow-visible">
-        {/* Animated Horizontal Line */}
+        {/* Animated Horizontal Line - Desktop only */}
         <svg 
           className="absolute top-1/3 md:top-1/2 left-8 right-8 h-1 -translate-y-1/2 hidden md:block pointer-events-none"
           preserveAspectRatio="none"
@@ -121,9 +121,12 @@ export default function BriefTimeline({ items }: BriefTimelineProps) {
           />
         </svg>
         
-        {/* Timeline Items Container */}
-        <div ref={scrollContainerRef} className="overflow-x-auto overflow-y-visible scrollbar-hide -mx-6 px-6 pb-4">
-          <div className="flex justify-between items-start gap-6 md:gap-8 min-w-max md:min-w-0 min-h-full py-4 pt-8">
+        {/* Mobile: Horizontal Scroll Carousel / Desktop: Flex Grid */}
+        <div 
+          ref={scrollContainerRef} 
+          className="overflow-x-auto overflow-y-visible scrollbar-hide pb-4 snap-x snap-mandatory md:snap-none"
+        >
+          <div className="flex gap-3 sm:gap-4 md:gap-6 lg:gap-8 min-w-full md:justify-between px-4 md:px-0 py-4 pt-8">
             {items.map((item, index) => {
               const Icon = iconMap[item.icon || "milestone"];
               const colors = colorMap[item.color || "primary"];
@@ -144,7 +147,7 @@ export default function BriefTimeline({ items }: BriefTimelineProps) {
                   onHoverStart={() => setHoveredIndex(index)}
                   onHoverEnd={() => setHoveredIndex(null)}
                   onClick={() => setExpandedIndex(isExpanded ? null : index)}
-                  className="flex flex-col items-center gap-3 w-36 md:w-auto md:flex-1 shrink-0 cursor-pointer group relative focus:outline-none"
+                  className="flex flex-col items-center gap-2 md:gap-3 w-[140px] sm:w-40 md:flex-1 md:min-w-0 shrink-0 snap-center cursor-pointer group relative focus:outline-none"
                   ref={(el) => {
                     itemRefs.current[index] = el;
                   }}
@@ -227,13 +230,13 @@ export default function BriefTimeline({ items }: BriefTimelineProps) {
                     </AnimatePresence>
                     
                     <div
-                      className={`w-16 h-16 md:w-20 md:h-20 rounded-full ${colors.bg} border-3 ${colors.border} shadow-xl ${isHovered ? colors.glow : ''} flex items-center justify-center bg-surface transition-all duration-300`}
+                      className={`w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full ${colors.bg} border-2 md:border-3 ${colors.border} shadow-xl ${isHovered ? colors.glow : ''} flex items-center justify-center bg-surface transition-all duration-300`}
                     >
                       <motion.div
                         animate={{ rotate: isHovered ? [0, -10, 10, 0] : 0 }}
                         transition={{ duration: 0.5 }}
                       >
-                        <Icon className={`w-7 h-7 md:w-9 md:h-9 ${colors.icon}`} />
+                        <Icon className={`w-6 h-6 sm:w-7 sm:h-7 md:w-9 md:h-9 ${colors.icon}`} />
                       </motion.div>
                     </div>
                   </motion.div>
@@ -243,7 +246,7 @@ export default function BriefTimeline({ items }: BriefTimelineProps) {
                     animate={{
                       scale: isHovered ? 1.05 : 1,
                     }}
-                    className={`relative inline-flex items-center gap-1.5 px-3 py-1.5 ${colors.bg} ${colors.text} text-xs font-bold rounded-full border-2 ${colors.border} whitespace-nowrap shadow-md overflow-hidden`}
+                    className={`relative inline-flex items-center gap-1 md:gap-1.5 px-2.5 md:px-3 py-1 md:py-1.5 ${colors.bg} ${colors.text} text-xs font-bold rounded-full border-2 ${colors.border} whitespace-nowrap shadow-md overflow-hidden`}
                   >
                     {isHovered && (
                       <motion.div
@@ -253,8 +256,8 @@ export default function BriefTimeline({ items }: BriefTimelineProps) {
                         transition={{ duration: 1, repeat: Infinity, repeatDelay: 1 }}
                       />
                     )}
-                    <Calendar className="w-3.5 h-3.5 relative z-10" />
-                    <span className="relative z-10">{item.year}</span>
+                    <Calendar className="w-3 h-3 md:w-3.5 md:h-3.5 relative z-10" />
+                    <span className="relative z-10 text-[10px] sm:text-xs">{item.year}</span>
                   </motion.span>
 
                   {/* Title with expand indicator */}
@@ -262,10 +265,10 @@ export default function BriefTimeline({ items }: BriefTimelineProps) {
                     animate={{
                       y: isHovered ? -2 : 0,
                     }}
-                    className="flex flex-col items-center gap-1 w-full"
+                    className="flex flex-col items-center gap-1 w-full px-1"
                   >
                     <p
-                      className="text-center text-xs md:text-sm font-semibold text-foreground leading-tight line-clamp-2 w-full px-1"
+                      className="text-center text-xs md:text-sm font-semibold text-foreground leading-tight line-clamp-3 md:line-clamp-2 w-full"
                       ref={(el) => {
                         titleRefs.current[index] = el;
                       }}

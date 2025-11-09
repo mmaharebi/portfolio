@@ -181,14 +181,14 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-linear-to-b from-amber-50 via-orange-50 to-stone-50">
       {/* Hero Section */}
-      <section className="relative pt-24 pb-16 px-6 overflow-hidden">
+      <section className="relative pt-24 pb-16 px-4 sm:px-6 overflow-hidden">
         {/* Decorative background - animated blobs */}
         <div
-          className="absolute top-20 -right-20 md:right-10 w-64 h-64 bg-linear-to-br from-terracotta/20 to-amber-200/20 rounded-full blur-3xl animate-pulse"
+          className="absolute top-20 right-0 md:right-10 w-48 md:w-64 h-48 md:h-64 bg-linear-to-br from-terracotta/20 to-amber-200/20 rounded-full blur-3xl animate-pulse"
           style={{ animationDuration: "4s" }}
         />
         <div
-          className="absolute bottom-20 -left-20 md:left-10 w-80 h-80 bg-linear-to-tr from-amber-300/20 to-terracotta/20 rounded-full blur-3xl animate-pulse"
+          className="absolute bottom-20 left-0 md:left-10 w-56 md:w-80 h-56 md:h-80 bg-linear-to-tr from-amber-300/20 to-terracotta/20 rounded-full blur-3xl animate-pulse"
           style={{ animationDuration: "5s", animationDelay: "1s" }}
         />
 
@@ -281,21 +281,21 @@ export default function AboutPage() {
       </section>
 
       {/* Timeline Section */}
-      <section className="px-6 pb-24">
+      <section className="px-4 sm:px-6 pb-24">
         <div className="max-w-7xl mx-auto">
           <InteractiveJourney items={detailedTimelineData} />
         </div>
       </section>
 
       {/* Projects Section */}
-      <section className="px-6 pb-24">
+      <section className="px-4 sm:px-6 pb-24">
         <div className="max-w-7xl mx-auto">
           <ProjectShowcase projects={projectsData} />
         </div>
       </section>
 
       {/* Skills & Expertise Section */}
-      <section className="px-6 pb-24">
+      <section className="px-4 sm:px-6 pb-24">
         <div className="max-w-6xl mx-auto">
           <InteractiveSkills />
         </div>
