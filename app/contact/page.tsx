@@ -107,7 +107,7 @@ export default function ContactPage() {
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-terracotta via-primary to-amber-600">
+              <span className="bg-clip-text text-transparent bg-linear-to-r from-terracotta via-primary to-amber-600">
                 Get in Touch
               </span>
             </h1>
@@ -158,7 +158,7 @@ export default function ContactPage() {
                 >
                   {/* Card glow effect */}
                   <motion.div
-                    className={`absolute -inset-0.5 bg-gradient-to-r ${link.color} rounded-2xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-500`}
+                    className={`absolute -inset-0.5 bg-linear-to-r ${link.color} rounded-2xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-500`}
                     animate={{
                       opacity: isHovered ? [0.5, 0.8, 0.5] : 0,
                     }}
@@ -178,7 +178,7 @@ export default function ContactPage() {
                       }}
                       transition={{ duration: 0.5 }}
                     >
-                      <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${link.color} p-0.5`}>
+                      <div className={`w-16 h-16 rounded-xl bg-linear-to-br ${link.color} p-0.5`}>
                         <div className="w-full h-full bg-white rounded-xl flex items-center justify-center">
                           <Icon className={`w-8 h-8 text-stone-700 transition-colors ${link.hoverColor}`} />
                         </div>

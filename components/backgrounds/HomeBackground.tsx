@@ -19,7 +19,7 @@ export default function HomeBackground() {
   }, []);
 
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden bg-gradient-to-br from-cream via-amber-50/30 to-stone-100">
+    <div className="fixed inset-0 -z-10 overflow-hidden bg-linear-to-br from-cream via-amber-50/30 to-stone-100">
       {/* Animated SVG Patterns - Extended across entire page */}
       <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -93,7 +93,7 @@ export default function HomeBackground() {
 
       {/* Floating organic shapes with parallax */}
       <motion.div
-        className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-br from-terracotta/10 to-primary/5 rounded-full blur-3xl"
+        className="absolute top-20 left-10 w-64 h-64 bg-linear-to-br from-terracotta/10 to-primary/5 rounded-full blur-3xl"
         animate={{
           scale: [1, 1.2, 1],
           x: mousePosition.x,
@@ -103,7 +103,7 @@ export default function HomeBackground() {
       />
 
       <motion.div
-        className="absolute top-40 right-20 w-96 h-96 bg-gradient-to-bl from-amber-400/8 to-terracotta/5 rounded-full blur-3xl"
+        className="absolute top-40 right-20 w-96 h-96 bg-linear-to-bl from-amber-400/8 to-terracotta/5 rounded-full blur-3xl"
         animate={{
           scale: [1, 1.3, 1],
           x: -mousePosition.x * 0.5,
@@ -113,7 +113,7 @@ export default function HomeBackground() {
       />
 
       <motion.div
-        className="absolute bottom-40 left-1/4 w-80 h-80 bg-gradient-to-tr from-primary/6 to-amber-300/4 rounded-full blur-3xl"
+        className="absolute bottom-40 left-1/4 w-80 h-80 bg-linear-to-tr from-primary/6 to-amber-300/4 rounded-full blur-3xl"
         animate={{
           scale: [1, 1.1, 1],
           x: mousePosition.x * 0.3,
@@ -123,7 +123,7 @@ export default function HomeBackground() {
       />
 
       <motion.div
-        className="absolute bottom-20 right-1/3 w-72 h-72 bg-gradient-to-tl from-terracotta/7 to-amber-500/3 rounded-full blur-3xl"
+        className="absolute bottom-20 right-1/3 w-72 h-72 bg-linear-to-tl from-terracotta/7 to-amber-500/3 rounded-full blur-3xl"
         animate={{
           scale: [1, 1.25, 1],
           x: -mousePosition.x * 0.4,

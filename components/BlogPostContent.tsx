@@ -71,7 +71,7 @@ export default async function BlogPostContent({ post }: BlogPostContentProps) {
         <div className="mt-16 md:mt-20 pt-10 text-center">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 px-6 md:px-8 py-3 md:py-3.5 bg-gradient-to-r from-primary to-amber-600 text-white text-base md:text-lg rounded-xl hover:shadow-xl hover:scale-105 transition-all duration-300 font-semibold shadow-lg"
+            className="inline-flex items-center gap-2 px-6 md:px-8 py-3 md:py-3.5 bg-linear-to-r from-primary to-amber-600 text-white text-base md:text-lg rounded-xl hover:shadow-xl hover:scale-105 transition-all duration-300 font-semibold shadow-lg"
           >
             ← View All Posts
           </Link>

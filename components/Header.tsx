@@ -92,7 +92,7 @@ export default function Header({ showBackButton = false }: HeaderProps) {
                   >
                     <Sparkles className="w-6 h-6 text-terracotta" />
                   </motion.div>
-                  <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-terracotta via-primary to-amber-600 group-hover:scale-105 transition-transform duration-300">
+                  <span className="text-xl font-bold bg-clip-text text-transparent bg-linear-to-r from-terracotta via-primary to-amber-600 group-hover:scale-105 transition-transform duration-300">
                     Mahdy
                   </span>
                 </Link>
@@ -105,7 +105,7 @@ export default function Header({ showBackButton = false }: HeaderProps) {
             {/* Mobile Menu Button - Creative Morph Animation */}
             <motion.button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden relative w-12 h-12 rounded-xl bg-gradient-to-br from-terracotta/10 to-amber-100 hover:from-terracotta/20 hover:to-amber-200 flex items-center justify-center transition-all duration-300"
+              className="md:hidden relative w-12 h-12 rounded-xl bg-linear-to-br from-terracotta/10 to-amber-100 hover:from-terracotta/20 hover:to-amber-200 flex items-center justify-center transition-all duration-300"
               whileTap={{ scale: 0.9 }}
               aria-label="Toggle menu"
             >
