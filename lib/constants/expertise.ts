@@ -1,4 +1,4 @@
-import { Radio, Zap, Calculator, Layers } from "lucide-react";
+import { Radio, Antenna, Binary, BookOpen } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 export interface ExpertiseArea {
@@ -27,7 +27,7 @@ export const EXPERTISE_DATA: ExpertiseArea[] = [
     ],
   },
   {
-    icon: Zap,
+    icon: Antenna,
     title: "RF & Microwave Engineering",
     shortDesc: "Antenna & circuit design via EM simulation",
     fullDesc:
@@ -42,7 +42,7 @@ export const EXPERTISE_DATA: ExpertiseArea[] = [
     ],
   },
   {
-    icon: Calculator,
+    icon: Binary,
     title: "Computational Electromagnetics & Modeling",
     shortDesc: "Wave analysis & numerical simulation",
     fullDesc:
@@ -51,7 +51,7 @@ export const EXPERTISE_DATA: ExpertiseArea[] = [
     skills: ["FDTD", "FEM", "MATLAB", "Python", "Numerical Analysis"],
   },
   {
-    icon: Layers,
+    icon: BookOpen,
     title: "Mathematical Foundations",
     shortDesc: "Theory underlying modern communication & EM",
     fullDesc:
