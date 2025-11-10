@@ -1,11 +1,10 @@
 "use client";
 
 import { motion, useMotionValue, useTransform } from "motion/react";
-import { Mail, Github, Linkedin, MapPin, Clock, Sparkles, ArrowLeft, Send } from "lucide-react";
+import { Mail, Github, Linkedin, MapPin, Clock, Sparkles, Send } from "lucide-react";
 import { useState, useEffect } from "react";
 import ContactForm from "@/components/ContactForm";
 import ContactBackground from "@/components/backgrounds/ContactBackground";
-import Link from "next/link";
 
 export default function ContactPage() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
@@ -56,15 +55,6 @@ export default function ContactPage() {
         {/* Hero Section */}
         <section className="relative pt-24 pb-16 px-6 z-10">
           <div className="max-w-6xl mx-auto">
-          {/* Back Button */}
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-stone-600 hover:text-primary transition-colors mb-8 group"
-          >
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            <span className="text-sm font-medium">Back to Home</span>
-          </Link>
-
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}

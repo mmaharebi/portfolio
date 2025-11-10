@@ -5,8 +5,7 @@ import InteractiveSkills from "@/components/InteractiveSkills";
 import ProjectShowcase, { type Project } from "@/components/ProjectShowcase";
 import AboutBackground from "@/components/backgrounds/AboutBackground";
 import type { DetailedTimelineItem } from "@/components/SerpentineTimeline";
-import Link from "next/link";
-import { ArrowLeft, User } from "lucide-react";
+import { User } from "lucide-react";
 
 // Detailed timeline data
 const detailedTimelineData: DetailedTimelineItem[] = [
@@ -188,15 +187,6 @@ export default function AboutPage() {
         {/* Hero Section */}
         <section className="relative pt-24 pb-16 px-4 sm:px-6 overflow-hidden">
           <div className="relative max-w-4xl mx-auto">
-          {/* Back Button */}
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-stone-600 hover:text-primary transition-colors mb-8 group"
-          >
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            <span className="text-sm font-medium">Back to Home</span>
-          </Link>
-
           {/* Header */}
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-terracotta/10 rounded-full mb-6">
