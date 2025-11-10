@@ -70,16 +70,6 @@ const detailedTimelineData: DetailedTimelineItem[] = [
     color: "secondary",
   },
   {
-    year: "2021",
-    title: "Teaching Assistant",
-    subtitle: "Communication Systems Lab",
-    location: "University of Kassel",
-    description:
-      "Guided students through hands-on experiments in digital communications, signal processing, and RF measurements. Developed lab materials and mentored project work.",
-    icon: "work",
-    color: "accent",
-  },
-  {
     year: "2024-Present",
     title: "Research & Development Engineer",
     subtitle: "Communication Systems & Software Engineering",
