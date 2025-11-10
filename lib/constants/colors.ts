@@ -6,6 +6,7 @@ export interface ColorPalette {
   text: string;
   glow: string;
   gradient: string;
+  borderColor: string;
 }
 
 export const COLOR_PALETTES: Record<ColorVariant, ColorPalette> = {
@@ -15,6 +16,7 @@ export const COLOR_PALETTES: Record<ColorVariant, ColorPalette> = {
     text: "text-primary",
     glow: "shadow-primary/30",
     gradient: "from-primary to-amber-600",
+    borderColor: "#D97757",
   },
   secondary: {
     bg: "bg-secondary/10",
@@ -22,6 +24,7 @@ export const COLOR_PALETTES: Record<ColorVariant, ColorPalette> = {
     text: "text-secondary",
     glow: "shadow-secondary/30",
     gradient: "from-secondary to-amber-400",
+    borderColor: "#F59E0B",
   },
   accent: {
     bg: "bg-accent/10",
@@ -29,6 +32,7 @@ export const COLOR_PALETTES: Record<ColorVariant, ColorPalette> = {
     text: "text-accent",
     glow: "shadow-accent/30",
     gradient: "from-accent to-amber-700",
+    borderColor: "#EA580C",
   },
   terracotta: {
     bg: "bg-terracotta/10",
@@ -36,5 +40,6 @@ export const COLOR_PALETTES: Record<ColorVariant, ColorPalette> = {
     text: "text-terracotta",
     glow: "shadow-terracotta/30",
     gradient: "from-terracotta to-primary",
+    borderColor: "#D97757",
   },
 };

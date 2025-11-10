@@ -60,40 +60,16 @@ export default function BriefTimeline({ items }: BriefTimelineProps) {
   }, [expandedIndex]);
 
   return (
-    <div className="w-full max-w-full overflow-hidden">
-      <div className="relative py-12 pb-8 min-h-[280px] md:min-h-80 overflow-visible">
-        {/* Animated Wavy Connecting Lines - Desktop only */}
-        <svg
-          className="absolute top-1/3 md:top-1/2 left-0 right-0 h-24 -translate-y-1/2 hidden md:block pointer-events-none"
-          preserveAspectRatio="none"
-          viewBox="0 0 1200 100"
-        >
-          <defs>
-            <linearGradient id="wavyLineGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#D97757" stopOpacity="0.3" />
-              <stop offset="50%" stopColor="#E8B17A" stopOpacity="0.5" />
-              <stop offset="100%" stopColor="#A86843" stopOpacity="0.3" />
-            </linearGradient>
-            <linearGradient id="wavyLineGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#E8B17A" stopOpacity="0.2" />
-              <stop offset="50%" stopColor="#D97757" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#E8B17A" stopOpacity="0.2" />
-            </linearGradient>
-          </defs>
-
-          {/* Main wavy line */}
-          <motion.path
-            d="M0,50 Q200,30 400,50 T800,50 T1200,50"
-            fill="none"
-            stroke="url(#wavyLineGradient1)"
-            strokeWidth="2"
-            strokeLinecap="round"
+    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="relative py-16 md:py-20">
+        {/* Artistic Background Elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          {/* Floating decorative circles */}
+          <motion.div
+            className="absolute top-10 left-[10%] w-24 h-24 rounded-full bg-terracotta/5 blur-2xl"
             animate={{
-              d: [
-                "M0,50 Q200,30 400,50 T800,50 T1200,50",
-                "M0,50 Q200,70 400,50 T800,50 T1200,50",
-                "M0,50 Q200,30 400,50 T800,50 T1200,50",
-              ],
+              y: [0, -20, 0],
+              scale: [1, 1.1, 1],
             }}
             transition={{
               duration: 8,
@@ -101,21 +77,11 @@ export default function BriefTimeline({ items }: BriefTimelineProps) {
               ease: "easeInOut",
             }}
           />
-
-          {/* Secondary wavy line for depth */}
-          <motion.path
-            d="M0,50 Q200,60 400,50 T800,50 T1200,50"
-            fill="none"
-            stroke="url(#wavyLineGradient2)"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            opacity="0.6"
+          <motion.div
+            className="absolute bottom-10 right-[15%] w-32 h-32 rounded-full bg-primary/5 blur-2xl"
             animate={{
-              d: [
-                "M0,50 Q200,60 400,50 T800,50 T1200,50",
-                "M0,50 Q200,40 400,50 T800,50 T1200,50",
-                "M0,50 Q200,60 400,50 T800,50 T1200,50",
-              ],
+              y: [0, 15, 0],
+              scale: [1, 1.15, 1],
             }}
             transition={{
               duration: 10,
@@ -124,35 +90,77 @@ export default function BriefTimeline({ items }: BriefTimelineProps) {
               delay: 1,
             }}
           />
-        </svg>
+        </div>
 
-        {/* Mobile: Horizontal Scroll Carousel / Desktop: Flex Grid */}
-        <div
-          ref={scrollContainerRef}
-          className="overflow-x-auto overflow-y-visible scrollbar-hide pb-4 snap-x snap-mandatory md:snap-none"
-        >
-          <div className="flex gap-3 sm:gap-4 md:gap-6 lg:gap-8 min-w-full md:justify-between px-4 md:px-0 py-4 pt-8">
-            {items.map((item, index) => (
-              <BriefTimelineItemCard
-                key={index}
-                item={item}
-                index={index}
-                isHovered={hoveredIndex === index}
-                isExpanded={expandedIndex === index}
-                onHoverStart={() => setHoveredIndex(index)}
-                onHoverEnd={() => setHoveredIndex(null)}
-                onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
-                itemRef={(el) => {
-                  itemRefs.current[index] = el;
-                }}
-                titleRef={(el) => {
-                  titleRefs.current[index] = el;
-                }}
-              />
-            ))}
+        {/* Timeline Container */}
+        <div className="relative">
+          {/* Central flowing timeline line - Desktop */}
+          <div className="hidden md:block absolute left-0 right-0 top-24 h-0.5 overflow-hidden">
+            <motion.div
+              className="h-full bg-linear-[90deg] from-transparent via-terracotta/30 to-transparent"
+              animate={{
+                scaleX: [0.8, 1, 0.8],
+                opacity: [0.5, 0.8, 0.5],
+              }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+          </div>
+
+          {/* Journey Items */}
+          <div
+            ref={scrollContainerRef}
+            className="overflow-x-auto scrollbar-hide snap-x snap-mandatory md:snap-none pb-8 md:pb-0"
+            style={{ paddingTop: '120px', paddingBottom: '120px' }}
+          >
+            <div className="flex gap-4 md:gap-0 md:justify-between px-4 md:px-0 min-w-max md:min-w-full">
+              {items.map((item, index) => (
+                <div
+                  key={index}
+                  className="relative flex flex-col items-center snap-center md:snap-none shrink-0"
+                  style={{
+                    width: '160px',
+                    minWidth: '160px',
+                  }}
+                >
+                  {/* Connecting dot on timeline */}
+                  <motion.div
+                    className="hidden md:block absolute left-1/2 top-24 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-white border-2 shadow-lg z-10"
+                    style={{
+                      borderColor: BRIEF_COLOR_MAP[(item.color || "primary") as PaletteKey].borderColor,
+                    }}
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1, type: "spring" }}
+                    whileHover={{ scale: 1.3 }}
+                  />
+
+                  <BriefTimelineItemCard
+                    item={item}
+                    index={index}
+                    isHovered={hoveredIndex === index}
+                    isExpanded={expandedIndex === index}
+                    onHoverStart={() => setHoveredIndex(index)}
+                    onHoverEnd={() => setHoveredIndex(null)}
+                    onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
+                    itemRef={(el) => {
+                      itemRefs.current[index] = el;
+                    }}
+                    titleRef={(el) => {
+                      titleRefs.current[index] = el;
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
+      
       {/* Portal Tooltip */}
       <Portal>
         <AnimatePresence>

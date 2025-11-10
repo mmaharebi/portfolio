@@ -14,6 +14,7 @@ export const BRIEF_COLOR_MAP = {
     text: "text-primary",
     icon: "text-primary",
     glow: "shadow-primary/20",
+    borderColor: "#D97757",
   },
   secondary: {
     bg: "bg-secondary/10",
@@ -21,6 +22,7 @@ export const BRIEF_COLOR_MAP = {
     text: "text-secondary",
     icon: "text-secondary",
     glow: "shadow-secondary/20",
+    borderColor: "#F59E0B",
   },
   accent: {
     bg: "bg-accent/10",
@@ -28,5 +30,6 @@ export const BRIEF_COLOR_MAP = {
     text: "text-accent",
     icon: "text-accent",
     glow: "shadow-accent/20",
+    borderColor: "#EA580C",
   },
 };
