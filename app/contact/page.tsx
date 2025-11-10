@@ -25,8 +25,11 @@ export default function ContactPage() {
       value: "contact@mahdymahareb.de",
       href: "mailto:contact@mahdymahareb.de",
       description: "Drop me a line anytime",
-      color: "from-primary to-amber-600",
-      hoverColor: "group-hover:text-primary",
+      // Warm terracotta (inspired by Gmail red, adapted to warm palette)
+      bgColor: "bg-[#D97757]",
+      glowColor: "from-[#D97757]/40 to-[#F4A261]/20",
+      iconColor: "text-white",
+      dotColor: "bg-[#F4A261]",
     },
     {
       icon: Github,
@@ -34,8 +37,11 @@ export default function ContactPage() {
       value: "@mmaharebi",
       href: "https://github.com/mmaharebi",
       description: "Check out my repositories",
-      color: "from-stone-700 to-stone-900",
-      hoverColor: "group-hover:text-stone-800",
+      // Warm brown (inspired by GitHub dark, warmed up)
+      bgColor: "bg-[#8B7355]",
+      glowColor: "from-[#8B7355]/40 to-[#C8B5A0]/20",
+      iconColor: "text-white",
+      dotColor: "bg-[#C8B5A0]",
     },
     {
       icon: Linkedin,
@@ -43,8 +49,11 @@ export default function ContactPage() {
       value: "/in/mmaharebi",
       href: "https://linkedin.com/in/mmaharebi",
       description: "Let's connect professionally",
-      color: "from-blue-600 to-blue-800",
-      hoverColor: "group-hover:text-blue-700",
+      // Warm amber-brown (inspired by LinkedIn blue, shifted to warm palette)
+      bgColor: "bg-[#A86843]",
+      glowColor: "from-[#A86843]/40 to-[#E8B17A]/20",
+      iconColor: "text-white",
+      dotColor: "bg-[#E8B17A]",
     },
   ];
 
@@ -126,7 +135,7 @@ export default function ContactPage() {
             <p className="text-stone-600">Choose your preferred platform</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto px-4 sm:px-0">
             {contactLinks.map((link, index) => {
               const Icon = link.icon;
               const isHovered = hoveredCard === index;
@@ -144,50 +153,91 @@ export default function ContactPage() {
                   onHoverStart={() => setHoveredCard(index)}
                   onHoverEnd={() => setHoveredCard(null)}
                   whileHover={{ y: -8 }}
-                  className="group relative"
+                  className="group relative flex flex-col items-center justify-center text-center"
                 >
-                  {/* Card glow effect */}
-                  <motion.div
-                    className={`absolute -inset-0.5 bg-linear-to-r ${link.color} rounded-2xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-500`}
-                    animate={{
-                      opacity: isHovered ? [0.5, 0.8, 0.5] : 0,
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: isHovered ? Infinity : 0,
-                    }}
-                  />
-
-                  <div className="relative bg-white/90 backdrop-blur-sm rounded-2xl p-8 border-2 border-stone-200 group-hover:border-white shadow-lg group-hover:shadow-2xl transition-all duration-300 aspect-square flex flex-col items-center justify-center text-center">
-                    {/* Icon */}
+                  <div className="relative p-6 md:p-8 flex flex-col items-center justify-center text-center">
+                    {/* Artistic Icon */}
                     <motion.div
-                      className="mb-4"
+                      className="mb-6 relative"
                       animate={{
-                        rotate: isHovered ? [0, -10, 10, 0] : 0,
-                        scale: isHovered ? 1.1 : 1,
+                        rotate: isHovered ? [0, -5, 5, 0] : 0,
+                        y: isHovered ? -8 : 0,
                       }}
                       transition={{ duration: 0.5 }}
                     >
-                      <div className={`w-16 h-16 rounded-xl bg-linear-to-br ${link.color} p-0.5`}>
-                        <div className="w-full h-full bg-white rounded-xl flex items-center justify-center">
-                          <Icon className={`w-8 h-8 text-stone-700 transition-colors ${link.hoverColor}`} />
-                        </div>
-                      </div>
+                      {/* Subtle warm glow matching site colors */}
+                      <motion.div
+                        className={`absolute inset-0 -m-6 rounded-full ${link.glowColor} blur-2xl`}
+                        animate={isHovered ? {
+                          scale: [1, 1.4, 1],
+                          opacity: [0.3, 0.5, 0.3],
+                        } : {
+                          opacity: 0
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: isHovered ? Infinity : 0,
+                          ease: "easeInOut",
+                        }}
+                      />
+                      
+                      {/* Gradient circle with icon */}
+                      <motion.div
+                        className={`relative w-20 h-20 md:w-24 md:h-24 rounded-full ${link.bgColor} shadow-lg flex items-center justify-center`}
+                        animate={isHovered ? {
+                          scale: 1.1,
+                        } : {
+                          scale: 1
+                        }}
+                        transition={{
+                          duration: 0.3,
+                        }}
+                      >
+                        <Icon className={`w-9 h-9 md:w-11 md:h-11 ${link.iconColor}`} />
+                      </motion.div>
+
+                      {/* Orbiting dots */}
+                      {isHovered && (
+                        <>
+                          {[0, 120, 240].map((angle, i) => (
+                            <motion.div
+                              key={i}
+                              className={`absolute w-2 h-2 rounded-full ${link.dotColor}`}
+                              initial={{ opacity: 0 }}
+                              animate={{
+                                opacity: [0, 1, 0],
+                                rotate: [angle, angle + 360],
+                              }}
+                              transition={{
+                                duration: 3,
+                                repeat: Infinity,
+                                delay: i * 0.2,
+                              }}
+                              style={{
+                                top: '50%',
+                                left: '50%',
+                                transformOrigin: '0 0',
+                                transform: `rotate(${angle}deg) translateX(50px)`,
+                              }}
+                            />
+                          ))}
+                        </>
+                      )}
                     </motion.div>
 
                     {/* Content */}
-                    <h3 className="text-xl font-bold text-stone-800 mb-2">{link.label}</h3>
-                    <p className="text-sm text-stone-600 mb-3">{link.description}</p>
-                    <p className="text-xs font-mono text-stone-500 break-all px-2">{link.value}</p>
+                    <h3 className="text-xl md:text-2xl font-bold text-stone-800 mb-2">{link.label}</h3>
+                    <p className="text-sm md:text-base text-stone-600 mb-3">{link.description}</p>
+                    <p className="text-xs md:text-sm font-mono text-stone-500 break-all">{link.value}</p>
 
-                    {/* Hover arrow */}
+                    {/* Hover indicator */}
                     <motion.div
-                      className="absolute top-4 right-4 opacity-0 group-hover:opacity-100"
-                      initial={{ x: -10 }}
-                      animate={{ x: isHovered ? 0 : -10 }}
+                      className="absolute bottom-4 opacity-0 group-hover:opacity-100"
+                      initial={{ y: 10 }}
+                      animate={{ y: isHovered ? 0 : 10 }}
                     >
-                      <div className="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center">
-                        <span className="text-sm">→</span>
+                      <div className={`px-3 py-1 rounded-full bg-linear-to-r ${link.color} text-white text-xs font-semibold`}>
+                        Click to connect
                       </div>
                     </motion.div>
                   </div>
