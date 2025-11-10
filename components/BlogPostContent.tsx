@@ -11,7 +11,7 @@ interface BlogPostContentProps {
 
 export default async function BlogPostContent({ post }: BlogPostContentProps) {
   return (
-    <article className="relative max-w-4xl mx-auto px-6 py-8 md:py-16">
+    <article className="relative max-w-4xl mx-auto px-4 sm:px-6 py-8 md:py-16 overflow-x-hidden">
       {/* Title and Metadata */}
       <AnimatedSection delay={0}>
         <header className="mb-12 md:mb-16">
@@ -56,7 +56,7 @@ export default async function BlogPostContent({ post }: BlogPostContentProps) {
 
       {/* Content */}
       <AnimatedSection delay={0.1}>
-        <div className="prose-wrapper">
+        <div className="prose-wrapper overflow-x-hidden w-full">
           <MDXContent
             source={post.content}
             components={{

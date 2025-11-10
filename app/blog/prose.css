@@ -1,9 +1,16 @@
 /* Prose styling for MDX content */
+.prose-wrapper {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 .prose {
   color: var(--foreground);
   max-width: 65ch;
   font-size: 1.125rem;
   line-height: 1.75;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 /* Headings */
@@ -111,6 +118,7 @@
   padding: 1rem;
   overflow-x: auto;
   margin: 1.5rem 0;
+  max-width: 100%;
 }
 
 .prose pre code {
@@ -118,6 +126,8 @@
   padding: 0;
   color: var(--foreground);
   font-weight: 400;
+  white-space: pre;
+  word-wrap: normal;
 }
 
 /* Blockquotes */
@@ -139,6 +149,9 @@
   border-radius: 0.5rem;
   overflow: hidden;
   border: 1px solid var(--border);
+  display: block;
+  overflow-x: auto;
+  max-width: 100%;
 }
 
 .prose th,
@@ -146,6 +159,7 @@
   border: 1px solid var(--border);
   padding: 0.75rem 1rem;
   text-align: left;
+  white-space: nowrap;
 }
 
 .prose th {
@@ -175,28 +189,37 @@
 /* KaTeX math styling adjustments */
 .prose .katex {
   color: var(--foreground);
+  font-size: 1em;
 }
 
 .prose .katex-display {
   margin: 1rem 0;
   overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
 }
 
 /* Prevent KaTeX block math from creating scrollbars */
 .katex,
 .katex * {
   box-sizing: content-box;
-  max-width: 100%;
 }
 
-.katex,
-.katex-display,
-.katex .katex-html {
-  overflow: visible !important;
-}
-
-/* spacing for display math */
 .katex-display {
   display: block;
   margin: 1rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.5rem 0;
+}
+
+/* Ensure math doesn't overflow on mobile */
+@media (max-width: 640px) {
+  .prose .katex-display {
+    font-size: 0.9em;
+  }
+  
+  .prose .katex {
+    font-size: 0.95em;
+  }
 }
