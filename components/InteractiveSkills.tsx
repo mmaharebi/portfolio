@@ -44,29 +44,93 @@ export default function InteractiveSkills() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.4 }}
-        className="mt-12 bg-linear-to-br from-terracotta/5 via-amber-50/50 to-stone-50/50 rounded-2xl p-8 border-2 border-terracotta/20"
+        className="mt-16 relative"
       >
-        <div className="flex items-center gap-3 mb-6">
-          <motion.div
-            animate={{
-              rotate: [0, 360],
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-            className="w-12 h-12 rounded-xl bg-terracotta/10 border-2 border-terracotta flex items-center justify-center"
-          >
-            <Brain className="w-6 h-6 text-terracotta" />
-          </motion.div>
-          <h3 className="text-2xl font-bold text-stone-800">Research Interests</h3>
-        </div>
-
-        <div className="grid sm:grid-cols-2 gap-4">
-          {RESEARCH_INTERESTS.map((interest, index) => (
-            <ResearchInterestCard key={index} interest={interest} index={index} />
+        {/* Decorative background elements */}
+        <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-amber-50/50 to-secondary/5 rounded-3xl blur-3xl -z-10" />
+        
+        <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 md:p-12 border-2 border-stone-200/50 shadow-xl overflow-hidden">
+          {/* Decorative corner accents */}
+          <div className="absolute top-0 right-0 w-32 h-32 bg-linear-to-br from-primary/10 to-transparent rounded-bl-full" />
+          <div className="absolute bottom-0 left-0 w-32 h-32 bg-linear-to-tr from-secondary/10 to-transparent rounded-tr-full" />
+          
+          {/* Floating particles */}
+          {[...Array(3)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-2 h-2 bg-terracotta/20 rounded-full"
+              animate={{
+                y: [0, -20, 0],
+                x: [0, 10, 0],
+                opacity: [0.3, 0.6, 0.3],
+              }}
+              transition={{
+                duration: 3 + i,
+                repeat: Infinity,
+                delay: i * 0.5,
+              }}
+              style={{
+                top: `${20 + i * 30}%`,
+                right: `${10 + i * 15}%`,
+              }}
+            />
           ))}
+
+          {/* Header */}
+          <div className="relative mb-8 text-center">
+            <motion.div
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, type: "spring" }}
+              className="inline-flex items-center justify-center mb-4"
+            >
+              <motion.div
+                animate={{
+                  rotate: [0, 360],
+                }}
+                transition={{
+                  duration: 20,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+                className="relative"
+              >
+                {/* Pulsing ring */}
+                <motion.div
+                  className="absolute inset-0 -m-2 rounded-2xl border-2 border-terracotta/30"
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.5, 0.2, 0.5],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                  }}
+                />
+                
+                <div className="w-16 h-16 rounded-2xl bg-linear-to-br from-primary via-terracotta to-amber-600 flex items-center justify-center shadow-lg">
+                  <Brain className="w-8 h-8 text-white" />
+                </div>
+              </motion.div>
+            </motion.div>
+
+            <h3 className="text-3xl md:text-4xl font-bold mb-3">
+              <span className="bg-clip-text text-transparent bg-linear-to-r from-primary via-terracotta to-amber-600">
+                Research Interests
+              </span>
+            </h3>
+            <p className="text-stone-600 text-sm md:text-base max-w-2xl mx-auto">
+              Areas where theory meets innovation and curiosity drives discovery
+            </p>
+          </div>
+
+          {/* Cards Grid */}
+          <div className="grid sm:grid-cols-2 gap-4 md:gap-6 relative">
+            {RESEARCH_INTERESTS.map((interest, index) => (
+              <ResearchInterestCard key={index} interest={interest} index={index} />
+            ))}
+          </div>
         </div>
       </motion.div>
     </div>
