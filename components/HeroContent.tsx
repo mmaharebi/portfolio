@@ -3,8 +3,28 @@
 import Link from "next/link";
 import { motion } from "motion/react";
 import { Sparkles, Rocket, Zap, Code2 } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export default function HeroContent() {
+  const fullText = "Communication & RF Engineering Researcher";
+  const [displayedText, setDisplayedText] = useState("");
+  const [isTypingComplete, setIsTypingComplete] = useState(false);
+
+  useEffect(() => {
+    let currentIndex = 0;
+    const typingInterval = setInterval(() => {
+      if (currentIndex <= fullText.length) {
+        setDisplayedText(fullText.slice(0, currentIndex));
+        currentIndex++;
+      } else {
+        setIsTypingComplete(true);
+        clearInterval(typingInterval);
+      }
+    }, 80); // 80ms per character for smooth typing
+
+    return () => clearInterval(typingInterval);
+  }, []);
+
   return (
     <>
       {/* Hero Content */}
@@ -73,15 +93,15 @@ export default function HeroContent() {
           className="mb-6"
         >
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-stone-800 mb-4">
-            Communication & RF Engineering Researcher
+            {displayedText}
             <motion.span
               className="text-primary"
               animate={{
-                opacity: [1, 0, 1],
+                opacity: isTypingComplete ? [1, 0, 1] : 1,
               }}
               transition={{
-                duration: 1.5,
-                repeat: Infinity,
+                duration: isTypingComplete ? 1.5 : 0,
+                repeat: isTypingComplete ? Infinity : 0,
               }}
             >
               |
