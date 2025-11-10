@@ -34,7 +34,7 @@ export default function BlogHeader() {
       </motion.div>
 
       <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
-        <span className="bg-clip-text text-transparent bg-linear-to-r from-terracotta via-primary to-amber-600">
+        <span className="bg-clip-text text-transparent bg-linear-[135deg] from-terracotta from-10% via-primary via-50% to-amber-600 to-90%">
           Blog & Articles
         </span>
       </h1>

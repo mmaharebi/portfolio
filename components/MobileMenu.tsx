@@ -89,7 +89,7 @@ export default function MobileMenu({ isOpen, onClose, pathname, isActive }: Mobi
                         {/* Glow effect on active */}
                         {active && (
                           <motion.div
-                            className="absolute -inset-1 bg-linear-to-r from-terracotta via-primary to-amber-600 rounded-2xl blur opacity-30"
+                            className="absolute -inset-1 bg-linear-to-br from-terracotta via-primary to-amber-600 rounded-2xl blur opacity-30"
                             animate={{
                               opacity: [0.3, 0.5, 0.3],
                             }}
@@ -118,7 +118,7 @@ export default function MobileMenu({ isOpen, onClose, pathname, isActive }: Mobi
                           <div className="flex-1">
                             <h3 className={`text-2xl font-bold ${
                               active 
-                                ? "bg-clip-text text-transparent bg-linear-to-r from-terracotta via-primary to-amber-600" 
+                                ? "bg-clip-text text-transparent bg-linear-[135deg] from-terracotta from-10% via-primary via-50% to-amber-600 to-90%" 
                                 : "text-stone-800"
                             }`}>
                               {item.label}

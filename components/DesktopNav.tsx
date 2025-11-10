@@ -37,7 +37,7 @@ export default function DesktopNav({ pathname, isActive }: DesktopNavProps) {
             {active && (
               <motion.div
                 layoutId="activeBackground"
-                className="absolute inset-0 bg-linear-to-r from-terracotta to-primary rounded-xl shadow-lg"
+                className="absolute inset-0 bg-linear-to-br from-terracotta via-primary/90 to-amber-600 rounded-xl shadow-lg"
                 transition={{ type: "spring", stiffness: 380, damping: 30 }}
               />
             )}

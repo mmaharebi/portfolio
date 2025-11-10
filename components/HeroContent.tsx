@@ -47,7 +47,7 @@ export default function HeroContent() {
         >
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-2">
             <motion.span
-              className="inline-block bg-clip-text text-transparent bg-linear-to-r from-terracotta via-primary to-amber-600"
+              className="inline-block bg-clip-text text-transparent bg-linear-[135deg] from-terracotta from-10% via-primary via-50% to-amber-600 to-90%"
               animate={{
                 backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
               }}

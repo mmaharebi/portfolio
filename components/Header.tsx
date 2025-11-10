@@ -92,7 +92,7 @@ export default function Header({ showBackButton = false }: HeaderProps) {
                   >
                     <Sparkles className="w-6 h-6 text-terracotta" />
                   </motion.div>
-                  <span className="text-xl font-bold bg-clip-text text-transparent bg-linear-to-r from-terracotta via-primary to-amber-600 group-hover:scale-105 transition-transform duration-300">
+                  <span className="text-xl font-bold bg-clip-text text-transparent bg-linear-[135deg] from-terracotta from-10% via-primary via-50% to-amber-600 to-90% group-hover:scale-105 transition-transform duration-300">
                     Mahdy
                   </span>
                 </Link>
