@@ -62,67 +62,75 @@ export default function BriefTimelineItemCard({
     >
       {/* Artistic Icon Container with glow */}
       <div className="relative mb-4 md:mb-6">
-        {/* Animated glow effect */}
+        {/* Main Icon Circle with all effects */}
         <motion.div
-          className={`absolute inset-0 rounded-full blur-xl opacity-0`}
-          style={{ backgroundColor: colors.borderColor }}
-          animate={{
-            opacity: isHovered ? 0.3 : 0,
-            scale: isHovered ? 1.3 : 1,
-          }}
-          transition={{ duration: 0.4 }}
-        />
-
-        {/* Pulse ring on hover */}
-        <AnimatePresence>
-          {isHovered && (
-            <>
-              <motion.div
-                className={`absolute inset-0 rounded-full border-2`}
-                style={{ borderColor: colors.borderColor }}
-                initial={{ scale: 1, opacity: 0.6 }}
-                animate={{ scale: 1.6, opacity: 0 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 1.2, repeat: Infinity, ease: "easeOut" }}
-              />
-              <motion.div
-                className={`absolute inset-0 rounded-full border-2`}
-                style={{ borderColor: colors.borderColor }}
-                initial={{ scale: 1, opacity: 0.6 }}
-                animate={{ scale: 1.6, opacity: 0 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 1.2, repeat: Infinity, ease: "easeOut", delay: 0.4 }}
-              />
-            </>
-          )}
-        </AnimatePresence>
-
-        {/* Main Icon Circle */}
-        <motion.div
+          className="relative"
           animate={{
             scale: isHovered ? 1.05 : 1,
-            rotate: isHovered ? [0, -3, 3, 0] : 0,
             y: isHovered ? -4 : 0,
           }}
           transition={{ duration: 0.5 }}
-          className={`relative w-16 h-16 md:w-20 md:h-20 rounded-full ${colors.bg} border-2 shadow-lg flex items-center justify-center bg-white overflow-hidden`}
-          style={{ borderColor: colors.borderColor }}
         >
-          {/* Subtle gradient overlay */}
-          <div
-            className="absolute inset-0 opacity-5"
-            style={{
-              background: `linear-gradient(135deg, ${colors.borderColor} 0%, transparent 100%)`,
+          {/* Animated glow effect */}
+          <motion.div
+            className={`absolute inset-0 rounded-full blur-xl opacity-0`}
+            style={{ backgroundColor: colors.borderColor }}
+            animate={{
+              opacity: isHovered ? 0.3 : 0,
+              scale: isHovered ? 1.3 : 1,
             }}
+            transition={{ duration: 0.4 }}
           />
 
+          {/* Pulse ring on hover */}
+          <AnimatePresence>
+            {isHovered && (
+              <>
+                <motion.div
+                  className={`absolute inset-0 rounded-full border-2`}
+                  style={{ borderColor: colors.borderColor }}
+                  initial={{ scale: 1, opacity: 0.6 }}
+                  animate={{ scale: 1.6, opacity: 0 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 1.2, repeat: Infinity, ease: "easeOut" }}
+                />
+                <motion.div
+                  className={`absolute inset-0 rounded-full border-2`}
+                  style={{ borderColor: colors.borderColor }}
+                  initial={{ scale: 1, opacity: 0.6 }}
+                  animate={{ scale: 1.6, opacity: 0 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 1.2, repeat: Infinity, ease: "easeOut", delay: 0.4 }}
+                />
+              </>
+            )}
+          </AnimatePresence>
+
+          {/* Icon Circle */}
           <motion.div
             animate={{
-              rotate: isHovered ? [0, -8, 8, 0] : 0,
+              rotate: isHovered ? [0, -3, 3, 0] : 0,
             }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
+            className={`relative w-16 h-16 md:w-20 md:h-20 rounded-full ${colors.bg} border-2 shadow-lg flex items-center justify-center bg-white overflow-hidden`}
+            style={{ borderColor: colors.borderColor }}
           >
-            <Icon className={`w-7 h-7 md:w-9 md:h-9 relative z-10`} style={{ color: colors.borderColor }} />
+            {/* Subtle gradient overlay */}
+            <div
+              className="absolute inset-0 opacity-5"
+              style={{
+                background: `linear-gradient(135deg, ${colors.borderColor} 0%, transparent 100%)`,
+              }}
+            />
+
+            <motion.div
+              animate={{
+                rotate: isHovered ? [0, -8, 8, 0] : 0,
+              }}
+              transition={{ duration: 0.6 }}
+            >
+              <Icon className={`w-7 h-7 md:w-9 md:h-9 relative z-10`} style={{ color: colors.borderColor }} />
+            </motion.div>
           </motion.div>
         </motion.div>
       </div>
