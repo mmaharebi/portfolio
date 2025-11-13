@@ -25,6 +25,11 @@ export const metadata: Metadata = {
   keywords: ['RF Engineering', 'Communication Systems', 'Electromagnetics', '5G', 'Antenna Design', 'Signal Processing', 'MATLAB', 'Python', 'HFSS', 'Microwave Circuits'],
   authors: [{ name: 'Mahdy Mahareb' }],
   creator: 'Mahdy Mahareb',
+  icons: {
+    icon: '/logo.png',
+    shortcut: '/logo.png',
+    apple: '/logo.png',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',

@@ -236,7 +236,7 @@ export default function ContactPage() {
                       initial={{ y: 10 }}
                       animate={{ y: isHovered ? 0 : 10 }}
                     >
-                      <div className={`px-3 py-1 rounded-full bg-linear-to-r ${link.color} text-white text-xs font-semibold`}>
+                      <div className={`px-3 py-1 rounded-full ${link.bgColor} text-white text-xs font-semibold`}>
                         Click to connect
                       </div>
                     </motion.div>
