@@ -9,9 +9,9 @@ github: "https://github.com/mmaharebi/fdtd-pec-cavity"
 
 ## Introduction
 
-Have you ever wondered how electromagnetic waves behave inside a metal cavity? Microwave ovens, radio frequency filters, and particle accelerators all rely on cavity resonators—enclosed spaces where electromagnetic waves bounce back and forth, forming standing wave patterns at specific frequencies.
+Cavity resonators are fundamental components in various applications, including microwave ovens, radio frequency filters, and particle accelerators. These structures confine electromagnetic waves, leading to the formation of standing wave patterns at discrete resonant frequencies. Understanding the behavior of these waves is crucial for designing and optimizing such devices.
 
-In this article, I'll walk you through a **Finite-Difference Time-Domain (FDTD)** simulation that models electromagnetic wave propagation in a 2D rectangular cavity with perfect electric conductor (PEC) walls. The implementation achieves **sub-1% accuracy** compared to analytical theory, and produces beautiful animations showing wave dynamics in real-time.
+This report presents a **Finite-Difference Time-Domain (FDTD)** simulation for modeling electromagnetic wave propagation in a two-dimensional rectangular cavity with Perfect Electric Conductor (PEC) walls. The numerical implementation is validated against the analytical solution, achieving a relative error of less than 1%. The simulation also provides a visual representation of the wave dynamics.
 
 ![Electromagnetic wave propagation in a PEC cavity](/posts/fdtd2d-pec-cavity/images/cavity_animation.gif)
 
@@ -19,7 +19,7 @@ In this article, I'll walk you through a **Finite-Difference Time-Domain (FDTD)*
 
 ---
 
-## The Physics: Maxwell's Equations Meet Cavity Resonators
+## Theoretical Framework
 
 ### Governing Equations
 
@@ -29,17 +29,17 @@ For a 2D transverse magnetic (TM$_z$) mode, the electromagnetic fields consist o
 
 These fields evolve according to Maxwell's equations:
 
-$$
-\frac{\partial H_x}{\partial t} = -\frac{1}{\mu_0} \frac{\partial E_z}{\partial y}
-$$
+$$ 
+\frac{\partial H_x}{\partial t} = -\frac{1}{\mu_0} \frac{\partial E_z}{\partial y} 
+$$ 
 
-$$
-\frac{\partial H_y}{\partial t} = \frac{1}{\mu_0} \frac{\partial E_z}{\partial x}
-$$
+$$ 
+\frac{\partial H_y}{\partial t} = \frac{1}{\mu_0} \frac{\partial E_z}{\partial x} 
+$$ 
 
-$$
-\frac{\partial E_z}{\partial t} = \frac{1}{\epsilon_0} \left( \frac{\partial H_y}{\partial x} - \frac{\partial H_x}{\partial y} \right) + \frac{J_z}{\epsilon_0}
-$$
+$$ 
+\frac{\partial E_z}{\partial t} = \frac{1}{\epsilon_0} \left( \frac{\partial H_y}{\partial x} - \frac{\partial H_x}{\partial y} \right) + \frac{J_z}{\epsilon_0} 
+$$ 
 
 where $\epsilon_0 = 8.854 \times 10^{-12}$ F/m is the permittivity of free space, $\mu_0 = 4\pi \times 10^{-7}$ H/m is the permeability of free space, and $J_z$ is the source current density.
 
@@ -47,17 +47,17 @@ where $\epsilon_0 = 8.854 \times 10^{-12}$ F/m is the permittivity of free space
 
 For a rectangular PEC cavity with dimensions $L_x \times L_y$, the resonant frequencies are given by:
 
-$$
-f_{mn} = \frac{c}{2}\sqrt{\left(\frac{m}{L_x}\right)^2 + \left(\frac{n}{L_y}\right)^2}
-$$
+$$ 
+ f_{mn} = \frac{c}{2}\sqrt{\left(\frac{m}{L_x}\right)^2 + \left(\frac{n}{L_y}\right)^2} 
+$$ 
 
 where $c = 299{,}792{,}458$ m/s is the speed of light, and $m, n = 1, 2, 3, \ldots$ are the mode indices.
 
 The electric field pattern for mode $(m,n)$ is:
 
-$$
-E_z(x,y) = E_0 \sin\left(\frac{m\pi x}{L_x}\right) \sin\left(\frac{n\pi y}{L_y}\right)
-$$
+$$ 
+ E_z(x,y) = E_0 \sin\left(\frac{m\pi x}{L_x}\right) \sin\left(\frac{n\pi y}{L_y}\right) 
+$$ 
 
 This spatial pattern automatically satisfies the boundary condition $E_z = 0$ at all four walls—a requirement for perfect electric conductors.
 
@@ -65,7 +65,7 @@ This spatial pattern automatically satisfies the boundary condition $E_z = 0$ at
 
 ## The FDTD Method: Discretizing Space and Time
 
-The FDTD algorithm, developed by Kane Yee in 1966, discretizes Maxwell's equations on a **staggered grid** called the **Yee lattice**. This clever arrangement ensures second-order accuracy in both space and time.
+The FDTD method, introduced by Kane Yee in 1966, solves Maxwell's equations by discretizing them on a staggered grid, known as the Yee lattice. This spatial arrangement of the electric and magnetic field components facilitates a centered-difference scheme that is second-order accurate in both space and time.
 
 ### Yee Lattice Structure
 
@@ -82,29 +82,29 @@ The **leapfrog time-stepping** scheme alternates between updating magnetic and e
 
 **H-field update** (from time $n$ to $n+\frac{1}{2}$):
 
-$$
-H_x^{n+1/2}(i,j+\tfrac{1}{2}) = H_x^{n-1/2}(i,j+\tfrac{1}{2}) - \frac{\Delta t}{\mu_0 \Delta y} \left[ E_z^n(i,j+1) - E_z^n(i,j) \right]
-$$
+$$ 
+ H_x^{n+1/2}(i,j+\tfrac{1}{2}) = H_x^{n-1/2}(i,j+\tfrac{1}{2}) - \frac{\Delta t}{\mu_0 \Delta y} \left[ E_z^n(i,j+1) - E_z^n(i,j) \right] 
+$$ 
 
-$$
-H_y^{n+1/2}(i+\tfrac{1}{2},j) = H_y^{n-1/2}(i+\tfrac{1}{2},j) + \frac{\Delta t}{\mu_0 \Delta x} \left[ E_z^n(i+1,j) - E_z^n(i,j) \right]
-$$
+$$ 
+ H_y^{n+1/2}(i+\tfrac{1}{2},j) = H_y^{n-1/2}(i+\tfrac{1}{2},j) + \frac{\Delta t}{\mu_0 \Delta x} \left[ E_z^n(i+1,j) - E_z^n(i,j) \right] 
+$$ 
 
 **E-field update** (from time $n$ to $n+1$):
 
-$$
-E_z^{n+1}(i,j) = E_z^n(i,j) + \frac{\Delta t}{\epsilon_0} \left[ \frac{H_y^{n+1/2}(i+\tfrac{1}{2},j) - H_y^{n+1/2}(i-\tfrac{1}{2},j)}{\Delta x} - \frac{H_x^{n+1/2}(i,j+\tfrac{1}{2}) - H_x^{n+1/2}(i,j-\tfrac{1}{2})}{\Delta y} \right]
-$$
+$$ 
+ E_z^{n+1}(i,j) = E_z^n(i,j) + \frac{\Delta t}{\epsilon_0} \left[ \frac{H_y^{n+1/2}(i+\tfrac{1}{2},j) - H_y^{n+1/2}(i-\tfrac{1}{2},j)}{\Delta x} - \frac{H_x^{n+1/2}(i,j+\tfrac{1}{2}) - H_x^{n+1/2}(i,j-\tfrac{1}{2})}{\Delta y} \right] 
+$$ 
 
 ### Stability Condition
 
 For numerical stability, the time step must satisfy the **Courant-Friedrichs-Lewy (CFL)** condition:
 
-$$
-\Delta t \leq \frac{1}{c \sqrt{\frac{1}{\Delta x^2} + \frac{1}{\Delta y^2}}}
-$$
+$$ 
+ \Delta t \leq \frac{1}{c \sqrt{\frac{1}{\Delta x^2} + \frac{1}{\Delta y^2}}} 
+$$ 
 
-In practice, we use $\Delta t = 0.99 \times \text{CFL}_\text{max}$ to ensure stability while maximizing computational efficiency.
+In practice, a value of $\Delta t = 0.99 \times \text{CFL}_\text{max}$ is used to ensure stability while maximizing computational efficiency.
 
 ---
 
@@ -129,9 +129,9 @@ The cavity was simulated with the following configuration:
 
 A **Gaussian current pulse** was used to excite multiple cavity modes:
 
-$$
-J_z(t) = J_0 \exp\left(-\frac{(t - t_0)^2}{2\tau^2}\right)
-$$
+$$ 
+ J_z(t) = J_0 \exp\left(-\frac{(t - t_0)^2}{2\tau^2}\right) 
+$$ 
 
 where $J_0 = 1000$ A/m², $t_0 \approx 0.24$ ns (pulse delay), and $\tau \approx 72$ ps (pulse width). The broad frequency spectrum of this pulse excites several resonant modes simultaneously.
 
@@ -143,12 +143,13 @@ The source was placed at $(x, y) = (L_x/3, L_y/2) = (10\text{ cm}, 10\text{ cm})
 
 ### Frequency Spectrum Analysis
 
-After running the simulation, I extracted the resonance frequencies using **Fast Fourier Transform (FFT)**:
+The resonance frequencies were extracted from the time-domain data using the Fast Fourier Transform (FFT) with the following procedure:
 
-1. Remove transient behavior (first 15% of signal)
-2. Apply Hanning window to reduce spectral leakage
-3. Compute FFT at multiple probe locations
-4. Average spectra and identify peaks
+1.  Remove the transient response (first 15% of the signal).
+2.  Apply a Hanning window to reduce spectral leakage.
+3.  Compute the FFT at multiple probe locations.
+4.  Average the resulting spectra and identify the peaks.
+
 
 ![Frequency spectrum showing resonance peaks](/posts/fdtd2d-pec-cavity/images/spectrum_plot.png)
 
@@ -175,13 +176,13 @@ This level of accuracy confirms that the FDTD implementation is both correct and
 
 ### Why Some Modes Are Missing
 
-You might notice that modes like $(3,1)$, $(0,2)$, and $(2,2)$ don't appear in the spectrum. This is due to **selective mode excitation** based on the source location.
+The absence of certain modes, such as (3,1), (0,2), and (2,2), in the frequency spectrum is a direct consequence of the source placement, leading to selective mode excitation.
 
-A mode $(m,n)$ is **not excited** if the source sits on a nodal line of that mode's field pattern:
+A mode $(m,n)$ is **not excited** if the source is located on a nodal line of that mode's field pattern:
 
-$$
-E_z(x,y) \propto \sin\left(\frac{m\pi x}{L_x}\right) \sin\left(\frac{n\pi y}{L_y}\right)
-$$
+$$ 
+ E_z(x,y) \propto \sin\left(\frac{m\pi x}{L_x}\right) \sin\left(\frac{n\pi y}{L_y}\right) 
+$$ 
 
 **Source at $x = L_x/3$:**
 - If $m = 3k$ (multiples of 3), then $\sin(k\pi) = 0$ → mode not excited
@@ -191,7 +192,7 @@ $$
 - If $n = 2k$ (even), then $\sin(k\pi) = 0$ → mode not excited
 - Examples: $(1,2)$, $(2,2)$, $(1,4)$
 
-This selective excitation is a **feature, not a bug**—it confirms that the simulation correctly captures the spatial structure of cavity modes.
+This selective excitation is an expected outcome that confirms the simulation's accurate representation of the spatial structure of the cavity modes.
 
 ---
 
@@ -210,33 +211,33 @@ The observed error of **0.43%** falls within the expected range for this grid re
 
 ### Convergence Study
 
-To verify second-order accuracy, I tested different grid resolutions:
+To verify second-order accuracy, a convergence study was performed using different grid resolutions:
 
-| Grid | $\Delta x$ (mm) | Points/λ$_\text{min}$ | Mode (1,1) Error (%) |
+| Grid | $\Delta x$ (mm) | Points/λ$_	ext{min}$ | Mode (1,1) Error (%) |
 |------|-----------------|------------------------|----------------------|
 | Coarse | 5.0 | 18 | 1.2 |
 | Medium | 2.5 | 36 | **0.52** |
 | Fine | 1.25 | 72 | 0.28 |
 
-Error decreases with finer grids, confirming **second-order spatial accuracy**.
+The error decreases with finer grids, confirming **second-order spatial accuracy**.
 
 ---
 
-## Visualizations: Seeing the Physics
+## Field Visualizations
 
-One of the most rewarding aspects of this project was creating animations that show electromagnetic wave dynamics in real-time.
+Visualizations of the electromagnetic fields provide valuable insight into the wave dynamics.
 
 ![Full animation of electromagnetic wave propagation in the cavity](/posts/fdtd2d-pec-cavity/images/cavity_animation.gif)
 
-### What You're Seeing
+### Physical Phenomena Observed
 
 The animation reveals several physical phenomena:
 
-1. **Initial Pulse (0–5 ns):** Gaussian current creates localized $E_z$ field
-2. **Propagation (5–15 ns):** Circular wavefront expands at speed of light
-3. **Reflections (15–25 ns):** Waves bounce off PEC walls with 180° phase shift
-4. **Interference (25–35 ns):** Standing wave patterns emerge
-5. **Resonance (35–45 ns):** Dominant cavity modes build up
+1. **Initial Pulse (0–5 ns):** A localized $E_z$ field is generated by the Gaussian current source.
+2. **Propagation (5–15 ns):** The circular wavefront expands at the speed of light.
+3. **Reflections (15–25 ns):** The waves reflect off the PEC walls, undergoing a 180° phase shift.
+4. **Interference (25–35 ns):** Standing wave patterns begin to emerge from the interference of reflected waves.
+5. **Resonance (35–45 ns):** The dominant cavity modes are established and build up in amplitude.
 
 ### Animation Formats
 
@@ -251,7 +252,7 @@ You can find both in the [media/](https://github.com/mmaharebi/fdtd-pec-cavity/t
 
 ---
 
-## Technical Highlights
+## Implementation Highlights
 
 ### Code Architecture
 
@@ -284,18 +285,18 @@ src/
 
 ### Current Limitations
 
-1. **2D Approximation:** Assumes infinite extent in z-direction (TM$_z$ modes only)
-2. **Linear Medium:** No nonlinear effects or material dispersion
-3. **Perfect Conductors:** Real metals have finite conductivity
-4. **Finite Time:** Very high-Q modes may not fully converge
+1. **2D Approximation:** The model assumes an infinite extent in the z-direction (TM$_z$ modes only).
+2. **Linear Medium:** Nonlinear effects and material dispersion are not included.
+3. **Perfect Conductors:** Real-world metals exhibit finite conductivity.
+4. **Finite Simulation Time:** Very high-Q modes may not fully converge within the simulated time.
 
 ### Potential Extensions
 
-- **3D FDTD:** Full 3D electromagnetic solver
-- **Lossy Materials:** Include conductor losses and dielectric absorption
-- **Dispersive Media:** Implement Drude or Lorentz models
-- **Adaptive Mesh Refinement:** Optimize grid resolution dynamically
-- **GPU Acceleration:** Parallelize using CUDA or OpenCL
+- **3D FDTD:** Extension to a full 3D electromagnetic solver.
+- **Lossy Materials:** Inclusion of conductor losses and dielectric absorption.
+- **Dispersive Media:** Implementation of models for frequency-dependent materials (e.g., Drude, Lorentz).
+- **Adaptive Mesh Refinement:** Dynamic optimization of grid resolution.
+- **GPU Acceleration:** Parallelization of the computation using CUDA or OpenCL.
 
 ---
 
@@ -325,9 +326,9 @@ python src/main.py
 
 This will:
 1. Run the FDTD simulation (~2 seconds)
-2. Compute frequency spectrum via FFT
+2. Compute the frequency spectrum via FFT
 3. Display validation plots
-4. Show animated wave propagation
+4. Show an animation of the wave propagation
 
 ### Customization
 
@@ -349,13 +350,9 @@ class CavityConfig:
 
 ## Conclusion
 
-This project demonstrates the power of the FDTD method for solving Maxwell's equations in bounded electromagnetic systems. With careful implementation and validation, we achieved **sub-1% accuracy** compared to analytical theory, while producing visually stunning animations that reveal the physics of wave propagation.
-
-Whether you're a student learning computational electromagnetics, a researcher validating numerical methods, or an engineer designing cavity resonators, I hope this implementation serves as a useful reference.
+This work presents a successful implementation of the FDTD method for simulating electromagnetic wave propagation in a 2D PEC cavity. The numerical model was validated against the analytical solution, demonstrating a high degree of accuracy with a mean relative error below 0.5%. The simulation results, including field visualizations and frequency analysis, provide a comprehensive understanding of the physical phenomena within the cavity. This implementation serves as a reliable and educational tool for students, researchers, and engineers in the field of computational electromagnetics.
 
 **GitHub Repository:** [https://github.com/mmaharebi/fdtd-pec-cavity](https://github.com/mmaharebi/fdtd-pec-cavity)
-
-⭐ **If you find this project useful, please give it a star on GitHub!** ⭐
 
 ---
 
