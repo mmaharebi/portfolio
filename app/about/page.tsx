@@ -191,52 +191,52 @@ export default function AboutPage() {
           <div className="relative max-w-4xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-terracotta/10 rounded-full mb-6">
-              <User className="w-4 h-4 text-terracotta" />
-              <span className="text-sm font-semibold text-terracotta">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-terracotta/10 dark:bg-[#1A1614]/90 rounded-full mb-6 border-2 border-terracotta/20 dark:border-primary/30 dark:shadow-[0_0_20px_rgba(255,159,102,0.15)]">
+              <User className="w-4 h-4 text-terracotta dark:text-primary dark:drop-shadow-[0_0_8px_rgba(255,159,102,0.6)]" />
+              <span className="text-sm font-semibold text-terracotta dark:text-primary">
                 About Me
               </span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-stone-800 mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-stone-800 dark:text-white mb-6 dark:drop-shadow-[0_0_30px_rgba(255,159,102,0.3)]">
               Who Am I?
             </h1>
 
             <div className="relative max-w-3xl mx-auto text-base">
               {/* Decorative quote mark */}
-              <div className="absolute -top-6 -left-4 text-8xl text-terracotta/10 font-serif leading-none">
+              <div className="absolute -top-6 -left-4 text-8xl text-terracotta/10 dark:text-primary/20 font-serif leading-none dark:drop-shadow-[0_0_15px_rgba(255,159,102,0.2)]">
                 "
               </div>
 
-              <div className="relative bg-white/60 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-xl border border-stone-200/50">
+              <div className="relative bg-white/60 dark:bg-[#1A1614]/90 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-xl dark:shadow-[0_8px_32px_rgba(0,0,0,0.3),0_0_60px_rgba(255,159,102,0.1)] border border-stone-200/50 dark:border-primary/20">
                 {/* Top accent line */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-linear-to-r from-transparent via-terracotta to-transparent rounded-full" />
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-linear-to-r from-transparent via-terracotta dark:via-primary to-transparent rounded-full dark:shadow-[0_0_8px_rgba(255,159,102,0.6)]" />
 
-                <div className="space-y-6 text-stone-700">
-                  <p className="text-lg md:text-xl leading-relaxed">
+                <div className="space-y-6 text-stone-700 dark:text-stone-300">
+                  <p className="text-lg md:text-xl leading-relaxed font-medium">
                     I'm{" "}
-                    <span className="font-semibold text-primary">Mahdy M.</span>
+                    <span className="font-bold text-primary dark:text-primary dark:drop-shadow-[0_0_8px_rgba(255,159,102,0.4)]">Mahdy M.</span>
                     , a master's student in Electrical Communication Engineering
                     at the University of Kassel, focusing on{" "}
-                    <span className="text-terracotta font-medium">
+                    <span className="text-terracotta dark:text-secondary font-semibold">
                       communication systems
                     </span>
                     ,{" "}
-                    <span className="text-terracotta font-medium">
+                    <span className="text-terracotta dark:text-secondary font-semibold">
                       applied electromagnetics
                     </span>
                     , and{" "}
-                    <span className="text-terracotta font-medium">
+                    <span className="text-terracotta dark:text-secondary font-semibold">
                       computational modeling
                     </span>
                     .
                   </p>
 
-                  <div className="h-px bg-linear-to-r from-transparent via-stone-300 to-transparent" />
+                  <div className="h-px bg-linear-to-r from-transparent via-stone-300 dark:via-primary/30 to-transparent dark:shadow-[0_0_4px_rgba(255,159,102,0.3)]" />
 
-                  <p className="text-lg md:text-xl leading-relaxed">
+                  <p className="text-lg md:text-xl leading-relaxed font-medium">
                     My journey began with a{" "}
-                    <span className="inline-flex items-center gap-1 font-semibold text-amber-700">
+                    <span className="inline-flex items-center gap-1 font-bold text-amber-700 dark:text-[#FFC078] dark:drop-shadow-[0_0_6px_rgba(255,192,120,0.5)]">
                       Silver Medal
                     </span>{" "}
                     in Iran's National Physics Olympiad, which earned me
@@ -247,11 +247,11 @@ export default function AboutPage() {
                     engineering.
                   </p>
 
-                  <div className="h-px bg-linear-to-r from-transparent via-stone-300 to-transparent" />
+                  <div className="h-px bg-linear-to-r from-transparent via-stone-300 dark:via-primary/30 to-transparent dark:shadow-[0_0_4px_rgba(255,159,102,0.3)]" />
 
-                  <p className="text-lg md:text-xl leading-relaxed">
+                  <p className="text-lg md:text-xl leading-relaxed font-medium">
                     I'm currently seeking a{" "}
-                    <span className="px-2 py-0.5 bg-terracotta/10 text-terracotta font-medium rounded">
+                    <span className="px-2 py-0.5 bg-terracotta/10 dark:bg-primary/20 text-terracotta dark:text-primary font-bold rounded dark:shadow-[0_0_12px_rgba(255,159,102,0.3)] dark:border dark:border-primary/30">
                       funded master's thesis (2026) opportunity
                     </span>{" "}
                     in Germany or Europe that aligns with my research interests
@@ -260,7 +260,7 @@ export default function AboutPage() {
                 </div>
 
                 {/* Bottom accent line */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-linear-to-r from-transparent via-terracotta to-transparent rounded-full" />
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-linear-to-r from-transparent via-terracotta dark:via-primary to-transparent rounded-full dark:shadow-[0_0_8px_rgba(255,159,102,0.6)]" />
               </div>
             </div>
           </div>

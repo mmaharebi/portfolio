@@ -112,15 +112,15 @@ export default function ProjectShowcase({ projects }: ProjectShowcaseProps) {
                 ease: "linear",
               }}
             >
-              <Sparkles className="w-4 h-4 text-primary" />
+              <Sparkles className="w-4 h-4 text-primary dark:drop-shadow-[0_0_8px_rgba(255,159,102,0.6)]" />
             </motion.div>
             <span className="text-sm font-bold text-primary">Portfolio</span>
           </div>
 
-          <h2 className="text-3xl md:text-5xl font-bold text-stone-800 dark:text-stone-100 mb-4">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-stone-800 dark:text-white mb-4 dark:drop-shadow-[0_0_25px_rgba(255,159,102,0.25)]">
             Featured Projects
           </h2>
-          <p className="text-lg text-stone-600 dark:text-stone-300 max-w-2xl mx-auto">
+          <p className="text-lg text-stone-600 dark:text-stone-300 max-w-2xl mx-auto font-medium">
             Research projects, course work, and technical explorations in electromagnetics and signal processing
           </p>
         </motion.div>
@@ -139,8 +139,8 @@ export default function ProjectShowcase({ projects }: ProjectShowcaseProps) {
             onClick={() => setSelectedCategory(null)}
             className={`px-5 py-2.5 rounded-xl font-semibold text-sm transition-all ${
               selectedCategory === null
-                ? "bg-primary text-white shadow-lg"
-                : "bg-white/80 text-stone-600 border-2 border-stone-200 hover:border-primary"
+                ? "bg-primary text-white shadow-lg dark:shadow-[0_0_20px_rgba(255,159,102,0.4)]"
+                : "bg-white/80 dark:bg-[#1A1614]/90 text-stone-600 dark:text-stone-300 border-2 border-stone-200 dark:border-primary/30 hover:border-primary dark:hover:shadow-[0_0_15px_rgba(255,159,102,0.2)]"
             }`}
           >
             All Projects
@@ -178,8 +178,8 @@ export default function ProjectShowcase({ projects }: ProjectShowcaseProps) {
             className="mb-16"
           >
             <div className="flex items-center gap-2 mb-6">
-              <Sparkles className="w-5 h-5 text-primary" />
-              <h3 className="text-xl font-bold text-stone-800 dark:text-stone-100">Highlighted Projects</h3>
+              <Sparkles className="w-5 h-5 text-primary dark:drop-shadow-[0_0_8px_rgba(255,159,102,0.6)]" />
+              <h3 className="text-xl font-bold text-stone-800 dark:text-white dark:drop-shadow-[0_0_15px_rgba(255,159,102,0.2)]">Highlighted Projects</h3>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">

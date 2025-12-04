@@ -43,14 +43,14 @@ export default function InteractiveJourney({ items }: InteractiveJourneyProps) {
         transition={{ duration: 0.6 }}
         className="text-center mb-12 md:mb-16 px-4"
       >
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-terracotta/10 dark:bg-primary/25 rounded-full mb-4 border-2 border-terracotta/20 dark:border-primary/40">
-          <Sparkles className="w-4 h-4 text-terracotta dark:text-primary" />
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-terracotta/10 dark:bg-[#1A1614]/90 rounded-full mb-4 border-2 border-terracotta/20 dark:border-primary/40 dark:shadow-[0_0_20px_rgba(255,159,102,0.15)]">
+          <Sparkles className="w-4 h-4 text-terracotta dark:text-primary dark:drop-shadow-[0_0_8px_rgba(255,159,102,0.6)]" />
           <span className="text-sm font-semibold text-terracotta dark:text-primary">Career Path</span>
         </div>
-        <h2 className="text-2xl md:text-3xl lg:text-5xl font-extrabold text-stone-900 dark:text-stone-50 mb-4">
+        <h2 className="text-2xl md:text-3xl lg:text-5xl font-extrabold text-stone-900 dark:text-white mb-4 dark:drop-shadow-[0_0_30px_rgba(255,159,102,0.3)]">
           My Technical Journey
         </h2>
-        <p className="text-sm md:text-base lg:text-lg text-stone-700 dark:text-stone-200 max-w-2xl mx-auto font-medium">
+        <p className="text-sm md:text-base lg:text-lg text-stone-700 dark:text-stone-300 max-w-2xl mx-auto font-medium">
           Every milestone shaped who I am today
         </p>
       </motion.div>
@@ -87,11 +87,11 @@ export default function InteractiveJourney({ items }: InteractiveJourneyProps) {
                   <div className="absolute left-1/2 -translate-x-1/2 z-10">
                     <div className="relative group">
                       {/* Subtle glow effect */}
-                      <div className="absolute -inset-1 bg-primary/20 dark:bg-primary/40 blur-sm group-hover:bg-primary/30 dark:group-hover:bg-primary/60 transition-all rounded-full" />
+                      <div className="absolute -inset-1 bg-primary/20 dark:bg-primary/40 blur-sm group-hover:bg-primary/30 dark:group-hover:bg-primary/60 transition-all rounded-full dark:shadow-[0_0_16px_rgba(255,159,102,0.4)]" />
                       
                       {/* Badge - matches the warm cream/beige theme */}
-                      <div className="relative px-4 py-1.5 bg-white/90 dark:bg-[#1A1614]/95 backdrop-blur-sm border-2 border-stone-300/50 dark:border-primary/50 text-xs md:text-sm font-bold rounded-full shadow-sm group-hover:shadow-md dark:shadow-[0_4px_16px_rgba(255,159,102,0.3)] transition-all">
-                        <span className="text-stone-800 dark:text-primary">
+                      <div className="relative px-4 py-1.5 bg-white/90 dark:bg-[#1A1614]/95 backdrop-blur-sm border-2 border-stone-300/50 dark:border-primary/60 text-xs md:text-sm font-bold rounded-full shadow-sm group-hover:shadow-md dark:shadow-[0_4px_24px_rgba(255,159,102,0.35)] transition-all">
+                        <span className="text-stone-800 dark:text-primary dark:drop-shadow-[0_0_8px_rgba(255,159,102,0.5)]">
                           {getStartYear(items[index + 1].year)}
                         </span>
                       </div>

@@ -49,10 +49,10 @@ export default function JourneyItem({
         transition={{ duration: 0.3 }}
       >
         <div
-          className={`relative bg-white rounded-xl md:rounded-2xl p-4 md:p-6 border-2 transition-all duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 ${
+          className={`relative bg-white dark:bg-[#1A1614]/95 rounded-xl md:rounded-2xl p-4 md:p-6 border-2 transition-all duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 dark:ring-offset-[#0A0908] ${
             isExpanded
-              ? `${colors.border} shadow-xl ${colors.glow} focus:ring-${item.color}`
-              : `border-stone-200 hover:border-stone-300 shadow-md hover:shadow-lg focus:ring-stone-400`
+              ? `${colors.border} dark:border-primary/60 shadow-xl dark:shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_60px_rgba(255,159,102,0.2)] ${colors.glow} focus:ring-${item.color}`
+              : `border-stone-200 dark:border-primary/30 hover:border-stone-300 dark:hover:border-primary/50 shadow-md dark:shadow-[0_4px_24px_rgba(0,0,0,0.3),0_0_40px_rgba(255,159,102,0.1)] hover:shadow-lg dark:hover:shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_50px_rgba(255,159,102,0.15)] focus:ring-stone-400`
           }`}
           onClick={onToggleExpand}
           onKeyDown={(e) => {
@@ -112,23 +112,23 @@ export default function JourneyItem({
             animate={{
               scale: isHovered ? 1.05 : 1,
             }}
-            className={`inline-flex items-center gap-1.5 md:gap-2 px-2.5 md:px-3 py-1 md:py-1.5 ${colors.bg} ${colors.text} rounded-full border-2 ${colors.border} mb-3 md:mb-4 font-bold text-xs md:text-sm`}
+            className={`inline-flex items-center gap-1.5 md:gap-2 px-2.5 md:px-3 py-1 md:py-1.5 ${colors.bg} ${colors.text} dark:text-primary rounded-full border-2 ${colors.border} dark:border-primary/50 mb-3 md:mb-4 font-bold text-xs md:text-sm dark:shadow-[0_0_12px_rgba(255,159,102,0.2)]`}
           >
-            <Calendar className="w-3 h-3 md:w-3.5 md:h-3.5" />
+            <Calendar className="w-3 h-3 md:w-3.5 md:h-3.5 dark:drop-shadow-[0_0_4px_rgba(255,159,102,0.4)]" />
             {item.year}
           </motion.div>
 
           {/* Title */}
-          <h3 className="text-lg md:text-xl font-bold text-stone-800 mb-2">{item.title}</h3>
+          <h3 className="text-lg md:text-xl font-bold text-stone-800 dark:text-white mb-2 dark:drop-shadow-[0_0_15px_rgba(255,159,102,0.15)]">{item.title}</h3>
 
           {/* Subtitle */}
           {item.subtitle && (
-            <p className={`text-xs md:text-sm font-semibold ${colors.text} mb-2`}>{item.subtitle}</p>
+            <p className={`text-xs md:text-sm font-semibold ${colors.text} dark:text-secondary mb-2`}>{item.subtitle}</p>
           )}
 
           {/* Location */}
           {item.location && (
-            <div className="flex items-center gap-1.5 text-stone-600 text-xs md:text-sm mb-3 md:mb-4">
+            <div className="flex items-center gap-1.5 text-stone-600 dark:text-stone-400 text-xs md:text-sm mb-3 md:mb-4">
               <MapPin className="w-3 h-3 md:w-3.5 md:h-3.5" />
               <span>{item.location}</span>
             </div>
@@ -136,7 +136,7 @@ export default function JourneyItem({
 
           {/* Description Preview */}
           <motion.p
-            className="text-stone-600 text-xs md:text-sm leading-relaxed"
+            className="text-stone-600 dark:text-stone-300 text-xs md:text-sm leading-relaxed font-medium"
             animate={{
               height: isExpanded ? "auto" : "2.5rem",
             }}
@@ -147,7 +147,7 @@ export default function JourneyItem({
 
           {/* Expand Button */}
           <motion.button
-            className={`mt-3 md:mt-4 flex items-center gap-2 text-xs md:text-sm font-semibold ${colors.text} hover:underline`}
+            className={`mt-3 md:mt-4 flex items-center gap-2 text-xs md:text-sm font-semibold ${colors.text} dark:text-primary hover:underline dark:drop-shadow-[0_0_8px_rgba(255,159,102,0.3)]`}
             whileHover={{ x: 5 }}
           >
             <span>{isExpanded ? "Show less" : "Read more"}</span>
@@ -192,7 +192,7 @@ export default function JourneyItem({
 
           {/* Icon container */}
           <div
-            className={`w-14 h-14 md:w-16 md:h-16 rounded-full ${colors.bg} border-4 ${colors.border} bg-white flex items-center justify-center shadow-lg`}
+            className={`w-14 h-14 md:w-16 md:h-16 rounded-full ${colors.bg} border-4 ${colors.border} dark:border-primary/60 bg-white dark:bg-[#1A1614] flex items-center justify-center shadow-lg dark:shadow-[0_0_24px_rgba(255,159,102,0.3)]`}
           >
             <motion.div
               animate={{
@@ -200,7 +200,7 @@ export default function JourneyItem({
               }}
               transition={{ duration: 0.6 }}
             >
-              <Icon className={`w-6 h-6 md:w-7 md:h-7 ${colors.text}`} />
+              <Icon className={`w-6 h-6 md:w-7 md:h-7 ${colors.text} dark:text-primary dark:drop-shadow-[0_0_8px_rgba(255,159,102,0.5)]`} />
             </motion.div>
           </div>
         </motion.div>

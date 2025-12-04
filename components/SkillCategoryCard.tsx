@@ -79,7 +79,7 @@ export default function SkillCategoryCard({ category, categoryIndex }: SkillCate
         >
           <Icon className={`w-6 h-6 ${colors.text}`} />
         </motion.div>
-        <h3 className="text-xl font-bold text-stone-800 dark:text-stone-100">{category.title}</h3>
+        <h3 className="text-xl font-bold text-stone-800 dark:text-white dark:drop-shadow-[0_0_15px_rgba(255,159,102,0.2)]">{category.title}</h3>
       </div>
 
       {/* Skills List */}
@@ -101,14 +101,14 @@ export default function SkillCategoryCard({ category, categoryIndex }: SkillCate
               {/* Skill Name and Percentage */}
               <div className="flex justify-between items-center mb-2">
                 <span
-                  className={`text-sm font-medium transition-colors ${
-                    isHovered ? colors.text : "text-stone-700"
+                  className={`text-sm font-semibold transition-colors ${
+                    isHovered ? `${colors.text} dark:text-primary dark:drop-shadow-[0_0_8px_rgba(255,159,102,0.4)]` : "text-stone-700 dark:text-stone-300"
                   }`}
                 >
                   {skill.name}
                 </span>
                 <motion.span
-                  className={`text-xs font-bold ${colors.text}`}
+                  className={`text-xs font-bold ${colors.text} dark:text-primary dark:drop-shadow-[0_0_6px_rgba(255,159,102,0.5)]`}
                   animate={{
                     scale: isHovered ? 1.2 : 1,
                   }}
@@ -119,7 +119,7 @@ export default function SkillCategoryCard({ category, categoryIndex }: SkillCate
               </div>
 
               {/* Progress Bar */}
-              <div className="relative h-2 bg-stone-200 rounded-full overflow-hidden">
+              <div className="relative h-2 bg-stone-200 dark:bg-[#252220] rounded-full overflow-hidden dark:shadow-inner">
                 {/* Background shimmer */}
                 <motion.div
                   className="absolute inset-0 bg-linear-to-r from-transparent via-white/40 to-transparent"

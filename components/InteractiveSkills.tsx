@@ -17,12 +17,12 @@ export default function InteractiveSkills() {
         transition={{ duration: 0.6 }}
         className="text-center mb-12"
       >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-terracotta/10 dark:bg-primary/20 rounded-full mb-4">
-          <Sparkles className="w-4 h-4 text-terracotta dark:text-primary" />
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-terracotta/10 dark:bg-[#1A1614]/90 rounded-full mb-4 border-2 border-terracotta/20 dark:border-primary/40 dark:shadow-[0_0_20px_rgba(255,159,102,0.15)]">
+          <Sparkles className="w-4 h-4 text-terracotta dark:text-primary dark:drop-shadow-[0_0_8px_rgba(255,159,102,0.6)]" />
           <span className="text-sm font-semibold text-terracotta dark:text-primary">Technical Expertise</span>
         </div>
-        <h2 className="text-3xl md:text-4xl font-bold text-stone-800 dark:text-stone-100 mb-4">Skills</h2>
-        <p className="text-base md:text-lg text-stone-600 dark:text-stone-300 max-w-2xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-stone-800 dark:text-white mb-4 dark:drop-shadow-[0_0_25px_rgba(255,159,102,0.25)]">Skills</h2>
+        <p className="text-base md:text-lg text-stone-600 dark:text-stone-300 max-w-2xl mx-auto font-medium">
           A blend of engineering fundamentals and modern development
         </p>
       </motion.div>
@@ -115,12 +115,12 @@ export default function InteractiveSkills() {
               </motion.div>
             </motion.div>
 
-            <h3 className="text-3xl md:text-4xl font-bold mb-3">
-              <span className="bg-clip-text text-transparent bg-linear-to-r from-primary via-terracotta to-amber-600">
+            <h3 className="text-3xl md:text-4xl font-extrabold mb-3">
+              <span className="bg-clip-text text-transparent bg-linear-to-r from-primary via-terracotta to-amber-600 dark:drop-shadow-[0_0_20px_rgba(255,159,102,0.3)]">
                 Research Interests
               </span>
             </h3>
-            <p className="text-stone-600 dark:text-stone-300 text-sm md:text-base max-w-2xl mx-auto">
+            <p className="text-stone-600 dark:text-stone-300 text-sm md:text-base max-w-2xl mx-auto font-medium">
               Areas where theory meets innovation and curiosity drives discovery
             </p>
           </div>
