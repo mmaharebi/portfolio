@@ -38,30 +38,56 @@ Our model predicts $\hat{\mathbf{y}} = X\mathbf{w}$. The vector $\hat{\mathbf{y}
 The ordinary least squares (OLS) problem seeks to find the parameter vector $\mathbf{w}^*$ that minimizes the squared Euclidean distance between the prediction and the true targets:
 
 $$
-\mathbf{w}^* = \arg\min_{\mathbf{w}} \|\mathbf{y} - X\mathbf{w}\|^2
+\mathbf{w}^* = \underset{\mathbf{w}}{\arg\min}\; \|\mathbf{y} - \mathbf{X}\mathbf{w}\|^2
 $$
 
-Geometrically, this is equivalent to finding the vector $\hat{\mathbf{y}} = X\mathbf{w}^*$ in the column space $\mathcal{C}(X)$ that is closest to $\mathbf{y}$. This vector is the **orthogonal projection** of $\mathbf{y}$ onto $\mathcal{C}(X)$.
+Geometrically, this is equivalent to finding the vector $\hat{\mathbf{y}} = \mathbf{X}\mathbf{w}^*$ in the column space $\mathcal{C}(\mathbf{X})$ that is closest to $\mathbf{y}$. This vector is the **orthogonal projection** of $\mathbf{y}$ onto $\mathcal{C}(\mathbf{X})$.
 
-This geometric condition implies that the residual vector, $\mathbf{e} = \mathbf{y} - X\mathbf{w}^*$, must be orthogonal to every vector in $\mathcal{C}(X)$. This can be stated succinctly as:
+This geometric condition implies that the residual vector, $\mathbf{e} = \mathbf{y} - \mathbf{X}\mathbf{w}^*$, must be orthogonal to every vector in $\mathcal{C}(\mathbf{X})$. This can be stated succinctly as:
 
 $$
-X^\top (\mathbf{y} - X\mathbf{w}^*) = \mathbf{0}
+\mathbf{X}^\top (\mathbf{y} - \mathbf{X}\mathbf{w}^*) = \mathbf{0}
 $$
 
 Rearranging this gives the celebrated **normal equations**:
 
 $$
-X^\top X \mathbf{w}^* = X^\top \mathbf{y}
+\mathbf{X}^\top \mathbf{X} \mathbf{w}^* = \mathbf{X}^\top \mathbf{y}
 $$
 
-If the columns of $X$ are linearly independent, the Gram matrix $X^\top X$ is invertible, and we obtain the unique solution:
+If the columns of $\mathbf{X}$ are linearly independent, the Gram matrix $\mathbf{X}^\top \mathbf{X}$ is invertible, and we obtain the unique solution:
 
 $$
-\boxed{\mathbf{w}^* = (X^\top X)^{-1} X^\top \mathbf{y}}
+\boxed{\mathbf{w}^* = (\mathbf{X}^\top \mathbf{X})^{-1} \mathbf{X}^\top \mathbf{y}}
 $$
 
-The matrix $(X^\top X)^{-1} X^\top$ is the **Moore-Penrose pseudoinverse**, often denoted $X^+$. The solution $\mathbf{w}^* = X^+ \mathbf{y}$ exists even when $X^\top X$ is not invertible, providing the minimum-norm solution among all possible minimizers.
+### The Pseudoinverse and SVD
+
+When $\mathbf{X}^\top \mathbf{X}$ is singular or ill-conditioned, we use the **Moore-Penrose pseudoinverse** $\mathbf{X}^+$. Via the singular value decomposition (SVD), write:
+
+$$
+\mathbf{X} = \mathbf{U} \mathbf{\Sigma} \mathbf{V}^\top
+$$
+
+where $\mathbf{U} \in \mathbb{R}^{N \times N}$ and $\mathbf{V} \in \mathbb{R}^{d \times d}$ are orthogonal, and $\mathbf{\Sigma} \in \mathbb{R}^{N \times d}$ contains the singular values $\sigma_i \geq 0$. The pseudoinverse is:
+
+$$
+\mathbf{X}^+ = \mathbf{V} \mathbf{\Sigma}^+ \mathbf{U}^\top
+$$
+
+where $\mathbf{\Sigma}^+$ replaces each nonzero $\sigma_i$ with $1/\sigma_i$. The solution $\mathbf{w}^* = \mathbf{X}^+ \mathbf{y}$ exists for any $\mathbf{X}$ and gives the minimum-norm solution when the system is underdetermined.
+
+**Conditioning:** The condition number $\kappa(\mathbf{X}^\top \mathbf{X}) = (\sigma_{\max}/\sigma_{\min})^2$ measures sensitivity to perturbations. Large $\kappa$ indicates ill-conditioning, amplifying noise and motivating regularization.
+
+### The Hat Matrix and Leverage
+
+The **hat matrix** (or projection matrix) is:
+
+$$
+\mathbf{H} = \mathbf{X}(\mathbf{X}^\top \mathbf{X})^{-1}\mathbf{X}^\top
+$$
+
+It projects $\mathbf{y}$ onto $\mathcal{C}(\mathbf{X})$: $\hat{\mathbf{y}} = \mathbf{H}\mathbf{y}$. The diagonal elements $h_{ii}$ are the **leverage** values, quantifying the influence of observation $i$ on its own prediction. High leverage indicates potential outliers or influential points. The residual $\mathbf{e} = (\mathbf{I} - \mathbf{H})\mathbf{y}$ is orthogonal to $\mathcal{C}(\mathbf{X})$, as required.
 
 ## 2. The Probabilistic View: Maximum Likelihood & The Gauss-Markov Theorem
 
@@ -97,6 +123,30 @@ This reveals that OLS is not merely a convenient heuristic; it is the statistica
 
 Crucially, the **Gauss-Markov Theorem** provides a weaker but more general guarantee: even if the noise is not Gaussian, as long as it is uncorrelated and has zero mean and constant variance (homoscedastic), the OLS estimator is the **Best Linear Unbiased Estimator (BLUE)**. It has the minimum variance among all linear unbiased estimators.
 
+### Gauss-Markov Theorem: A Sketch
+
+**Setup:** Consider any linear unbiased estimator of the form $\tilde{\mathbf{w}} = \mathbf{A}\mathbf{y}$ where $\mathbf{A} \in \mathbb{R}^{d \times N}$. For unbiasedness:
+
+$$
+\mathbb{E}[\tilde{\mathbf{w}}] = \mathbf{A}\mathbb{E}[\mathbf{y}] = \mathbf{A}\mathbf{X}\mathbf{w} = \mathbf{w} \quad \forall \mathbf{w}
+$$
+
+This requires $\mathbf{A}\mathbf{X} = \mathbf{I}$.
+
+**Variance:** The covariance of $\tilde{\mathbf{w}}$ is:
+
+$$
+\mathrm{Cov}(\tilde{\mathbf{w}}) = \mathbf{A} \mathrm{Cov}(\mathbf{y}) \mathbf{A}^\top = \sigma^2 \mathbf{A}\mathbf{A}^\top
+$$
+
+**Optimality:** Among all matrices $\mathbf{A}$ satisfying $\mathbf{A}\mathbf{X} = \mathbf{I}$, the choice $\mathbf{A}^* = (\mathbf{X}^\top \mathbf{X})^{-1}\mathbf{X}^\top$ minimizes the variance (in the sense of the Loewner ordering). This gives:
+
+$$
+\mathrm{Cov}(\hat{\mathbf{w}}_{\mathrm{OLS}}) = \sigma^2 (\mathbf{X}^\top \mathbf{X})^{-1}
+$$
+
+Thus, OLS is BLUE.
+
 ## 3. The Bayesian View: From Regularization to Priors
 
 The MLE perspective assumes we know nothing about $\mathbf{w}$ beforehand. Bayesian inference allows us to incorporate **prior beliefs**. We treat $\mathbf{w}$ as a random variable with a prior distribution $p(\mathbf{w})$.
@@ -116,66 +166,208 @@ $$
 The **Maximum A Posteriori (MAP)** estimate maximizes this posterior probability. Taking the negative log of the posterior gives:
 
 $$
--\log p(\mathbf{w} \mid \mathbf{y}) \propto \frac{1}{2\sigma^2} \|\mathbf{y} - X\mathbf{w}\|^2 + \frac{1}{2} \mathbf{w}^\top \Sigma_p^{-1} \mathbf{w}
+-\log p(\mathbf{w} \mid \mathbf{y}) \propto \frac{1}{2\sigma^2} \|\mathbf{y} - \mathbf{X}\mathbf{w}\|^2 + \frac{1}{2} \mathbf{w}^\top \Sigma_p^{-1} \mathbf{w}
 $$
 
-If we assume a simple spherical prior $\Sigma_p = \tau^2 I$, the MAP estimate becomes the minimizer of:
+If we assume a simple spherical prior $\Sigma_p = \tau^2 \mathbf{I}$, the MAP estimate becomes the minimizer of:
 
 $$
-L(\mathbf{w}) = \|\mathbf{y} - X\mathbf{w}\|^2 + \frac{\sigma^2}{\tau^2} \|\mathbf{w}\|^2
+L(\mathbf{w}) = \|\mathbf{y} - \mathbf{X}\mathbf{w}\|^2 + \frac{\sigma^2}{\tau^2} \|\mathbf{w}\|^2
 $$
 
 The solution to this is:
 
 $$
-\boxed{\hat{\mathbf{w}}_{\mathrm{MAP}} = (X^\top X + \lambda I)^{-1} X^\top \mathbf{y}} \quad \text{where} \quad \lambda = \frac{\sigma^2}{\tau^2}
+\boxed{\hat{\mathbf{w}}_{\mathrm{MAP}} = (\mathbf{X}^\top \mathbf{X} + \lambda \mathbf{I})^{-1} \mathbf{X}^\top \mathbf{y}} \quad \text{where} \quad \lambda = \frac{\sigma^2}{\tau^2}
 $$
 
 This is exactly **Ridge Regression**. The regularization term, often seen as an ad-hoc penalty to prevent overfitting, is now revealed to be the consequence of a Gaussian prior on the parameters.
 
+**Posterior Covariance:** The full posterior distribution is also Gaussian, with covariance:
+
+$$
+\Sigma_{\text{post}} = \left(\frac{1}{\sigma^2}\mathbf{X}^\top \mathbf{X} + \Sigma_p^{-1}\right)^{-1}
+$$
+
+For the isotropic case, this becomes:
+
+$$
+\Sigma_{\text{post}} = \sigma^2 (\mathbf{X}^\top \mathbf{X} + \lambda \mathbf{I})^{-1}
+$$
+
+Notice that regularization reduces posterior uncertainty (smaller eigenvalues) at the cost of introducing bias.
+
+### Bias-Variance Decomposition
+
+For a new test point $\mathbf{x}$, the prediction $\hat{y} = \mathbf{x}^\top \hat{\mathbf{w}}$ has expected squared error that decomposes into three components:
+
+$$
+\mathbb{E}[(y - \hat{y})^2] = \text{Bias}^2 + \text{Variance} + \sigma^2
+$$
+
+where:
+- **Bias:** $(\mathbf{x}^\top \mathbf{w} - \mathbb{E}[\mathbf{x}^\top \hat{\mathbf{w}}])^2$ measures systematic error.
+- **Variance:** $\mathbb{E}[(\mathbf{x}^\top \hat{\mathbf{w}} - \mathbb{E}[\mathbf{x}^\top \hat{\mathbf{w}}])^2]$ measures sensitivity to training data.
+- **Irreducible error:** $\sigma^2$ from the noise.
+
+For OLS, bias is zero but variance can be large (especially when $\kappa(\mathbf{X}^\top \mathbf{X})$ is large). Ridge regression introduces bias by shrinking coefficients, but reduces variance, often improving overall test error—the fundamental **bias-variance tradeoff**.
+
 Other priors lead to different regularizers. For instance, a **Laplacian prior** $p(\mathbf{w}) \propto \exp(-\alpha \|\mathbf{w}\|_1)$ results in an $L_1$ penalty, leading to **LASSO** regression, which encourages sparse solutions.
 
-## 4. Sequential Estimation: RLS and the Kalman Filter
+## 4. The Information-Theoretic View
+
+Linear regression connects deeply to information theory through the Fisher information matrix and mutual information in linear Gaussian channels.
+
+### Fisher Information and the Cramér-Rao Bound
+
+The **Fisher information matrix** quantifies how much information the data $\mathbf{y}$ carries about the parameters $\mathbf{w}$. For the linear Gaussian model $\mathbf{y} = \mathbf{X}\mathbf{w} + \mathbf{v}$ with $\mathbf{v} \sim \mathcal{N}(\mathbf{0}, \sigma^2 \mathbf{I})$, it is:
+
+$$
+\mathcal{I}(\mathbf{w}) = \frac{1}{\sigma^2} \mathbf{X}^\top \mathbf{X}
+$$
+
+The **Cramér-Rao Lower Bound (CRLB)** states that for any unbiased estimator $\hat{\mathbf{w}}$:
+
+$$
+\mathrm{Cov}(\hat{\mathbf{w}}) \succeq \mathcal{I}(\mathbf{w})^{-1} = \sigma^2 (\mathbf{X}^\top \mathbf{X})^{-1}
+$$
+
+The MLE/OLS estimator achieves this bound exactly, making it **efficient**—no unbiased estimator can do better.
+
+### Mutual Information in Linear Gaussian Channels
+
+Consider $\mathbf{w}$ as a random signal with prior $\mathbf{w} \sim \mathcal{N}(\mathbf{0}, \Sigma_w)$, and the observation model $\mathbf{y} = \mathbf{X}\mathbf{w} + \mathbf{v}$. The **mutual information** between $\mathbf{w}$ and $\mathbf{y}$ is:
+
+$$
+I(\mathbf{w}; \mathbf{y}) = \frac{1}{2}\log\det\left(\mathbf{I} + \frac{1}{\sigma^2}\mathbf{X}\Sigma_w \mathbf{X}^\top\right)
+$$
+
+This quantifies how much observing $\mathbf{y}$ reduces uncertainty about $\mathbf{w}$. Via the SVD of $\mathbf{X}$, this depends on the singular values $\sigma_i$ and the prior variance along each singular direction. Regularization (small $\Sigma_w$) reduces mutual information but improves numerical stability and generalization.
+
+## 5. Signal Estimation Theory Connections
+
+Linear regression is a special case of broader signal estimation frameworks.
+
+### Generalized Least Squares (GLS)
+
+When the noise is **correlated** with covariance $\mathrm{Cov}(\mathbf{v}) = \mathbf{\Sigma}_v \neq \sigma^2 \mathbf{I}$, OLS is no longer BLUE. The **Generalized Least Squares (GLS)** estimator is:
+
+$$
+\hat{\mathbf{w}}_{\text{GLS}} = (\mathbf{X}^\top \mathbf{\Sigma}_v^{-1} \mathbf{X})^{-1} \mathbf{X}^\top \mathbf{\Sigma}_v^{-1} \mathbf{y}
+$$
+
+GLS is BLUE for correlated noise, transforming the problem via $\mathbf{\Sigma}_v^{-1/2}$ to recover the OLS structure.
+
+### Linear Minimum Mean Square Error (LMMSE) Estimation
+
+When $\mathbf{w}$ is **random** with known prior $\mathbf{w} \sim \mathcal{N}(\mathbf{0}, \Sigma_w)$, the **LMMSE estimator** (also the Bayesian posterior mean) is:
+
+$$
+\hat{\mathbf{w}}_{\text{LMMSE}} = \Sigma_w \mathbf{X}^\top (\mathbf{X}\Sigma_w \mathbf{X}^\top + \sigma^2 \mathbf{I})^{-1} \mathbf{y}
+$$
+
+This is equivalent to the MAP estimator under Gaussian assumptions and minimizes $\mathbb{E}[\|\mathbf{w} - \hat{\mathbf{w}}\|^2]$ over all linear estimators (biased or unbiased).
+
+### Wiener Filtering and Matched Filtering
+
+- **Wiener Filter:** In the frequency domain (for stationary signals), the LMMSE estimator becomes the Wiener filter, which shapes the spectrum based on signal and noise power spectral densities.
+- **Matched Filter:** For detection in AWGN, the optimal filter maximizes SNR by correlating with the known signal template—geometrically, this is projection onto the signal direction, exactly the OLS perspective.
+
+## 6. Sequential Estimation: RLS and the Kalman Filter
 
 So far, our solutions are "batch" — they require all data at once. In many real-world systems (robotics, finance, online services), data arrives sequentially. We need an efficient way to update our estimate.
 
-The **Recursive Least Squares (RLS)** algorithm does exactly this. It provides an update rule for $\mathbf{w}_k$ given a new data point $$(\boldsymbol{\phi}_k, y_k)$$:
+### Recursive Least Squares (RLS)
+
+**Assumptions:** The parameter $\mathbf{w}$ is static, and observations $(\boldsymbol{\phi}_k, y_k)$ arrive sequentially with measurement model $y_k = \boldsymbol{\phi}_k^\top \mathbf{w} + v_k$, where $v_k$ is zero-mean noise.
+
+The **RLS algorithm** updates the estimate $\mathbf{w}_k$ and its error covariance $\mathbf{P}_k$ recursively:
+
+**Innovation (prediction error):**
 
 $$
-\mathbf{w}_k = \mathbf{w}_{k-1} + \mathbf{g}_k (y_k - \boldsymbol{\phi}_k^\top \mathbf{w}_{k-1})
+\nu_k = y_k - \boldsymbol{\phi}_k^\top \mathbf{w}_{k-1}
+$$
+
+**Gain:**
+
+$$
+\mathbf{g}_k = \frac{\mathbf{P}_{k-1}\boldsymbol{\phi}_k}{1 + \boldsymbol{\phi}_k^\top \mathbf{P}_{k-1}\boldsymbol{\phi}_k}
+$$
+
+**Parameter update:**
+
+$$
+\mathbf{w}_k = \mathbf{w}_{k-1} + \mathbf{g}_k \nu_k
+$$
+
+**Covariance update:**
+
+$$
+\mathbf{P}_k = (\mathbf{I} - \mathbf{g}_k \boldsymbol{\phi}_k^\top) \mathbf{P}_{k-1}
+$$
+
+where $\mathbf{P}_k$ satisfies $\mathbf{P}_k^{-1} = \sum_{i=1}^k \boldsymbol{\phi}_i \boldsymbol{\phi}_i^\top$ (up to a noise variance factor). The gain $\mathbf{g}_k$ balances prior uncertainty and new information.
+
+**Forgetting factor:** A variant uses $\lambda \in (0,1]$ to discount old data, improving tracking in non-stationary environments.
+
+### The Kalman Filter: A General Framework
+
+The **Kalman filter** generalizes RLS to time-varying, dynamic systems. Consider a linear state-space model:
+
+**Process model:**
+
+$$
+\mathbf{x}_k = \mathbf{A} \mathbf{x}_{k-1} + \mathbf{w}_k, \quad \mathbf{w}_k \sim \mathcal{N}(\mathbf{0}, \mathbf{Q})
+$$
+
+**Measurement model:**
+
+$$
+y_k = \mathbf{H}_k \mathbf{x}_k + v_k, \quad v_k \sim \mathcal{N}(0, R)
+$$
+
+The Kalman filter provides the optimal (LMMSE) estimate of $\mathbf{x}_k$ via a **predict-correct** cycle:
+
+**Prediction:**
+
+$$
+\hat{\mathbf{x}}_{k|k-1} = \mathbf{A} \hat{\mathbf{x}}_{k-1|k-1}
 $$
 
 $$
-\mathbf{g}_k = P_k \boldsymbol{\phi}_k = \frac{P_{k-1}\boldsymbol{\phi}_k}{1 + \boldsymbol{\phi}_k^\top P_{k-1}\boldsymbol{\phi}_k}
+\mathbf{P}_{k|k-1} = \mathbf{A} \mathbf{P}_{k-1|k-1} \mathbf{A}^\top + \mathbf{Q}
+$$
+
+**Innovation and its covariance:**
+
+$$
+\nu_k = y_k - \mathbf{H}_k \hat{\mathbf{x}}_{k|k-1}
 $$
 
 $$
-P_k = (I - \mathbf{g}_k \boldsymbol{\phi}_k^\top) P_{k-1}
+S_k = \mathbf{H}_k \mathbf{P}_{k|k-1} \mathbf{H}_k^\top + R
 $$
 
-where $P_k = (X_k^\top X_k)^{-1}$ is the inverse covariance matrix, updated recursively.
-
-This structure is a specific instance of a more general and powerful tool: the **Kalman Filter**. The Kalman filter is the optimal recursive estimator for linear dynamical systems with Gaussian noise. Consider a system where the state $\mathbf{x}_k$ evolves over time:
+**Kalman gain:**
 
 $$
-\mathbf{x}_k = A \mathbf{x}_{k-1} + \mathbf{w}_k \quad (\text{Process model}, \mathbf{w}_k \sim \mathcal{N}(0, Q))
+\mathbf{K}_k = \mathbf{P}_{k|k-1} \mathbf{H}_k^\top S_k^{-1}
+$$
+
+**Correction:**
+
+$$
+\hat{\mathbf{x}}_{k|k} = \hat{\mathbf{x}}_{k|k-1} + \mathbf{K}_k \nu_k
 $$
 
 $$
-\mathbf{y}_k = H_k \mathbf{x}_k + \mathbf{v}_k \quad (\text{Measurement model}, \mathbf{v}_k \sim \mathcal{N}(0, R))
+\mathbf{P}_{k|k} = (\mathbf{I} - \mathbf{K}_k \mathbf{H}_k) \mathbf{P}_{k|k-1}
 $$
 
-The Kalman filter provides the optimal estimate of $\mathbf{x}_k$ through a two-step predict-correct cycle. If we consider our regression parameter $\mathbf{w}$ to be a static state ($\mathbf{x}_k = \mathbf{w}$, $A=I$, $Q=0$) observed through measurements $(\mathbf{y}_k, H_k=\boldsymbol{\phi}_k^\top)$, the Kalman filter equations reduce to the RLS algorithm.
+**RLS as a special case:** For static parameters, set $\mathbf{A} = \mathbf{I}$, $\mathbf{Q} = \mathbf{0}$, $\mathbf{H}_k = \boldsymbol{\phi}_k^\top$, and recover the RLS update exactly. The innovation $\nu_k$ is the new information not predicted by the model, and the gain $\mathbf{K}_k$ optimally weights it based on relative uncertainties $\mathbf{P}_{k|k-1}$ and $R$.
 
-The filter's core update is:
-
-$$
-\hat{\mathbf{x}}_{k|k} = \hat{\mathbf{x}}_{k|k-1} + K_k (\mathbf{y}_k - H_k \hat{\mathbf{x}}_{k|k-1})
-$$
-
-The term $(\mathbf{y}_k - H_k \hat{\mathbf{x}}_{k|k-1})$ is the **innovation** or **measurement residual** — the new information not predicted by the model. The **Kalman gain** $K_k$ determines how much to trust this innovation.
-
-## 5. The Bridge to Reinforcement Learning
+## 7. The Bridge to Reinforcement Learning
 
 This recursive, error-driven update structure forms a conceptual bridge to modern reinforcement learning. Consider the **temporal-difference (TD) learning** update for a value function $Q(s, a)$:
 
@@ -183,21 +375,43 @@ $$
 Q(s, a) \leftarrow Q(s, a) + \alpha \left(r + \gamma \max_{a'} Q(s', a') - Q(s, a)\right)
 $$
 
-The structure is strikingly similar to the Kalman filter update:
+The structure mirrors the Kalman/RLS update:
 
 $$
-	\text{New Estimate} \leftarrow \text{Old Estimate} + \text{Gain} \times (\text{Prediction Error})
+\text{New Estimate} \leftarrow \text{Old Estimate} + \text{Gain} \times (\text{Innovation})
 $$
 
-The TD error acts as the innovation signal, correcting the value estimate based on new experience. This parallel is not merely an analogy. When using linear function approximation for value functions, many RL algorithms are, in fact, forms of recursive least-squares estimation (e.g., LSTD, TD($\lambda$)). Both fields are fundamentally about using noisy, sequential data to recursively estimate hidden quantities of interest, whether they are physical states or optimal values.
+The TD error acts as the innovation signal, correcting the value estimate based on new experience. This parallel is not merely an analogy. When using **linear function approximation** for value functions ($Q(s,a) \approx \mathbf{w}^\top \boldsymbol{\phi}(s,a)$), many RL algorithms (e.g., LSTD, TD($\lambda$)) are forms of recursive least-squares estimation. Both fields share the same core principle: using noisy, sequential data to recursively estimate hidden quantities—whether physical states or optimal values.## 8. Conclusion
 
-## 6. Conclusion
+Linear regression is far more than a simple curve-fitting tool. It is a microcosm of the core principles of estimation, learning, and information processing. By viewing it through multiple lenses, we uncover a profound web of connections:
 
-Linear regression is far more than a simple curve-fitting tool. It is a microcosm of the core principles of estimation and learning. By viewing it through different lenses, we uncover a profound web of connections:
+- **Geometry** reveals the solution as an orthogonal projection, with the SVD providing insight into ill-conditioning and the pseudoinverse.
+- **Probability** justifies it as the maximum likelihood estimator under Gaussian noise and proves it is BLUE via the Gauss-Markov theorem.
+- **Bayesian Inference** recasts regularization as encoding prior beliefs, with the bias-variance tradeoff governing generalization.
+- **Information Theory** connects Fisher information, the Cramér-Rao bound, and mutual information in linear Gaussian channels, revealing fundamental limits on estimation.
+- **Signal Estimation** extends the framework to GLS (correlated noise), LMMSE (random parameters), and Wiener/matched filtering.
+- **Sequential Estimation** transforms batch solutions into recursive algorithms (RLS, Kalman filter) that operate in real-time with precise covariance updates.
+- **Reinforcement Learning** shares the same recursive, innovation-driven structure, unifying value estimation with state estimation.
 
-- **Geometry** reveals the solution as an optimal projection in a vector space.
-- **Probability** justifies it as the most likely estimator under standard noise models and the best linear unbiased estimator more generally.
-- **Bayesian Inference** recasts regularization as a principled way to encode prior knowledge.
-- **State-space models** transform it into a powerful recursive estimator that operates in real-time and provides the blueprint for algorithms in signal processing, control theory, and even reinforcement learning.
+This journey reveals a unifying theme: **learning is a process of updating beliefs from data under uncertainty**. Linear regression, in its elegance and depth, is our first and most fundamental guide to this landscape—a bridge connecting geometry, probability, information theory, signal processing, control, and modern machine learning.
 
-This journey reveals a unifying theme: learning is a process of updating beliefs in the face of new data. And linear regression, in its elegance and depth, is our first and most fundamental guide to this landscape.
+## References and Further Reading
+
+**Linear Models and Estimation:**
+- Seber, G. A. F., & Lee, A. J. (2003). *Linear Regression Analysis* (2nd ed.). Wiley.
+- Björck, Å. (1996). *Numerical Methods for Least Squares Problems*. SIAM.
+- Kay, S. M. (1993). *Fundamentals of Statistical Signal Processing, Volume I: Estimation Theory*. Prentice Hall.
+
+**Bayesian Methods and Regularization:**
+- Bishop, C. M. (2006). *Pattern Recognition and Machine Learning*. Springer.
+- Murphy, K. P. (2012). *Machine Learning: A Probabilistic Perspective*. MIT Press.
+
+**Kalman Filtering and Recursive Estimation:**
+- Simon, D. (2006). *Optimal State Estimation*. Wiley.
+- Grewal, M. S., & Andrews, A. P. (2014). *Kalman Filtering: Theory and Practice Using MATLAB* (4th ed.). Wiley.
+
+**Information Theory:**
+- Cover, T. M., & Thomas, J. A. (2006). *Elements of Information Theory* (2nd ed.). Wiley.
+
+**Diagnostics and Computational Methods:**
+- Cook, R. D., & Weisberg, S. (1982). *Residuals and Influence in Regression*. Chapman and Hall.
