@@ -180,16 +180,16 @@ export default function ContactForm() {
       <div className="relative bg-white/80 dark:bg-[#1A1614]/90 backdrop-blur-sm rounded-2xl p-6 md:p-8 border-2 border-stone-200 dark:border-[#3D3530] shadow-xl dark:shadow-[0_8px_40px_rgba(255,159,102,0.2)]">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-terracotta/10 rounded-full mb-4">
-            <Sparkles className="w-4 h-4 text-terracotta" />
-            <span className="text-sm font-semibold text-terracotta">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-terracotta/10 dark:bg-[#1A1614]/90 rounded-full mb-4 border-2 border-terracotta/20 dark:border-primary/40 dark:shadow-[0_0_20px_rgba(255,159,102,0.15)]">
+            <Sparkles className="w-4 h-4 text-terracotta dark:text-primary dark:drop-shadow-[0_0_8px_rgba(255,159,102,0.6)]" />
+            <span className="text-sm font-semibold text-terracotta dark:text-primary">
               Send a Message
             </span>
           </div>
-          <h3 className="text-2xl md:text-3xl font-bold text-stone-800 dark:text-stone-100 mb-2">
+          <h3 className="text-2xl md:text-3xl font-extrabold text-stone-800 dark:text-white mb-2 dark:drop-shadow-[0_0_20px_rgba(255,159,102,0.25)]">
             Let&apos;s Start a Conversation
           </h3>
-          <p className="text-stone-600 dark:text-stone-300">
+          <p className="text-stone-600 dark:text-stone-300 font-medium">
             Fill out the form below and I&apos;ll get back to you soon
           </p>
         </div>
