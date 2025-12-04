@@ -155,12 +155,24 @@ const projectsData: Project[] = [
     year: "2025",
     category: "Research",
     githubUrl: "https://github.com/mmaharebi/fdtd-pec-cavity",
-    demoUrl: "/blog/fdtd2d-pec-cavity", // if keeping the blog slug
+    demoUrl: "/blog/fdtd2d-pec-cavity",
+  },
+  {
+    title: "Fiber Mode Perturbation Analysis",
+    description:
+      "Rigorous Sturm–Liouville operator theory applied to optical fiber eigenmodes. First-order perturbation formulas for index, radius, and absorption; validated numerically with publication-quality results.",
+    technologies: ["Python", "SciPy", "Operator Theory"],
+    tags: ["Photonics", "Perturbation Theory", "Waveguides"],
+    year: "2025",
+    category: "Research",
+    githubUrl: "https://github.com/mmaharebi/fiber-perturbation",
+    demoUrl: "/blog/fiber-mode-perturbation",
+    highlight: true,
   },
   {
     title: "5G Demo Platform (Internship)",
     description:
-      "Gesture-controlled demo for Iran’s first 5G showcase: Arduino + Leap Motion for real-time robotic control illustrating low-latency links.",
+      "Gesture-controlled demo for Iran's first 5G showcase: Arduino + Leap Motion for real-time robotic control illustrating low-latency links.",
     technologies: ["Arduino", "C++", "Leap Motion"],
     tags: ["5G", "IoT", "Real-Time Systems"],
     year: "2019",
