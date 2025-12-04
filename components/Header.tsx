@@ -63,8 +63,8 @@ export default function Header({ showBackButton = false }: HeaderProps) {
       <header 
         className={`sticky top-0 z-50 w-full border-b transition-all duration-300 ${
           scrolled 
-            ? "backdrop-blur-xl bg-white/90 border-stone-200 shadow-lg" 
-            : "backdrop-blur-md bg-white/80 border-stone-200/50 shadow-sm"
+            ? "backdrop-blur-xl bg-white/90 dark:bg-[#0A0908]/95 border-stone-200 dark:border-[#3D3530] shadow-lg dark:shadow-[0_4px_20px_rgba(255,159,102,0.1)]" 
+            : "backdrop-blur-md bg-white/80 dark:bg-[#0A0908]/85 border-stone-200/50 dark:border-[#3D3530]/50 shadow-sm"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -74,7 +74,7 @@ export default function Header({ showBackButton = false }: HeaderProps) {
               {shouldShowBack && (
                 <button
                   onClick={handleBack}
-                  className="flex items-center gap-2 px-3 py-2 text-stone-600 hover:text-terracotta hover:bg-amber-50 rounded-lg transition-all duration-300"
+                  className="flex items-center gap-2 px-3 py-2 text-stone-600 dark:text-stone-300 hover:text-terracotta dark:hover:text-primary hover:bg-amber-50 dark:hover:bg-[#1A1614] rounded-lg transition-all duration-300"
                   aria-label="Go back"
                 >
                   <ArrowLeft className="w-5 h-5" />
@@ -90,7 +90,7 @@ export default function Header({ showBackButton = false }: HeaderProps) {
                     whileHover={{ rotate: 180 }}
                     transition={{ duration: 0.5 }}
                   >
-                    <Sparkles className="w-6 h-6 text-terracotta" />
+                    <Sparkles className="w-6 h-6 text-terracotta dark:text-primary" />
                   </motion.div>
                   <span className="text-xl font-bold bg-clip-text text-transparent bg-linear-[135deg] from-terracotta from-10% via-primary via-50% to-amber-600 to-90% group-hover:scale-105 transition-transform duration-300">
                     Mahdy
@@ -105,22 +105,22 @@ export default function Header({ showBackButton = false }: HeaderProps) {
             {/* Mobile Menu Button - Creative Morph Animation */}
             <motion.button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden relative w-12 h-12 rounded-xl bg-linear-to-br from-terracotta/10 to-amber-100 hover:from-terracotta/20 hover:to-amber-200 flex items-center justify-center transition-all duration-300"
+              className="md:hidden relative w-12 h-12 rounded-xl bg-linear-to-br from-terracotta/10 dark:from-primary/20 to-amber-100 dark:to-[#1A1614] hover:from-terracotta/20 dark:hover:from-primary/30 hover:to-amber-200 dark:hover:to-[#252220] flex items-center justify-center transition-all duration-300 dark:shadow-[0_0_15px_rgba(255,159,102,0.2)]"
               whileTap={{ scale: 0.9 }}
               aria-label="Toggle menu"
             >
               <div className="relative w-6 h-5 flex flex-col justify-center items-center">
                 <motion.span
                   animate={isMobileMenuOpen ? { rotate: 45, y: 0 } : { rotate: 0, y: -8 }}
-                  className="absolute w-6 h-0.5 bg-terracotta rounded-full transition-all"
+                  className="absolute w-6 h-0.5 bg-terracotta dark:bg-primary rounded-full transition-all"
                 />
                 <motion.span
                   animate={isMobileMenuOpen ? { opacity: 0, scale: 0 } : { opacity: 1, scale: 1 }}
-                  className="absolute w-6 h-0.5 bg-primary rounded-full"
+                  className="absolute w-6 h-0.5 bg-primary dark:bg-secondary rounded-full"
                 />
                 <motion.span
                   animate={isMobileMenuOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 8 }}
-                  className="absolute w-6 h-0.5 bg-amber-600 rounded-full transition-all"
+                  className="absolute w-6 h-0.5 bg-amber-600 dark:bg-accent rounded-full transition-all"
                 />
               </div>
             </motion.button>

@@ -43,14 +43,14 @@ export default function InteractiveJourney({ items }: InteractiveJourneyProps) {
         transition={{ duration: 0.6 }}
         className="text-center mb-12 md:mb-16 px-4"
       >
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-terracotta/10 rounded-full mb-4">
-          <Sparkles className="w-4 h-4 text-terracotta" />
-          <span className="text-sm font-semibold text-terracotta">Career Path</span>
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-terracotta/10 dark:bg-primary/25 rounded-full mb-4 border-2 border-terracotta/20 dark:border-primary/40">
+          <Sparkles className="w-4 h-4 text-terracotta dark:text-primary" />
+          <span className="text-sm font-semibold text-terracotta dark:text-primary">Career Path</span>
         </div>
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-stone-800 mb-4">
+        <h2 className="text-2xl md:text-3xl lg:text-5xl font-extrabold text-stone-900 dark:text-stone-50 mb-4">
           My Technical Journey
         </h2>
-        <p className="text-sm md:text-base lg:text-lg text-stone-600 max-w-2xl mx-auto">
+        <p className="text-sm md:text-base lg:text-lg text-stone-700 dark:text-stone-200 max-w-2xl mx-auto font-medium">
           Every milestone shaped who I am today
         </p>
       </motion.div>
@@ -58,7 +58,7 @@ export default function InteractiveJourney({ items }: InteractiveJourneyProps) {
       {/* Timeline */}
       <div className="relative max-w-4xl mx-auto px-4 pb-24">
         {/* Vertical Line - Centered on all screen sizes, extends to the end marker */}
-        <div className="absolute left-1/2 -translate-x-px top-0 h-[calc(100%+3rem)] w-0.5 bg-linear-to-b from-primary via-secondary to-accent opacity-30" />
+        <div className="absolute left-1/2 -translate-x-px top-0 h-[calc(100%+3rem)] w-0.5 bg-linear-to-b from-primary via-secondary to-accent opacity-40 dark:opacity-60 dark:shadow-[0_0_8px_rgba(255,159,102,0.5)]" />
 
         {/* Timeline Items */}
         <div className="space-y-8 md:space-y-12">
@@ -87,11 +87,11 @@ export default function InteractiveJourney({ items }: InteractiveJourneyProps) {
                   <div className="absolute left-1/2 -translate-x-1/2 z-10">
                     <div className="relative group">
                       {/* Subtle glow effect */}
-                      <div className="absolute -inset-1 bg-primary/20 blur-sm group-hover:bg-primary/30 transition-all rounded-full" />
+                      <div className="absolute -inset-1 bg-primary/20 dark:bg-primary/40 blur-sm group-hover:bg-primary/30 dark:group-hover:bg-primary/60 transition-all rounded-full" />
                       
                       {/* Badge - matches the warm cream/beige theme */}
-                      <div className="relative px-4 py-1.5 bg-white/90 backdrop-blur-sm border border-stone-300/50 text-xs md:text-sm font-semibold rounded-full shadow-sm group-hover:shadow-md transition-all">
-                        <span className="text-stone-700">
+                      <div className="relative px-4 py-1.5 bg-white/90 dark:bg-[#1A1614]/95 backdrop-blur-sm border-2 border-stone-300/50 dark:border-primary/50 text-xs md:text-sm font-bold rounded-full shadow-sm group-hover:shadow-md dark:shadow-[0_4px_16px_rgba(255,159,102,0.3)] transition-all">
+                        <span className="text-stone-800 dark:text-primary">
                           {getStartYear(items[index + 1].year)}
                         </span>
                       </div>

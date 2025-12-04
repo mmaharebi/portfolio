@@ -32,7 +32,7 @@ export default function BlogCard({
     >
       <Link href={`/blog/${post.slug}`}>
         <motion.div
-          className="h-full bg-white/80 backdrop-blur-sm rounded-3xl p-6 border-2 border-stone-200 shadow-lg transition-all duration-300 flex flex-col"
+          className="h-full bg-white/80 dark:bg-[#1A1614]/90 backdrop-blur-sm rounded-3xl p-6 border-2 border-stone-200 dark:border-[#3D3530] shadow-lg dark:shadow-[0_4px_20px_rgba(255,159,102,0.15)] transition-all duration-300 flex flex-col"
           whileHover={{
             y: -8,
             borderColor: "var(--primary)",
@@ -65,13 +65,13 @@ export default function BlogCard({
             </div>
 
             {/* Title */}
-            <h3 className="text-xl font-bold text-stone-800 mb-3 line-clamp-2 group-hover:text-primary transition-colors">
+            <h3 className="text-xl font-bold text-stone-800 dark:text-stone-100 mb-3 line-clamp-2 group-hover:text-primary dark:group-hover:text-primary transition-colors">
               {post.title}
             </h3>
 
             {/* Description */}
             {post.description && (
-              <p className="text-stone-600 text-sm leading-relaxed mb-4 line-clamp-3 flex-1">
+              <p className="text-stone-600 dark:text-stone-300 text-sm leading-relaxed mb-4 line-clamp-3 flex-1">
                 {post.description}
               </p>
             )}

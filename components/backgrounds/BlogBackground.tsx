@@ -4,16 +4,19 @@ import { motion } from "motion/react";
 
 export default function BlogBackground() {
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden bg-linear-to-br from-stone-50 via-cream to-amber-50/40">
+    <div className="fixed inset-0 -z-10 overflow-hidden bg-linear-to-br from-stone-50 via-cream to-amber-50/40 dark:from-[#0A0908] dark:via-[#0D0B0A] dark:to-[#100E0D]">
       {/* Geometric grid pattern with parallax layers */}
-      <svg className="absolute inset-0 w-full h-full opacity-40" xmlns="http://www.w3.org/2000/svg">
+      <svg className="absolute inset-0 w-full h-full opacity-40 dark:opacity-30" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-            <circle cx="20" cy="20" r="1" fill="#D97757" opacity="0.15" />
+            <circle cx="20" cy="20" r="1" className="dark:hidden" fill="#D97757" opacity="0.15" />
+            <circle cx="20" cy="20" r="1" className="hidden dark:block" fill="#FF9F66" opacity="0.25" />
           </pattern>
           <linearGradient id="blogGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#D97757" stopOpacity="0.08" />
-            <stop offset="100%" stopColor="#F59E0B" stopOpacity="0.04" />
+            <stop offset="0%" className="dark:hidden" stopColor="#D97757" stopOpacity="0.08" />
+            <stop offset="100%" className="dark:hidden" stopColor="#F59E0B" stopOpacity="0.04" />
+            <stop offset="0%" className="hidden dark:block" stopColor="#FF9F66" stopOpacity="0.12" />
+            <stop offset="100%" className="hidden dark:block" stopColor="#FFC078" stopOpacity="0.06" />
           </linearGradient>
         </defs>
         <rect width="100%" height="100%" fill="url(#grid)" />
@@ -29,7 +32,7 @@ export default function BlogBackground() {
         {[...Array(6)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute h-full w-px bg-linear-to-b from-transparent via-terracotta/10 to-transparent"
+            className="absolute h-full w-px bg-linear-to-b from-transparent via-terracotta/10 dark:via-primary/20 to-transparent"
             style={{
               left: `${15 + i * 15}%`,
               transform: "rotate(15deg)",
@@ -57,7 +60,7 @@ export default function BlogBackground() {
         }}
         transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
       >
-        <div className="w-full h-full bg-linear-to-br from-terracotta/5 to-transparent rounded-full blur-2xl" />
+        <div className="w-full h-full bg-linear-to-br from-terracotta/5 dark:from-primary/12 to-transparent rounded-full blur-2xl" />
       </motion.div>
 
       <motion.div
@@ -68,7 +71,7 @@ export default function BlogBackground() {
         }}
         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
       >
-        <div className="w-full h-full bg-linear-to-tl from-amber-400/6 to-transparent rounded-full blur-2xl" />
+        <div className="w-full h-full bg-linear-to-tl from-amber-400/6 dark:from-secondary/14 to-transparent rounded-full blur-2xl" />
       </motion.div>
 
       {/* Wavy lines */}
@@ -114,7 +117,7 @@ export default function BlogBackground() {
           key={i}
           className={`absolute ${
             i % 3 === 0 ? "w-4 h-4 rounded-full" : i % 3 === 1 ? "w-3 h-3 rotate-45" : "w-2 h-2"
-          } bg-terracotta/20`}
+          } bg-terracotta/20 dark:bg-primary/35 dark:shadow-[0_0_6px_rgba(255,159,102,0.5)]`}
           style={{
             top: `${20 + (i * 8)}%`,
             left: `${10 + (i % 5) * 18}%`,

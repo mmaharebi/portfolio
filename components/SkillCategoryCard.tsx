@@ -24,10 +24,10 @@ export default function SkillCategoryCard({ category, categoryIndex }: SkillCate
       transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
       onHoverStart={() => setIsSelected(true)}
       onHoverEnd={() => setIsSelected(false)}
-      className={`relative bg-white/80 backdrop-blur-sm rounded-2xl p-6 border-2 transition-all duration-300 cursor-pointer overflow-hidden ${
+      className={`relative bg-white/80 dark:bg-[#1A1614]/90 backdrop-blur-sm rounded-2xl p-6 border-2 transition-all duration-300 cursor-pointer overflow-hidden ${
         isSelected
           ? `${colors.border} shadow-xl ${colors.glow}`
-          : "border-stone-200 shadow-sm hover:shadow-lg"
+          : "border-stone-200 dark:border-[#3D3530] shadow-sm hover:shadow-lg dark:hover:shadow-[0_4px_20px_rgba(255,159,102,0.15)]"
       }`}
     >
       {/* Animated background gradient */}
@@ -79,7 +79,7 @@ export default function SkillCategoryCard({ category, categoryIndex }: SkillCate
         >
           <Icon className={`w-6 h-6 ${colors.text}`} />
         </motion.div>
-        <h3 className="text-xl font-bold text-stone-800">{category.title}</h3>
+        <h3 className="text-xl font-bold text-stone-800 dark:text-stone-100">{category.title}</h3>
       </div>
 
       {/* Skills List */}

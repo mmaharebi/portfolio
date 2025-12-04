@@ -101,7 +101,7 @@ export default function ProjectShowcase({ projects }: ProjectShowcaseProps) {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/80 backdrop-blur-md rounded-full border-2 border-primary/20 shadow-lg mb-6">
+          <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/80 dark:bg-[#1A1614]/90 backdrop-blur-md rounded-full border-2 border-primary/20 dark:border-primary/40 shadow-lg dark:shadow-[0_0_15px_rgba(255,159,102,0.2)] mb-6">
             <motion.div
               animate={{
                 rotate: [0, 360],
@@ -117,10 +117,10 @@ export default function ProjectShowcase({ projects }: ProjectShowcaseProps) {
             <span className="text-sm font-bold text-primary">Portfolio</span>
           </div>
 
-          <h2 className="text-3xl md:text-5xl font-bold text-stone-800 mb-4">
+          <h2 className="text-3xl md:text-5xl font-bold text-stone-800 dark:text-stone-100 mb-4">
             Featured Projects
           </h2>
-          <p className="text-lg text-stone-600 max-w-2xl mx-auto">
+          <p className="text-lg text-stone-600 dark:text-stone-300 max-w-2xl mx-auto">
             Research projects, course work, and technical explorations in electromagnetics and signal processing
           </p>
         </motion.div>
@@ -159,7 +159,7 @@ export default function ProjectShowcase({ projects }: ProjectShowcaseProps) {
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm transition-all ${
                   selectedCategory === category
                     ? `bg-linear-to-r ${colors.bg} ${colors.text} border-2 ${colors.border} shadow-lg`
-                    : "bg-white/80 text-stone-600 border-2 border-stone-200 hover:border-primary"
+                    : "bg-white/80 dark:bg-[#1A1614]/80 text-stone-600 dark:text-stone-300 border-2 border-stone-200 dark:border-[#3D3530] hover:border-primary dark:hover:border-primary"
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -179,7 +179,7 @@ export default function ProjectShowcase({ projects }: ProjectShowcaseProps) {
           >
             <div className="flex items-center gap-2 mb-6">
               <Sparkles className="w-5 h-5 text-primary" />
-              <h3 className="text-xl font-bold text-stone-800">Highlighted Projects</h3>
+              <h3 className="text-xl font-bold text-stone-800 dark:text-stone-100">Highlighted Projects</h3>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
@@ -231,7 +231,7 @@ export default function ProjectShowcase({ projects }: ProjectShowcaseProps) {
             className="text-center py-20"
           >
             <div className="text-6xl mb-4">🔍</div>
-            <p className="text-stone-600 text-lg">No projects found in this category</p>
+            <p className="text-stone-600 dark:text-stone-400 text-lg">No projects found in this category</p>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

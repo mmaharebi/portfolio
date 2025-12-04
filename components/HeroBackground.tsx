@@ -14,7 +14,7 @@ export default function HeroBackground({ parallaxX, parallaxY, y1, y2 }: HeroBac
     <div className="absolute inset-0 w-full overflow-hidden pointer-events-none">
       {/* Floating geometric shapes - responsive positioning */}
       <motion.div
-        className="absolute top-20 left-4 sm:left-10 md:left-20 w-20 sm:w-24 md:w-32 h-20 sm:h-24 md:h-32 border-4 border-primary/20 rounded-2xl"
+        className="absolute top-20 left-4 sm:left-10 md:left-20 w-20 sm:w-24 md:w-32 h-20 sm:h-24 md:h-32 border-4 border-primary/20 dark:border-primary/40 dark:shadow-[0_0_20px_rgba(255,159,102,0.4)] rounded-2xl"
         animate={{
           rotate: [0, 90, 0],
           scale: [1, 1.1, 1],
@@ -31,7 +31,7 @@ export default function HeroBackground({ parallaxX, parallaxY, y1, y2 }: HeroBac
       />
 
       <motion.div
-        className="absolute top-1/4 right-4 sm:right-10 md:right-32 w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 bg-linear-to-br from-secondary/30 to-amber-400/20 rounded-full"
+        className="absolute top-1/4 right-4 sm:right-10 md:right-32 w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 bg-linear-to-br from-secondary/30 dark:from-secondary/50 to-amber-400/20 dark:to-primary/35 rounded-full dark:shadow-[0_0_40px_rgba(255,192,120,0.5)]"
         animate={{
           y: [0, -30, 0],
           scale: [1, 1.2, 1],
@@ -48,7 +48,7 @@ export default function HeroBackground({ parallaxX, parallaxY, y1, y2 }: HeroBac
       />
 
       <motion.div
-        className="absolute bottom-32 left-1/4 w-32 sm:w-36 md:w-40 h-32 sm:h-36 md:h-40 border-4 border-accent/20"
+        className="absolute bottom-32 left-1/4 w-32 sm:w-36 md:w-40 h-32 sm:h-36 md:h-40 border-4 border-accent/20 dark:border-accent/45 dark:shadow-[0_0_25px_rgba(255,140,66,0.5)]"
         style={{
           borderRadius: "60% 40% 30% 70%/60% 30% 70% 40%",
           x: parallaxX,
@@ -71,7 +71,7 @@ export default function HeroBackground({ parallaxX, parallaxY, y1, y2 }: HeroBac
 
       {/* Animated gradient orbs */}
       <motion.div
-        className="absolute top-40 right-1/4 w-48 sm:w-56 md:w-64 h-48 sm:h-56 md:h-64 bg-linear-to-br from-terracotta/40 to-transparent rounded-full blur-3xl"
+        className="absolute top-40 right-1/4 w-48 sm:w-56 md:w-64 h-48 sm:h-56 md:h-64 bg-linear-to-br from-terracotta/40 dark:from-primary/60 to-transparent rounded-full blur-3xl"
         animate={{
           scale: [1, 1.3, 1],
           opacity: [0.4, 0.7, 0.4],
@@ -85,7 +85,7 @@ export default function HeroBackground({ parallaxX, parallaxY, y1, y2 }: HeroBac
       />
 
       <motion.div
-        className="absolute bottom-40 left-1/3 w-72 sm:w-80 md:w-96 h-72 sm:h-80 md:h-96 bg-linear-to-tr from-amber-300/30 to-transparent rounded-full blur-3xl"
+        className="absolute bottom-40 left-1/3 w-72 sm:w-80 md:w-96 h-72 sm:h-80 md:h-96 bg-linear-to-tr from-amber-300/30 dark:from-secondary/55 to-transparent rounded-full blur-3xl"
         animate={{
           scale: [1, 1.4, 1],
           opacity: [0.3, 0.6, 0.3],
@@ -103,7 +103,7 @@ export default function HeroBackground({ parallaxX, parallaxY, y1, y2 }: HeroBac
       {[...Array(20)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-1 h-1 bg-primary/40 rounded-full"
+          className="absolute w-1 h-1 bg-primary/40 dark:bg-primary/70 dark:shadow-[0_0_4px_rgba(255,159,102,0.8)] rounded-full"
           style={{
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,

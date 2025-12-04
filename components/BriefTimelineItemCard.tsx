@@ -73,7 +73,7 @@ export default function BriefTimelineItemCard({
         >
           {/* Animated glow effect */}
           <motion.div
-            className={`absolute inset-0 rounded-full blur-xl opacity-0`}
+            className={`absolute inset-0 rounded-full blur-xl opacity-0 dark:blur-2xl`}
             style={{ backgroundColor: colors.borderColor }}
             animate={{
               opacity: isHovered ? 0.3 : 0,
@@ -112,7 +112,7 @@ export default function BriefTimelineItemCard({
               rotate: isHovered ? [0, -3, 3, 0] : 0,
             }}
             transition={{ duration: 0.5 }}
-            className={`relative w-16 h-16 md:w-20 md:h-20 rounded-full ${colors.bg} border-2 shadow-lg flex items-center justify-center bg-white overflow-hidden`}
+            className={`relative w-16 h-16 md:w-20 md:h-20 rounded-full ${colors.bg} border-2 shadow-lg dark:shadow-[0_4px_20px_rgba(255,159,102,0.4)] flex items-center justify-center bg-white dark:bg-[#0A0908] overflow-hidden`}
             style={{ borderColor: colors.borderColor }}
           >
             {/* Subtle gradient overlay */}
@@ -144,7 +144,7 @@ export default function BriefTimelineItemCard({
         className="relative mb-2 md:mb-3"
       >
         <div
-          className={`relative inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border-2 bg-white shadow-sm`}
+          className={`relative inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border-2 bg-white dark:bg-[#1A1614] shadow-sm dark:shadow-[0_4px_16px_rgba(255,159,102,0.3)]`}
           style={{ borderColor: colors.borderColor }}
         >
           {/* Shimmer effect on hover */}
@@ -173,7 +173,7 @@ export default function BriefTimelineItemCard({
       {/* Title */}
       <motion.p
         ref={titleRef}
-        className="text-center text-sm md:text-base font-semibold text-stone-800 leading-snug px-2 mb-1"
+        className="text-center text-sm md:text-base font-bold text-stone-900 dark:text-stone-50 leading-snug px-2 mb-1"
         animate={{
           y: isHovered ? -1 : 0,
         }}

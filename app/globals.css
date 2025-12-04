@@ -57,18 +57,31 @@ body {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #1A1110;
-    --surface: #2D1810;
-    --surface-hover: #3D2418;
-    --foreground: #F5E6D3;
-    --foreground-secondary: #D4C4B0;
-    --foreground-muted: #A89580;
-    --primary: #E8915F;
-    --primary-hover: #F5A573;
-    --secondary: #D4A574;
-    --accent: #C88A5F;
-    --border: #4A3628;
-    --shadow: rgba(232, 145, 95, 0.2);
+    /* Deep cosmic backgrounds - inspired by night sky and deep earth */
+    --background: #0A0908;
+    --surface: #1A1614;
+    --surface-hover: #252220;
+    
+    /* Luminous text - like starlight and ember glow */
+    --foreground: #F8F0E8;
+    --foreground-secondary: #E8D5C4;
+    --foreground-muted: #B8A599;
+    
+    /* Vibrant accent colors - molten copper, burning amber, celestial gold */
+    --primary: #FF9F66;
+    --primary-hover: #FFB580;
+    --secondary: #FFC078;
+    --accent: #FF8C42;
+    
+    /* Borders with subtle luminescence */
+    --border: #3D3530;
+    --shadow: rgba(255, 159, 102, 0.25);
+    
+    /* Additional dark theme enhancements */
+    --glow-primary: rgba(255, 159, 102, 0.3);
+    --glow-secondary: rgba(255, 192, 120, 0.2);
+    --surface-elevated: #2D2825;
+    --overlay: rgba(10, 9, 8, 0.85);
   }
 }
 
@@ -79,6 +92,18 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Enable dark mode transition for all elements */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Prevent transition on page load */
+html.no-transitions * {
+  transition: none !important;
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
@@ -87,7 +112,12 @@ html {
 /* Selection color */
 ::selection {
   background-color: var(--primary);
-  color: white;
+  color: var(--background);
+}
+
+::-moz-selection {
+  background-color: var(--primary);
+  color: var(--background);
 }
 
 /* Custom scrollbar */

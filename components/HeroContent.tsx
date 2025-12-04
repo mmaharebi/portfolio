@@ -37,7 +37,7 @@ export default function HeroContent() {
           className="flex justify-center mb-8"
         >
           <motion.div
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/80 backdrop-blur-md rounded-full border-2 border-terracotta/20 shadow-lg"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/80 dark:bg-[#1A1614]/90 backdrop-blur-md rounded-full border-2 border-terracotta/20 dark:border-primary/40 shadow-lg dark:shadow-[0_0_20px_rgba(255,159,102,0.2)]"
             whileHover={{ scale: 1.05, borderColor: "var(--primary)" }}
           >
             <motion.div
@@ -50,9 +50,9 @@ export default function HeroContent() {
                 ease: "linear",
               }}
             >
-              <Sparkles className="w-4 h-4 text-terracotta" />
+              <Sparkles className="w-4 h-4 text-terracotta dark:text-primary" />
             </motion.div>
-            <span className="text-sm text-terracotta font-bold">
+            <span className="text-sm text-terracotta dark:text-primary font-bold">
               ECE @ Uni Kassel • R&D Engineer
             </span>
           </motion.div>
@@ -92,7 +92,7 @@ export default function HeroContent() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="mb-6"
         >
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-stone-800 mb-4">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-stone-800 dark:text-stone-100 mb-4">
             {displayedText}
             <motion.span
               className="text-primary"
@@ -114,12 +114,12 @@ export default function HeroContent() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="text-base md:text-lg lg:text-xl text-stone-600 mb-8 max-w-3xl mx-auto leading-relaxed"
+          className="text-base md:text-lg lg:text-xl text-stone-600 dark:text-stone-300 mb-8 max-w-3xl mx-auto leading-relaxed"
         >
           Exploring{" "}
-          <span className="font-semibold text-primary">electromagnetics</span>,{" "}
-          <span className="font-semibold text-secondary">mathematics</span>, and{" "}
-          <span className="font-semibold text-accent">
+          <span className="font-semibold text-primary dark:text-primary">electromagnetics</span>,{" "}
+          <span className="font-semibold text-secondary dark:text-secondary">mathematics</span>, and{" "}
+          <span className="font-semibold text-accent dark:text-accent">
             computational methods
           </span>{" "}
           to design smarter engineering systems.
@@ -132,9 +132,9 @@ export default function HeroContent() {
           transition={{ duration: 0.6, delay: 1 }}
           className="mb-10 max-w-3xl mx-auto"
         >
-          <div className="relative bg-linear-to-r from-primary/10 via-amber-100/30 to-secondary/10 backdrop-blur-sm border-2 border-primary/30 rounded-2xl p-6 md:p-8 shadow-xl">
+          <div className="relative bg-linear-to-r from-primary/10 dark:from-primary/20 via-amber-100/30 dark:via-accent/15 to-secondary/10 dark:to-secondary/20 backdrop-blur-sm border-2 border-primary/30 dark:border-primary/50 rounded-2xl p-6 md:p-8 shadow-xl dark:shadow-[0_8px_32px_rgba(255,159,102,0.3)]">
             {/* Decorative corner glow */}
-            <div className="absolute -top-2 -right-2 w-20 h-20 bg-primary/20 rounded-full blur-2xl" />
+            <div className="absolute -top-2 -right-2 w-20 h-20 bg-primary/20 dark:bg-primary/40 rounded-full blur-2xl" />
             
             <div className="relative z-10">
               <div className="flex items-start gap-3 mb-3">
@@ -151,10 +151,10 @@ export default function HeroContent() {
                   <Sparkles className="w-6 h-6 text-primary mt-1" />
                 </motion.div>
                 <div className="flex-1">
-                  <h3 className="text-xl md:text-2xl font-bold text-stone-800 mb-2">
+                  <h3 className="text-xl md:text-2xl font-bold text-stone-800 dark:text-stone-100 mb-2">
                     Seeking Funded Master&apos;s Thesis (2026)
                   </h3>
-                  <p className="text-sm md:text-base text-stone-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-stone-600 dark:text-stone-300 leading-relaxed">
                     Open to research collaborations in <span className="font-semibold text-primary">communication systems</span> or{" "}
                     <span className="font-semibold text-secondary">RF engineering</span> with German academic institutions or industry partners.
                     Passionate about bridging theory with real-world applications.
@@ -174,7 +174,7 @@ export default function HeroContent() {
         >
           <Link href="/blog">
             <motion.button
-              className="group relative px-8 py-4 bg-linear-to-r from-primary to-amber-600 text-white rounded-2xl font-semibold text-base md:text-lg overflow-hidden shadow-xl"
+              className="group relative px-8 py-4 bg-linear-to-r from-primary to-amber-600 dark:from-primary dark:to-accent text-white dark:text-[#0A0908] rounded-2xl font-semibold text-base md:text-lg overflow-hidden shadow-xl dark:shadow-[0_8px_30px_rgba(255,159,102,0.4)]"
               whileHover={{
                 scale: 1.05,
                 boxShadow: "0 20px 40px rgba(217, 119, 87, 0.4)",
@@ -196,7 +196,7 @@ export default function HeroContent() {
 
           <Link href="/contact">
             <motion.button
-              className="group px-8 py-4 bg-white/80 backdrop-blur-sm border-2 border-stone-200 text-stone-700 rounded-2xl font-semibold text-base md:text-lg hover:border-primary shadow-lg"
+              className="group px-8 py-4 bg-white/80 dark:bg-[#1A1614]/80 backdrop-blur-sm border-2 border-stone-200 dark:border-[#3D3530] text-stone-700 dark:text-stone-200 rounded-2xl font-semibold text-base md:text-lg hover:border-primary dark:hover:border-primary shadow-lg dark:shadow-[0_4px_20px_rgba(255,159,102,0.15)]"
               whileHover={{
                 scale: 1.05,
                 borderColor: "var(--primary)",

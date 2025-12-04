@@ -27,8 +27,8 @@ export default function DesktopNav({ pathname, isActive }: DesktopNavProps) {
               whileTap={{ scale: 0.95 }}
               className={`relative px-4 py-2 rounded-xl font-medium transition-colors duration-300 flex items-center gap-2 z-10 ${
                 active
-                  ? "text-white"
-                  : "text-stone-600 hover:text-terracotta"
+                  ? "text-white dark:text-[#0A0908]"
+                  : "text-stone-600 dark:text-stone-300 hover:text-terracotta dark:hover:text-primary"
               }`}
             >
               <Icon className="w-4 h-4" />
@@ -37,7 +37,7 @@ export default function DesktopNav({ pathname, isActive }: DesktopNavProps) {
             {active && (
               <motion.div
                 layoutId="activeBackground"
-                className="absolute inset-0 bg-linear-to-br from-terracotta via-primary/90 to-amber-600 rounded-xl shadow-lg"
+                className="absolute inset-0 bg-linear-to-br from-terracotta via-primary/90 to-amber-600 dark:from-primary dark:via-secondary dark:to-accent rounded-xl shadow-lg dark:shadow-[0_4px_20px_rgba(255,159,102,0.4)]"
                 transition={{ type: "spring", stiffness: 380, damping: 30 }}
               />
             )}

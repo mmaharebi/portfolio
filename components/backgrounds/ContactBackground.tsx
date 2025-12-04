@@ -4,10 +4,10 @@ import { motion } from "motion/react";
 
 export default function ContactBackground() {
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden bg-linear-to-br from-amber-50/50 via-cream to-stone-50">
+    <div className="fixed inset-0 -z-10 overflow-hidden bg-linear-to-br from-amber-50/50 via-cream to-stone-50 dark:from-[#0B0A09] dark:via-[#0E0D0C] dark:to-[#0A0908]">
       {/* Radial gradient mesh */}
       <motion.div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-radial-gradient from-terracotta/8 via-primary/5 to-transparent rounded-full blur-3xl"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-radial-gradient from-terracotta/8 dark:from-primary/18 via-primary/5 dark:via-accent/12 to-transparent rounded-full blur-3xl"
         animate={{
           scale: [1, 1.2, 1],
           opacity: [0.5, 0.8, 0.5],
@@ -103,7 +103,7 @@ export default function ContactBackground() {
       {[...Array(15)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-2.5 h-2.5 bg-terracotta/30 rounded-full"
+          className="absolute w-2.5 h-2.5 bg-terracotta/30 dark:bg-primary/45 dark:shadow-[0_0_8px_rgba(255,159,102,0.6)] rounded-full"
           style={{
             top: `${25 + (i * 5)}%`,
             left: `${15 + (i % 6) * 14}%`,

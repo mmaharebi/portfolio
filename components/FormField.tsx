@@ -36,7 +36,7 @@ export default function FormField({
 }: FormFieldProps) {
   const getInputClasses = () => {
     const baseClasses =
-      "w-full px-4 py-3 bg-white border-2 rounded-xl transition-all duration-300 focus:outline-none";
+      "w-full px-4 py-3 bg-white dark:bg-[#1A1614] border-2 rounded-xl transition-all duration-300 focus:outline-none dark:text-stone-200 dark:placeholder:text-stone-500";
 
     if (error) {
       return `${baseClasses} border-red-300 focus:border-red-500 focus:ring-2 focus:ring-red-200`;
@@ -46,7 +46,7 @@ export default function FormField({
       return `${baseClasses} border-primary focus:border-primary focus:ring-2 focus:ring-primary/20 shadow-md`;
     }
 
-    return `${baseClasses} border-stone-200 hover:border-stone-300 focus:border-primary focus:ring-2 focus:ring-primary/20`;
+    return `${baseClasses} border-stone-200 dark:border-[#3D3530] hover:border-stone-300 dark:hover:border-[#3D3530] focus:border-primary dark:focus:border-primary focus:ring-2 focus:ring-primary/20 dark:focus:ring-primary/30`;
   };
 
   return (

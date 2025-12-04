@@ -25,18 +25,18 @@ export default function InteractiveExpertise() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12 md:mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-terracotta/10 rounded-full mb-6">
-            <Sparkles className="w-4 h-4 text-terracotta" />
-            <span className="text-sm font-semibold text-terracotta">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-terracotta/10 dark:bg-primary/20 rounded-full mb-6">
+            <Sparkles className="w-4 h-4 text-terracotta dark:text-primary" />
+            <span className="text-sm font-semibold text-terracotta dark:text-primary">
               What I Do
             </span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 px-4">
-            <span className="bg-clip-text text-transparent bg-linear-to-r from-stone-800 to-stone-600">
+            <span className="bg-clip-text text-transparent bg-linear-to-r from-stone-800 dark:from-stone-100 to-stone-600 dark:to-stone-300">
               Fields of Expertise
             </span>
           </h2>
-          <p className="text-base md:text-lg text-stone-600 max-w-2xl mx-auto px-4">
+          <p className="text-base md:text-lg text-stone-600 dark:text-stone-300 max-w-2xl mx-auto px-4">
             Combining rigorous theoretical foundations with hands-on engineering
           </p>
         </motion.div>

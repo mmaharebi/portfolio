@@ -33,15 +33,15 @@ export default function BlogShowcase({ posts }: BlogShowcaseProps) {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-terracotta/10 rounded-full mb-6">
-            <BookOpen className="w-4 h-4 text-terracotta" />
-            <span className="text-sm font-semibold text-terracotta">Latest Writings</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-terracotta/10 dark:bg-primary/20 rounded-full mb-6">
+            <BookOpen className="w-4 h-4 text-terracotta dark:text-primary" />
+            <span className="text-sm font-semibold text-terracotta dark:text-primary">Latest Writings</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-stone-800">Recent Posts</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-stone-800 dark:text-stone-100">Recent Posts</h2>
           <div className="flex items-center justify-center gap-2">
             <Link
               href="/blog"
-              className="text-primary hover:text-amber-600 font-semibold flex items-center gap-2 group transition-colors"
+              className="text-primary dark:text-primary hover:text-amber-600 dark:hover:text-secondary font-semibold flex items-center gap-2 group transition-colors"
             >
               View all articles
               <motion.span

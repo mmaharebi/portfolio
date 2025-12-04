@@ -66,7 +66,7 @@ export default function BriefTimeline({ items }: BriefTimelineProps) {
         <div className="absolute inset-0 pointer-events-none">
           {/* Floating decorative circles */}
           <motion.div
-            className="absolute top-10 left-[10%] w-24 h-24 rounded-full bg-terracotta/5 blur-2xl"
+            className="absolute top-10 left-[10%] w-24 h-24 rounded-full bg-terracotta/5 dark:bg-primary/15 blur-2xl"
             animate={{
               y: [0, -20, 0],
               scale: [1, 1.1, 1],
@@ -78,7 +78,7 @@ export default function BriefTimeline({ items }: BriefTimelineProps) {
             }}
           />
           <motion.div
-            className="absolute bottom-10 right-[15%] w-32 h-32 rounded-full bg-primary/5 blur-2xl"
+            className="absolute bottom-10 right-[15%] w-32 h-32 rounded-full bg-primary/5 dark:bg-primary/20 blur-2xl"
             animate={{
               y: [0, 15, 0],
               scale: [1, 1.15, 1],
@@ -97,7 +97,7 @@ export default function BriefTimeline({ items }: BriefTimelineProps) {
           {/* Central flowing timeline line - Desktop */}
           <div className="hidden md:block absolute left-0 right-0 top-24 h-0.5 overflow-hidden">
             <motion.div
-              className="h-full bg-linear-[90deg] from-transparent via-terracotta/30 to-transparent"
+              className="h-full bg-linear-[90deg] from-transparent via-terracotta/30 dark:via-primary/50 to-transparent dark:shadow-[0_0_8px_rgba(255,159,102,0.4)]"
               animate={{
                 scaleX: [0.8, 1, 0.8],
                 opacity: [0.5, 0.8, 0.5],
@@ -128,7 +128,7 @@ export default function BriefTimeline({ items }: BriefTimelineProps) {
                 >
                   {/* Connecting dot on timeline */}
                   <motion.div
-                    className="hidden md:block absolute left-1/2 top-24 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-white border-2 shadow-lg z-10"
+                    className="hidden md:block absolute left-1/2 top-24 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-white dark:bg-[#0A0908] border-2 shadow-lg dark:shadow-[0_0_12px_rgba(255,159,102,0.6)] z-10"
                     style={{
                       borderColor: BRIEF_COLOR_MAP[(item.color || "primary") as PaletteKey].borderColor,
                     }}

@@ -177,7 +177,7 @@ export default function ContactForm() {
         style={{ animationDelay: "1s" }}
       />
 
-      <div className="relative bg-white/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 border-2 border-stone-200 shadow-xl">
+      <div className="relative bg-white/80 dark:bg-[#1A1614]/90 backdrop-blur-sm rounded-2xl p-6 md:p-8 border-2 border-stone-200 dark:border-[#3D3530] shadow-xl dark:shadow-[0_8px_40px_rgba(255,159,102,0.2)]">
         {/* Header */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-terracotta/10 rounded-full mb-4">
@@ -186,10 +186,10 @@ export default function ContactForm() {
               Send a Message
             </span>
           </div>
-          <h3 className="text-2xl md:text-3xl font-bold text-stone-800 mb-2">
+          <h3 className="text-2xl md:text-3xl font-bold text-stone-800 dark:text-stone-100 mb-2">
             Let&apos;s Start a Conversation
           </h3>
-          <p className="text-stone-600">
+          <p className="text-stone-600 dark:text-stone-300">
             Fill out the form below and I&apos;ll get back to you soon
           </p>
         </div>

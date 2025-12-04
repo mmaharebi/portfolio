@@ -15,7 +15,7 @@ export default function BlogTagFilter({ allTags, selectedTag, onTagSelect }: Blo
 
   return (
     <div className="flex flex-wrap gap-2 items-center">
-      <div className="flex items-center gap-2 text-sm font-semibold text-stone-600">
+      <div className="flex items-center gap-2 text-sm font-semibold text-stone-600 dark:text-stone-300">
         <Filter className="w-4 h-4" />
         <span>Filter:</span>
       </div>
@@ -40,7 +40,7 @@ export default function BlogTagFilter({ allTags, selectedTag, onTagSelect }: Blo
           className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
             selectedTag === tag
               ? "bg-primary text-white shadow-md"
-              : "bg-white/80 text-stone-600 border-2 border-stone-200 hover:border-primary"
+              : "bg-white/80 dark:bg-[#1A1614]/80 text-stone-600 dark:text-stone-300 border-2 border-stone-200 dark:border-[#3D3530] hover:border-primary dark:hover:border-primary"
           }`}
         >
           {tag}

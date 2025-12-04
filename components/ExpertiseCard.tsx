@@ -42,10 +42,10 @@ export default function ExpertiseCard({
       <div className="group relative cursor-pointer">
         {/* Card content */}
         <motion.div
-          className={`relative bg-white/90 backdrop-blur-sm rounded-2xl md:rounded-3xl p-6 md:p-8 border-2 transition-all duration-500 overflow-hidden ${
+          className={`relative bg-white/90 dark:bg-[#1A1614]/90 backdrop-blur-sm rounded-2xl md:rounded-3xl p-6 md:p-8 border-2 transition-all duration-500 overflow-hidden ${
             isExpanded
-              ? `${colors.border} shadow-2xl`
-              : `border-stone-200/60 hover:border-stone-300 shadow-lg hover:shadow-xl`
+              ? `${colors.border} dark:border-primary/60 shadow-2xl dark:shadow-[0_8px_40px_rgba(255,159,102,0.3)]`
+              : `border-stone-200/60 dark:border-[#3D3530]/60 hover:border-stone-300 dark:hover:border-[#3D3530] shadow-lg hover:shadow-xl dark:shadow-[0_4px_20px_rgba(255,159,102,0.1)]`
           }`}
           animate={{
             y: isHovered ? -4 : 0,
@@ -195,7 +195,7 @@ export default function ExpertiseCard({
                 <div
                   className={`relative w-12 h-12 md:w-14 md:h-14 rounded-xl bg-linear-[135deg] ${colors.gradient} p-0.5`}
                 >
-                  <div className="w-full h-full bg-white rounded-xl flex items-center justify-center">
+                  <div className="w-full h-full bg-white dark:bg-[#0A0908] rounded-xl flex items-center justify-center">
                     <Icon className={`w-6 h-6 md:w-7 md:h-7 ${colors.text}`} />
                   </div>
                 </div>
@@ -222,7 +222,7 @@ export default function ExpertiseCard({
 
               {/* Title */}
               <div className="flex-1 min-w-0">
-                <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-stone-800">
+                <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-stone-800 dark:text-stone-100">
                   {area.title}
                 </h3>
               </div>
@@ -238,7 +238,7 @@ export default function ExpertiseCard({
             </div>
 
             {/* Short description */}
-            <p className="text-sm md:text-base text-stone-600 mb-3 md:mb-4 leading-relaxed">
+            <p className="text-sm md:text-base text-stone-600 dark:text-stone-300 mb-3 md:mb-4 leading-relaxed">
               {area.shortDesc}
             </p>
 
@@ -260,7 +260,7 @@ export default function ExpertiseCard({
                       className={`h-0.5 w-16 bg-linear-to-r ${colors.gradient} rounded-full mb-4 md:hidden`}
                     />
 
-                    <p className="text-sm md:text-base text-stone-700 mb-4 leading-relaxed">
+                    <p className="text-sm md:text-base text-stone-700 dark:text-stone-300 mb-4 leading-relaxed">
                       {area.fullDesc}
                     </p>
 
@@ -273,7 +273,7 @@ export default function ExpertiseCard({
                           animate={{ opacity: 1, scale: 1, y: 0 }}
                           transition={{ delay: i * 0.05, type: "spring" }}
                           whileHover={{ scale: 1.05, y: -2 }}
-                          className={`px-3 py-1.5 bg-white ${colors.text} rounded-lg text-xs md:text-sm font-medium border-2 ${colors.border} shadow-sm hover:shadow-md transition-shadow`}
+                          className={`px-3 py-1.5 bg-white/90 dark:bg-[#0A0908]/80 ${colors.text} dark:${colors.text} rounded-lg text-xs md:text-sm font-semibold border-2 ${colors.border} dark:${colors.border} shadow-sm hover:shadow-md dark:hover:shadow-[0_4px_12px_rgba(255,159,102,0.3)] transition-all backdrop-blur-sm`}
                         >
                           {skill}
                         </motion.span>
