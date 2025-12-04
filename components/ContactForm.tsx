@@ -6,11 +6,16 @@ import { Sparkles } from "lucide-react";
 import FormField from "./FormField";
 import FormStatus from "./FormStatus";
 
+// Cloudflare Worker endpoint for contact form submissions
+const CONTACT_API_URL =
+  "https://portfolio-contact-worker.mmaharebi-cloudflare.workers.dev/contact";
+
 interface FormData {
   name: string;
   email: string;
   subject: string;
   message: string;
+  company: string; // Honeypot field for bot detection
 }
 
 interface FormErrors {
@@ -28,9 +33,11 @@ export default function ContactForm() {
     email: "",
     subject: "",
     message: "",
+    company: "", // Honeypot - must remain empty
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [status, setStatus] = useState<SubmitStatus>("idle");
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -73,19 +80,73 @@ export default function ContactForm() {
     }
 
     setStatus("loading");
+    setErrors({});
+    setErrorMessage("");
 
-    // Simulate API call - replace with actual implementation
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    try {
+      const response = await fetch(CONTACT_API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    // For demo purposes, always succeed
-    // In production, replace with actual form submission logic
-    setStatus("success");
+      const data = await response.json();
 
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setFormData({ name: "", email: "", subject: "", message: "" });
-      setStatus("idle");
-    }, 3000);
+      // Handle different response scenarios
+      if (response.ok && data.ok) {
+        // Success - message sent
+        setStatus("success");
+        
+        // Reset form after 3 seconds
+        setTimeout(() => {
+          setFormData({
+            name: "",
+            email: "",
+            subject: "",
+            message: "",
+            company: "",
+          });
+          setStatus("idle");
+        }, 3000);
+      } else {
+        // Handle various error types
+        if (response.status === 400 && data.errors) {
+          // Validation errors from server - map to form fields
+          setErrors(data.errors);
+          setErrorMessage("Please check the highlighted fields.");
+        } else if (response.status === 429) {
+          // Rate limit exceeded
+          setErrorMessage("Too many requests. Please wait a few minutes before trying again.");
+        } else if (response.status === 403) {
+          // Origin error
+          setErrorMessage("Request forbidden. Please refresh the page and try again.");
+        } else {
+          // Generic error message
+          setErrorMessage(data.message || "Something went wrong. Please try again later.");
+        }
+        
+        setStatus("error");
+        
+        // Auto-clear error status after 5 seconds
+        setTimeout(() => {
+          setStatus("idle");
+          setErrorMessage("");
+        }, 5000);
+      }
+    } catch (error) {
+      // Network error or other unexpected issue
+      console.error("Contact form submission error:", error);
+      setErrorMessage("Network error. Please check your connection and try again.");
+      setStatus("error");
+      
+      // Auto-clear error status after 5 seconds
+      setTimeout(() => {
+        setStatus("idle");
+        setErrorMessage("");
+      }, 5000);
+    }
   };
 
   const handleChange = (
@@ -195,7 +256,25 @@ export default function ContactForm() {
             onChange={handleChange}
           />
 
-          <FormStatus status={status} disabled={isDisabled} />
+          {/* Honeypot field - hidden from users, catches bots */}
+          <input
+            type="text"
+            name="company"
+            value={formData.company}
+            onChange={handleChange}
+            aria-hidden="true"
+            tabIndex={-1}
+            autoComplete="off"
+            style={{
+              position: "absolute",
+              left: "-9999px",
+              width: "1px",
+              height: "1px",
+              opacity: 0,
+            }}
+          />
+
+          <FormStatus status={status} disabled={isDisabled} errorMessage={errorMessage} />
         </form>
       </div>
     </motion.div>

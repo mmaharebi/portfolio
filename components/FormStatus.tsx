@@ -8,9 +8,10 @@ type SubmitStatus = "idle" | "loading" | "success" | "error";
 interface FormStatusProps {
   status: SubmitStatus;
   disabled: boolean;
+  errorMessage?: string;
 }
 
-export default function FormStatus({ status, disabled }: FormStatusProps) {
+export default function FormStatus({ status, disabled, errorMessage }: FormStatusProps) {
   return (
     <>
       {/* Submit Button */}
@@ -90,6 +91,18 @@ export default function FormStatus({ status, disabled }: FormStatusProps) {
           >
             <p className="text-green-700 text-sm text-center font-medium">
               ✨ Thank you for reaching out! I&apos;ll get back to you as soon as possible.
+            </p>
+          </motion.div>
+        )}
+        {status === "error" && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="mt-6 p-4 bg-red-50 border-2 border-red-200 rounded-xl"
+          >
+            <p className="text-red-700 text-sm text-center font-medium">
+              {errorMessage || "Something went wrong. Please check your input and try again."}
             </p>
           </motion.div>
         )}
