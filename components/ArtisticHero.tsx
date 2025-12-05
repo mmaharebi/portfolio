@@ -13,9 +13,9 @@ export default function ArtisticHero() {
   const windowSize = useWindowSize();
   const { scrollY } = useScroll();
   
-  const y1 = useTransform(scrollY, [0, 300], [0, 100]);
-  const y2 = useTransform(scrollY, [0, 300], [0, -50]);
-  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const y1 = useTransform(scrollY, [0, 600], [0, 150]);
+  const y2 = useTransform(scrollY, [0, 600], [0, -75]);
+  const opacity = useTransform(scrollY, [0, 600], [1, 0.15]);
 
   // Parallax effect for decorative elements
   const parallaxX = mounted && windowSize.width ? (mousePosition.x - windowSize.width / 2) / 50 : 0;

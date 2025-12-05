@@ -196,11 +196,9 @@ export default function HeroContent() {
 
           <Link href="/contact">
             <motion.button
-              className="group px-8 py-4 bg-white/80 dark:bg-[#1A1614]/80 backdrop-blur-sm border-2 border-stone-200 dark:border-[#3D3530] text-stone-700 dark:text-stone-200 rounded-2xl font-semibold text-base md:text-lg hover:border-primary dark:hover:border-primary shadow-lg dark:shadow-[0_4px_20px_rgba(255,159,102,0.15)]"
+              className="group px-8 py-4 bg-white/80 dark:bg-[#1A1614]/80 backdrop-blur-sm border-2 border-stone-200 dark:border-[#3D3530] text-stone-700 dark:text-stone-200 rounded-2xl font-semibold text-base md:text-lg hover:border-primary dark:hover:border-primary hover:bg-primary/5 dark:hover:bg-primary/10 shadow-lg dark:shadow-[0_4px_20px_rgba(255,159,102,0.15)] transition-colors"
               whileHover={{
                 scale: 1.05,
-                borderColor: "var(--primary)",
-                backgroundColor: "rgba(255, 255, 255, 0.95)",
               }}
               whileTap={{ scale: 0.95 }}
             >
