@@ -5,7 +5,8 @@ import InteractiveSkills from "@/components/InteractiveSkills";
 import ProjectShowcase, { type Project } from "@/components/ProjectShowcase";
 import AboutBackground from "@/components/backgrounds/AboutBackground";
 import type { DetailedTimelineItem } from "@/components/SerpentineTimeline";
-import { User } from "lucide-react";
+import { User, FileText, Download } from "lucide-react";
+import { motion } from "motion/react";
 
 // Detailed timeline data
 const detailedTimelineData: DetailedTimelineItem[] = [
@@ -264,6 +265,89 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* CV/Resume Download Section */}
+      <section className="px-4 sm:px-6 pb-24">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative"
+          >
+            {/* Centered decorative badge */}
+            <div className="flex justify-center mb-8">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/70 dark:bg-[#1A1614]/80 backdrop-blur-md rounded-full border border-secondary/30 dark:border-secondary/50 shadow-lg dark:shadow-[0_0_20px_rgba(232,177,122,0.2)]">
+                <FileText className="w-4 h-4 text-secondary dark:text-secondary" />
+                <span className="text-sm text-stone-700 dark:text-stone-200 font-semibold">
+                  Download Credentials
+                </span>
+              </div>
+            </div>
+
+            {/* Download card */}
+            <div className="relative bg-white/60 dark:bg-[#1A1614]/80 backdrop-blur-sm rounded-3xl p-8 md:p-10 shadow-xl dark:shadow-[0_8px_40px_rgba(232,177,122,0.25)] border border-stone-200/50 dark:border-secondary/30">
+              {/* Subtle corner glow */}
+              <div className="absolute -top-3 -right-3 w-32 h-32 bg-secondary/20 dark:bg-secondary/30 rounded-full blur-3xl" />
+              <div className="absolute -bottom-3 -left-3 w-32 h-32 bg-amber-500/10 dark:bg-accent/20 rounded-full blur-3xl" />
+
+              {/* Top accent line */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-0.5 bg-linear-to-r from-transparent via-secondary dark:via-secondary to-transparent rounded-full dark:shadow-[0_0_8px_rgba(232,177,122,0.5)]" />
+
+              <div className="relative z-10 text-center">
+                <h3 className="text-2xl md:text-3xl font-bold text-stone-800 dark:text-stone-100 mb-3">
+                  Professional Documents
+                </h3>
+                <p className="text-base md:text-lg text-stone-600 dark:text-stone-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+                  Download my curriculum vitae and resume to learn more about my academic background and professional experience.
+                </p>
+
+                <div className="flex flex-wrap gap-4 justify-center items-center">
+                  <motion.a
+                    href="/cv.pdf"
+                    download
+                    className="group relative px-7 py-3.5 bg-linear-to-r from-secondary to-amber-500 dark:from-secondary dark:to-accent text-white dark:text-[#0A0908] rounded-2xl font-semibold text-base md:text-lg overflow-hidden shadow-lg dark:shadow-[0_8px_30px_rgba(232,177,122,0.4)]"
+                    whileHover={{
+                      scale: 1.05,
+                      boxShadow: "0 12px 32px rgba(232, 177, 122, 0.4)",
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {/* Shimmer effect */}
+                    <motion.div
+                      className="absolute inset-0 bg-white/20"
+                      initial={{ x: "-100%", skewX: -15 }}
+                      whileHover={{ x: "100%" }}
+                      transition={{ duration: 0.6 }}
+                    />
+                    <span className="relative flex items-center gap-2">
+                      <FileText className="w-5 h-5" />
+                      Download CV
+                    </span>
+                  </motion.a>
+
+                  <motion.a
+                    href="/resume.pdf"
+                    download
+                    className="group px-7 py-3.5 bg-white/80 dark:bg-[#1A1614]/80 backdrop-blur-sm border-2 border-stone-200 dark:border-[#3D3530] text-stone-700 dark:text-stone-200 rounded-2xl font-semibold text-base md:text-lg hover:border-secondary dark:hover:border-secondary hover:bg-secondary/5 dark:hover:bg-secondary/10 shadow-lg dark:shadow-[0_4px_20px_rgba(232,177,122,0.15)] transition-colors"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <span className="flex items-center gap-2">
+                      <Download className="w-5 h-5" />
+                      Download Resume
+                    </span>
+                  </motion.a>
+                </div>
+              </div>
+
+              {/* Bottom accent line */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-20 h-0.5 bg-linear-to-r from-transparent via-secondary dark:via-secondary to-transparent rounded-full dark:shadow-[0_0_8px_rgba(232,177,122,0.5)]" />
+            </div>
+          </motion.div>
         </div>
       </section>
 
