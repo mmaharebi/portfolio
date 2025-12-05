@@ -37,6 +37,7 @@ body {
   /* Semantic colors */
   --border: #E8D5C4;
   --shadow: rgba(209, 119, 87, 0.1);
+  --surface-elevated: #FFF5EB;
 }
 
 @theme inline {
@@ -48,6 +49,7 @@ body {
   --color-accent: var(--accent);
   --color-surface: var(--surface);
   --color-surface-hover: var(--surface-hover);
+  --color-surface-elevated: var(--surface-elevated);
   --color-foreground-secondary: var(--foreground-secondary);
   --color-foreground-muted: var(--foreground-muted);
   --color-border: var(--border);

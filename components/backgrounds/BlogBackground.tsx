@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 
 export default function BlogBackground() {
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden bg-linear-to-br from-stone-50 via-cream to-amber-50/40 dark:from-[#0A0908] dark:via-[#0D0B0A] dark:to-[#100E0D]">
+    <div className="fixed inset-0 -z-10 overflow-hidden bg-linear-to-br from-stone-50 via-cream to-amber-50/40 dark:from-[#0A0908] dark:via-[#0A0908] dark:to-[#0D0B0A]">
       {/* Geometric grid pattern with parallax layers */}
       <svg className="absolute inset-0 w-full h-full opacity-40 dark:opacity-30" xmlns="http://www.w3.org/2000/svg">
         <defs>
