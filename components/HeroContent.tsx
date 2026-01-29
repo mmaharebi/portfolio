@@ -29,35 +29,6 @@ export default function HeroContent() {
     <>
       {/* Hero Content */}
       <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 text-center">
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex justify-center mb-8"
-        >
-          <motion.div
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/80 dark:bg-[#1A1614]/90 backdrop-blur-md rounded-full border-2 border-terracotta/20 dark:border-primary/40 shadow-lg dark:shadow-[0_0_20px_rgba(255,159,102,0.2)]"
-            whileHover={{ scale: 1.05, borderColor: "var(--primary)" }}
-          >
-            <motion.div
-              animate={{
-                rotate: [0, 360],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-            >
-              <Sparkles className="w-4 h-4 text-terracotta dark:text-primary" />
-            </motion.div>
-            <span className="text-sm text-terracotta dark:text-primary font-bold">
-              ECE @ Uni Kassel • R&D Engineer
-            </span>
-          </motion.div>
-        </motion.div>
-
         {/* Name with gradient animation */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -90,7 +61,7 @@ export default function HeroContent() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mb-6"
+          className="mb-4"
         >
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-stone-800 dark:text-stone-100 mb-4">
             {displayedText}
@@ -114,7 +85,7 @@ export default function HeroContent() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="text-base md:text-lg lg:text-xl text-stone-600 dark:text-stone-300 mb-8 max-w-3xl mx-auto leading-relaxed"
+          className="text-base md:text-lg lg:text-xl text-stone-600 dark:text-stone-300 mb-7 max-w-3xl mx-auto leading-relaxed"
         >
           Exploring{" "}
           <span className="font-semibold text-primary dark:text-primary">electromagnetics</span>,{" "}
@@ -130,43 +101,20 @@ export default function HeroContent() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 1 }}
-          className="mb-10 max-w-3xl mx-auto"
+          className="mb-8 max-w-3xl mx-auto"
         >
-          <div className="relative bg-linear-to-r from-primary/10 dark:from-primary/20 via-amber-100/30 dark:via-accent/15 to-secondary/10 dark:to-secondary/20 backdrop-blur-sm border-2 border-primary/30 dark:border-primary/50 rounded-2xl p-6 md:p-8 shadow-xl dark:shadow-[0_8px_32px_rgba(255,159,102,0.3)]">
+          <div className="relative bg-linear-to-r from-primary/10 dark:from-primary/20 via-amber-100/30 dark:via-accent/15 to-secondary/10 dark:to-secondary/20 backdrop-blur-sm border-2 border-primary/30 dark:border-primary/50 rounded-2xl p-5 md:p-8 shadow-xl dark:shadow-[0_8px_32px_rgba(255,159,102,0.3)]">
             {/* Decorative corner glow */}
             <div className="absolute -top-2 -right-2 w-20 h-20 bg-primary/20 dark:bg-primary/40 rounded-full blur-2xl" />
             
             <div className="relative z-10">
-              <div className="flex items-start gap-3 mb-3">
-                <motion.div
-                  animate={{
-                    rotate: [0, 360],
-                    scale: [1, 1.1, 1],
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                  }}
-                >
-                  <Sparkles className="w-6 h-6 text-primary mt-1" />
-                </motion.div>
-                <div className="flex-1">
-                  <h3 className="text-xl md:text-2xl font-bold text-stone-800 dark:text-stone-100 mb-2">
-                    Master Thesis Focus (2026)
-                  </h3>
+              <h3 className="text-lg md:text-2xl font-bold text-stone-800 dark:text-stone-100 mb-2.5 md:mb-3">
+                Master Thesis Focus (2026)
+              </h3>
+              <div>
+                <div>
                   <p className="text-sm md:text-base text-stone-600 dark:text-stone-300 leading-relaxed">
-                    {/* OLD MATERIAL */}
-                    {/* Open to research collaborations in <span className="font-semibold text-primary">communication systems</span> or{" "}
-                    <span className="font-semibold text-secondary">RF engineering</span> with German academic institutions or industry partners.
-                    Passionate about bridging theory with real-world applications. */}
-
-                    {/* NEW MATERIAL */}
-                    {/* Building validated simulation projects and research-style write-ups in <span className="font-semibold text-primary">computational electromagnetics</span>,{" "}
-                    <span className="font-semibold text-secondary">RF/microwaves</span>, and{" "}
-                    <span className="font-semibold text-accent">communication systems</span>.
-                    Reproducible code + reports linked in the blog. */}
-
-                    {/* NEWER MATERIAL */}
+                    {/* Announcement */}
                     Validated simulations and research-style write-ups in <span className="font-semibold text-primary">computational electromagnetics</span>,{" "}
                     <span className="font-semibold text-secondary">RF &amp; microwave engineering</span>,{" "}
                     <span className="font-semibold text-accent">communication systems</span> &mdash; with reproducible code and reports linked in the blog.
@@ -182,7 +130,7 @@ export default function HeroContent() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.2 }}
-          className="flex flex-wrap gap-4 justify-center items-center"
+          className="flex flex-wrap gap-4 justify-center items-center mb-10 md:mb-0"
         >
           <Link href="/blog">
             <motion.button
@@ -222,6 +170,32 @@ export default function HeroContent() {
           </Link>
         </motion.div>
 
+        {/* Scroll indicator - positioned after buttons on mobile, at bottom on desktop */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1.5 }}
+          className="flex md:hidden justify-center"
+        >
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="flex flex-col items-center gap-2 text-stone-400"
+          >
+            <span className="text-xs font-medium">Scroll to explore</span>
+            <motion.div
+              className="w-6 h-10 border-2 border-stone-300 rounded-full flex justify-center pt-2"
+              whileHover={{ borderColor: "var(--primary)" }}
+            >
+              <motion.div
+                className="w-1.5 h-1.5 bg-primary rounded-full"
+                animate={{ y: [0, 12, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              />
+            </motion.div>
+          </motion.div>
+        </motion.div>
+
         {/* Floating icons */}
         <div className="absolute inset-0 pointer-events-none">
           {[Code2, Zap, Rocket].map((Icon, i) => (
@@ -250,12 +224,12 @@ export default function HeroContent() {
         </div>
       </div>
 
-      {/* Scroll indicator - outside content div, positioned at bottom of hero section */}
+      {/* Scroll indicator - for desktop at bottom of viewport */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.5 }}
-        className="absolute bottom-8 md:bottom-16 left-1/2 -translate-x-1/2 z-20"
+        className="hidden md:flex absolute bottom-16 left-1/2 -translate-x-1/2 z-20"
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}

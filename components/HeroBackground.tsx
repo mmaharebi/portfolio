@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, type MotionValue } from "motion/react";
+import { useEffect, useState } from "react";
 
 interface HeroBackgroundProps {
   parallaxX: number;
@@ -10,6 +11,21 @@ interface HeroBackgroundProps {
 }
 
 export default function HeroBackground({ parallaxX, parallaxY, y1, y2 }: HeroBackgroundProps) {
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      // Normalize to -1 to 1 range, very gentle movement
+      setMousePos({
+        x: (e.clientX / window.innerWidth - 0.5) * 10,
+        y: (e.clientY / window.innerHeight - 0.5) * 10,
+      });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
   return (
     <div className="absolute inset-0 w-full overflow-hidden pointer-events-none">
       {/* Floating geometric shapes - responsive positioning */}
@@ -99,28 +115,6 @@ export default function HeroBackground({ parallaxX, parallaxY, y1, y2 }: HeroBac
         style={{ y: y2 }}
       />
 
-      {/* Particle effects */}
-      {[...Array(20)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-1 h-1 bg-primary/40 dark:bg-primary/70 dark:shadow-[0_0_4px_rgba(255,159,102,0.8)] rounded-full"
-          style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-          }}
-          animate={{
-            y: [0, -100, 0],
-            opacity: [0, 1, 0],
-            scale: [0, 1.5, 0],
-          }}
-          transition={{
-            duration: 3 + Math.random() * 2,
-            repeat: Infinity,
-            delay: Math.random() * 5,
-          }}
-        />
-      ))}
-
       {/* Curved lines - Responsive SVG */}
       <svg 
         className="absolute inset-0 w-full h-full opacity-10" 
@@ -166,6 +160,30 @@ export default function HeroBackground({ parallaxX, parallaxY, y1, y2 }: HeroBac
           </linearGradient>
         </defs>
       </svg>
+
+      {/* Gentle parallax particles */}
+      {[...Array(6)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute w-1.5 h-1.5 bg-primary/30 dark:bg-primary/50 rounded-full dark:shadow-[0_0_6px_rgba(255,159,102,0.4)]"
+          style={{
+            top: `${20 + i * 15}%`,
+            left: `${15 + (i % 2) * 70}%`,
+          }}
+          animate={{
+            opacity: [0.3, 0.7, 0.3],
+            scale: [1, 1.3, 1],
+            x: [0, mousePos.x * (8 - i), 0],
+            y: [0, mousePos.y * (6 - i * 0.5), 0],
+          }}
+          transition={{
+            opacity: { duration: 3 + i, repeat: Infinity, ease: "easeInOut" },
+            scale: { duration: 3 + i, repeat: Infinity, ease: "easeInOut" },
+            x: { duration: 2.5, ease: "easeOut" },
+            y: { duration: 2.5, ease: "easeOut" },
+          }}
+        />
+      ))}
     </div>
   );
 }

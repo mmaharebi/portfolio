@@ -4,13 +4,14 @@ import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 
 export default function HomeBackground() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth) * 20,
-        y: (e.clientY / window.innerHeight) * 20,
+      // Gentle normalized movement
+      setMousePos({
+        x: (e.clientX / window.innerWidth - 0.5) * 2,
+        y: (e.clientY / window.innerHeight - 0.5) * 2,
       });
     };
 
@@ -51,7 +52,7 @@ export default function HomeBackground() {
           transition={{ duration: 2, ease: "easeInOut" }}
           style={{ transformOrigin: "center" }}
         />
-        
+
         <motion.path
           d="M0,40 Q25,50 50,40 T100,40"
           stroke="url(#gradient1)"
@@ -83,85 +84,121 @@ export default function HomeBackground() {
           }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
         />
-
-        <motion.path
-          d="M0,80 Q25,85 50,80 T100,80 L100,100 L0,100 Z"
-          fill="url(#gradient2)"
-          vectorEffect="non-scaling-stroke"
-          animate={{
-            d: [
-              "M0,80 Q25,85 50,80 T100,80 L100,100 L0,100 Z",
-              "M0,80 Q25,75 50,80 T100,80 L100,100 L0,100 Z",
-              "M0,80 Q25,85 50,80 T100,80 L100,100 L0,100 Z",
-            ],
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        />
       </svg>
 
-      {/* Floating organic shapes with parallax */}
+      {/* Gentle floating shapes - time-based animations only */}
       <motion.div
         className="absolute top-20 left-10 w-64 h-64 bg-linear-to-br from-terracotta/10 to-primary/5 dark:from-primary/20 dark:to-accent/10 rounded-full blur-3xl"
         animate={{
+          scale: [1, 1.15, 1],
+          x: [0, 30, 0],
+          y: [0, 20, 0],
+        }}
+        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      <motion.div
+        className="absolute bottom-40 right-20 w-96 h-96 bg-linear-to-bl from-amber-400/8 to-terracotta/5 dark:from-secondary/15 dark:to-primary/8 rounded-full blur-3xl"
+        animate={{
           scale: [1, 1.2, 1],
-          x: mousePosition.x,
-          y: mousePosition.y,
+          x: [0, -40, 0],
+          y: [0, 30, 0],
         }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+      />
+
+      {/* Bubbling rubber band shapes - welcoming the content with parallax */}
+      <motion.div
+        className="absolute top-1/4 left-[8%] w-40 h-40 border border-secondary/20 dark:border-secondary/30 dark:shadow-[0_0_15px_rgba(255,192,120,0.12)]"
+        style={{
+          borderRadius: "60% 40% 30% 70%/60% 30% 70% 40%",
+          x: mousePos.x * 15,
+          y: mousePos.y * 12,
+        }}
+        animate={{
+          borderRadius: [
+            "60% 40% 30% 70%/60% 30% 70% 40%",
+            "40% 60% 60% 40%/70% 30% 50% 60%",
+            "60% 40% 30% 70%/60% 30% 70% 40%",
+          ],
+          rotate: [0, 5, -5, 0],
+        }}
+        transition={{
+          borderRadius: { duration: 14, repeat: Infinity, ease: "easeInOut" },
+          rotate: { duration: 12, repeat: Infinity, ease: "easeInOut" },
+          x: { duration: 2, ease: "easeOut" },
+          y: { duration: 2, ease: "easeOut" },
+        }}
       />
 
       <motion.div
-        className="absolute top-40 right-20 w-96 h-96 bg-linear-to-bl from-amber-400/8 to-terracotta/5 dark:from-secondary/15 dark:to-primary/8 rounded-full blur-3xl"
-        animate={{
-          scale: [1, 1.3, 1],
-          x: -mousePosition.x * 0.5,
-          y: mousePosition.y * 0.5,
+        className="absolute top-[15%] right-[10%] w-32 h-32 bg-linear-to-br from-secondary/8 to-amber-300/10 dark:from-secondary/18 dark:to-secondary/10 blur-sm"
+        style={{
+          borderRadius: "50% 60% 40% 50%/60% 50% 60% 40%",
+          x: mousePos.x * -10,
+          y: mousePos.y * -8,
         }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-      />
-
-      <motion.div
-        className="absolute bottom-40 left-1/4 w-80 h-80 bg-linear-to-tr from-primary/6 to-amber-300/4 dark:from-accent/18 dark:to-primary/10 rounded-full blur-3xl"
         animate={{
+          borderRadius: [
+            "50% 60% 40% 50%/60% 50% 60% 40%",
+            "60% 40% 60% 40%/50% 60% 50% 60%",
+            "50% 60% 40% 50%/60% 50% 60% 40%",
+          ],
           scale: [1, 1.1, 1],
-          x: mousePosition.x * 0.3,
-          y: -mousePosition.y * 0.3,
         }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        transition={{
+          borderRadius: { duration: 16, repeat: Infinity, ease: "easeInOut", delay: 1 },
+          scale: { duration: 10, repeat: Infinity, ease: "easeInOut" },
+          x: { duration: 2.5, ease: "easeOut" },
+          y: { duration: 2.5, ease: "easeOut" },
+        }}
       />
 
       <motion.div
-        className="absolute bottom-20 right-1/3 w-72 h-72 bg-linear-to-tl from-terracotta/7 to-amber-500/3 dark:from-primary/16 dark:to-secondary/8 rounded-full blur-3xl"
-        animate={{
-          scale: [1, 1.25, 1],
-          x: -mousePosition.x * 0.4,
-          y: -mousePosition.y * 0.4,
+        className="absolute bottom-1/4 left-[12%] w-48 h-48 border border-amber-400/15 dark:border-secondary/25 dark:shadow-[0_0_20px_rgba(255,192,120,0.1)]"
+        style={{
+          borderRadius: "70% 30% 50% 50%/40% 60% 40% 60%",
+          x: mousePos.x * 8,
+          y: mousePos.y * 10,
         }}
-        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+        animate={{
+          borderRadius: [
+            "70% 30% 50% 50%/40% 60% 40% 60%",
+            "30% 70% 60% 40%/60% 40% 60% 40%",
+            "70% 30% 50% 50%/40% 60% 40% 60%",
+          ],
+          rotate: [0, -8, 8, 0],
+        }}
+        transition={{
+          borderRadius: { duration: 18, repeat: Infinity, ease: "easeInOut", delay: 2 },
+          rotate: { duration: 15, repeat: Infinity, ease: "easeInOut" },
+          x: { duration: 2.2, ease: "easeOut" },
+          y: { duration: 2.2, ease: "easeOut" },
+        }}
       />
 
-      {/* Scattered small geometric accents - stars in dark mode */}
-      {[...Array(8)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-3 h-3 bg-terracotta/20 dark:bg-primary/40 rounded-full dark:shadow-[0_0_8px_rgba(255,159,102,0.6)]"
-          style={{
-            top: `${15 + i * 12}%`,
-            left: `${10 + (i % 3) * 30}%`,
-          }}
-          animate={{
-            y: [0, -20, 0],
-            opacity: [0.3, 0.6, 0.3],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 4 + i,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: i * 0.5,
-          }}
-        />
-      ))}
+      <motion.div
+        className="absolute top-[55%] right-[8%] w-36 h-36 bg-linear-to-tl from-secondary/10 to-amber-300/8 dark:from-secondary/16 dark:to-secondary/8 blur-md"
+        style={{
+          borderRadius: "40% 60% 50% 50%/60% 40% 60% 40%",
+          x: mousePos.x * -12,
+          y: mousePos.y * -15,
+        }}
+        animate={{
+          borderRadius: [
+            "40% 60% 50% 50%/60% 40% 60% 40%",
+            "60% 40% 40% 60%/40% 60% 40% 60%",
+            "40% 60% 50% 50%/60% 40% 60% 40%",
+          ],
+          scale: [1, 1.15, 1],
+        }}
+        transition={{
+          borderRadius: { duration: 15, repeat: Infinity, ease: "easeInOut", delay: 0.5 },
+          scale: { duration: 11, repeat: Infinity, ease: "easeInOut" },
+          x: { duration: 2.3, ease: "easeOut" },
+          y: { duration: 2.3, ease: "easeOut" },
+        }}
+      />
     </div>
   );
 }
