@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import { motion } from "motion/react";
-import { Sparkles, Rocket, Zap, Code2 } from "lucide-react";
+import { Sparkles, Rocket, Zap, Code2, SquareArrowOutUpRight } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export default function HeroContent() {
-  const fullText = "Communication & RF Engineering Researcher";
+  const fullText = "M.Sc. Student in Electrical Communication Engineering";
   const [displayedText, setDisplayedText] = useState("");
   const [isTypingComplete, setIsTypingComplete] = useState(false);
 
@@ -152,12 +152,24 @@ export default function HeroContent() {
                 </motion.div>
                 <div className="flex-1">
                   <h3 className="text-xl md:text-2xl font-bold text-stone-800 dark:text-stone-100 mb-2">
-                    Seeking Funded Master&apos;s Thesis (2026)
+                    Master Thesis Focus (2026)
                   </h3>
                   <p className="text-sm md:text-base text-stone-600 dark:text-stone-300 leading-relaxed">
-                    Open to research collaborations in <span className="font-semibold text-primary">communication systems</span> or{" "}
+                    {/* OLD MATERIAL */}
+                    {/* Open to research collaborations in <span className="font-semibold text-primary">communication systems</span> or{" "}
                     <span className="font-semibold text-secondary">RF engineering</span> with German academic institutions or industry partners.
-                    Passionate about bridging theory with real-world applications.
+                    Passionate about bridging theory with real-world applications. */}
+
+                    {/* NEW MATERIAL */}
+                    {/* Building validated simulation projects and research-style write-ups in <span className="font-semibold text-primary">computational electromagnetics</span>,{" "}
+                    <span className="font-semibold text-secondary">RF/microwaves</span>, and{" "}
+                    <span className="font-semibold text-accent">communication systems</span>.
+                    Reproducible code + reports linked in the blog. */}
+
+                    {/* NEWER MATERIAL */}
+                    Validated simulations and research-style write-ups in <span className="font-semibold text-primary">computational electromagnetics</span>,{" "}
+                    <span className="font-semibold text-secondary">RF &amp; microwave engineering</span>,{" "}
+                    <span className="font-semibold text-accent">communication systems</span> &mdash; with reproducible code and reports linked in the blog.
                   </p>
                 </div>
               </div>

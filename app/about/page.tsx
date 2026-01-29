@@ -7,6 +7,7 @@ import AboutBackground from "@/components/backgrounds/AboutBackground";
 import type { DetailedTimelineItem } from "@/components/SerpentineTimeline";
 import { User, FileText, Download } from "lucide-react";
 import { motion } from "motion/react";
+import Link from "next/link";
 
 // Detailed timeline data
 const detailedTimelineData: DetailedTimelineItem[] = [
@@ -251,12 +252,9 @@ export default function AboutPage() {
                   <div className="h-px bg-linear-to-r from-transparent via-stone-300 dark:via-primary/30 to-transparent dark:shadow-[0_0_4px_rgba(255,159,102,0.3)]" />
 
                   <p className="text-lg md:text-xl leading-relaxed font-medium">
-                    I'm currently seeking a{" "}
-                    <span className="px-2 py-0.5 bg-terracotta/10 dark:bg-primary/20 text-terracotta dark:text-primary font-bold rounded dark:shadow-[0_0_12px_rgba(255,159,102,0.3)] dark:border dark:border-primary/30">
-                      funded master's thesis (2026) opportunity
-                    </span>{" "}
-                    in Germany or Europe that aligns with my research interests
-                    in 5G/6G systems, optimization, and electromagnetic design.
+                    I'm preparing for my<span className="px-2 py-0.5 bg-terracotta/10 dark:bg-primary/20 text-terracotta dark:text-primary font-bold rounded dark:shadow-[0_0_12px_rgba(255,159,102,0.3)] dark:border dark:border-primary/30">
+                      Master&apos;s Thesis (2026)
+                      </span>by building validated simulation projects and documenting them with short blog write-ups and full reports in the corresponding <Link href="https://github.com/mmaharebi" className="text-secondary underline dark:text-secondary" target="_blank">Github repositories</Link>.
                   </p>
                 </div>
 
