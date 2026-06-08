@@ -32,7 +32,7 @@ export default function ArtisticHero() {
             </span>
           </h1>
           <p className="text-xl md:text-2xl lg:text-3xl text-stone-700 font-semibold mb-8">
-            Communication & RF Engineering Researcher
+            Software & Communication Systems Engineer
           </p>
         </div>
       </section>

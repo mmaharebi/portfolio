@@ -40,11 +40,11 @@ export default function FinalCTA() {
             </motion.div>
 
             <h3 className="text-3xl md:text-5xl font-extrabold text-stone-900 dark:text-stone-50 mb-4">
-              Let&apos;s Build Something Amazing
+              Let&apos;s Build Software &amp; Systems Together
             </h3>
             <p className="text-lg md:text-xl text-stone-700 dark:text-stone-200 mb-8 max-w-2xl mx-auto font-medium leading-relaxed">
-              Have a project in mind or just want to discuss ideas? I&apos;m always
-              open to interesting collaborations and conversations.
+              Have a software, systems, or research idea in mind? I&apos;m open to
+              thoughtful collaborations that connect engineering with practical implementation.
             </p>
 
             <div className="flex flex-wrap gap-4 justify-center">

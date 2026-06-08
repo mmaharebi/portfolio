@@ -6,7 +6,7 @@ import { Sparkles, Rocket, Zap, Code2, SquareArrowOutUpRight } from "lucide-reac
 import { useState, useEffect } from "react";
 
 export default function HeroContent() {
-  const fullText = "M.Sc. Student in Electrical Communication Engineering";
+  const fullText = "Software & Communication Systems Engineer";
   const [displayedText, setDisplayedText] = useState("");
   const [isTypingComplete, setIsTypingComplete] = useState(false);
 
@@ -87,13 +87,14 @@ export default function HeroContent() {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="text-base md:text-lg lg:text-xl text-stone-600 dark:text-stone-300 mb-7 max-w-3xl mx-auto leading-relaxed"
         >
-          Exploring{" "}
-          <span className="font-semibold text-primary dark:text-primary">electromagnetics</span>,{" "}
-          <span className="font-semibold text-secondary dark:text-secondary">mathematics</span>, and{" "}
+          I bridge{" "}
+          <span className="font-semibold text-primary dark:text-primary">communication systems</span>,{" "}
+          <span className="font-semibold text-secondary dark:text-secondary">applied electromagnetics</span>,{" "}
+          mathematical modeling, and{" "}
           <span className="font-semibold text-accent dark:text-accent">
-            computational methods
+            practical software development
           </span>{" "}
-          to design smarter engineering systems.
+          from simulation tools to modern web applications.
         </motion.p>
 
         {/* Call to Action - Master Thesis */}
