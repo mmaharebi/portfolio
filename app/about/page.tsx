@@ -97,6 +97,26 @@ const projectsData: Project[] = [
     highlight: true,
   },
   {
+    title: "Portfolio Website",
+    description:
+      "Personal portfolio and technical blog built with Next.js, React, and TypeScript. Presents engineering projects, MDX blog posts, responsive UI, and reusable content components.",
+    technologies: ["Next.js", "React", "TypeScript", "MDX"],
+    tags: ["Portfolio", "Technical Blog", "Responsive UI"],
+    year: "2026",
+    category: "Software",
+    githubUrl: "https://github.com/mmaharebi/portfolio",
+    highlight: true,
+  },
+  {
+    title: "Persian-Language Storefront UI",
+    description:
+      "Frontend project for a Persian-language storefront interface with RTL-aware UI patterns, commerce-oriented layout, and reusable React/Next.js components.",
+    technologies: ["Next.js", "React", "CSS / SCSS", "RTL UI"],
+    tags: ["Frontend", "Persian UI", "Storefront"],
+    year: "2024",
+    category: "Software",
+  },
+  {
     title: "High-Gain Horn Antenna Design (7 GHz)",
     description:
       "Designed and simulated a 16 dBi horn antenna in HFSS. Performed parametric sweeps and impedance matching to meet radiation and gain targets.",
