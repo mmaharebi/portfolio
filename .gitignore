@@ -43,3 +43,6 @@ next-env.d.ts
 # local vscode settings
 .vscode/settings.json
 fiber-perturbation/
+
+# Generated locally by pnpm dev
+pnpm-workspace.yaml
