@@ -27,7 +27,7 @@ const detailedTimelineData: DetailedTimelineItem[] = [
     subtitle: "B.Sc. Electrical Engineering",
     location: "Tehran, Iran",
     description:
-      "Admitted to Iran’s top technical university. Focused on electromagnetics, microwaves, and signal processing. Served as Teaching Assistant in both EE and CE courses.",
+      "Admitted to Iran’s top technical university. Focused on electromagnetics, microwaves, signal processing, and programming-oriented engineering coursework. Served as Teaching Assistant in both EE and CE courses.",
     icon: "education",
     color: "secondary",
   },
@@ -53,11 +53,11 @@ const detailedTimelineData: DetailedTimelineItem[] = [
   },
   {
     year: "2021 - 2023",
-    title: "Teaching Assistant",
+    title: "Teaching Assistant & Head TA",
     subtitle: "B.Sc. Electrical Engineering",
     location: "Sharif University of Technology",
     description:
-      "Assisted professors in conducting laboratory sessions and grading assignments. Provided support to students in understanding complex concepts in circuit and programming.",
+      "Served as Head Teaching Assistant for a Circuits course for the Computer Engineering department and supported Java programming coursework at Sharif University. Helped students connect programming and circuit fundamentals with engineering problem solving.",
     icon: "work",
     color: "accent",
   },
@@ -77,7 +77,7 @@ const detailedTimelineData: DetailedTimelineItem[] = [
     subtitle: "Communication Systems & Software Engineering",
     location: "Kassel, Germany",
     description:
-      "Combining theoretical research with practical software development. Building simulation tools, web applications, and exploring the intersection of electromagnetics, mathematics, and modern software engineering.",
+      "Combining communication systems research with practical software development: simulation tools, Python/C++ engineering workflows, Next.js/React interfaces, and PostgreSQL/Prisma database integration. Interested in Werkstudent / Student Software Developer roles where engineering knowledge and implementation meet.",
     icon: "work",
     color: "primary",
   },
@@ -207,7 +207,7 @@ export default function AboutPage() {
             <div className="relative max-w-3xl mx-auto text-base">
               {/* Decorative quote mark */}
               <div className="absolute -top-6 -left-4 text-8xl text-terracotta/10 dark:text-primary/20 font-serif leading-none dark:drop-shadow-[0_0_15px_rgba(255,159,102,0.2)]">
-                "
+                &quot;
               </div>
 
               <div className="relative bg-white/60 dark:bg-[#1A1614]/90 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-xl dark:shadow-[0_8px_32px_rgba(0,0,0,0.3),0_0_60px_rgba(255,159,102,0.1)] border border-stone-200/50 dark:border-primary/20">
@@ -216,10 +216,11 @@ export default function AboutPage() {
 
                 <div className="space-y-6 text-stone-700 dark:text-stone-300">
                   <p className="text-lg md:text-xl leading-relaxed font-medium">
-                    I'm{" "}
+                    I&apos;m{" "}
                     <span className="font-bold text-primary dark:text-primary dark:drop-shadow-[0_0_8px_rgba(255,159,102,0.4)]">Mahdy M.</span>
-                    , a master's student in Electrical Communication Engineering
-                    at the University of Kassel, focusing on{" "}
+                    , a master&apos;s student in Electrical Communication Engineering
+                    at the University of Kassel with a software-oriented
+                    engineering profile, focusing on{" "}
                     <span className="text-terracotta dark:text-secondary font-semibold">
                       communication systems
                     </span>
@@ -231,7 +232,7 @@ export default function AboutPage() {
                     <span className="text-terracotta dark:text-secondary font-semibold">
                       computational modeling
                     </span>
-                    .
+                    , and practical software development.
                   </p>
 
                   <div className="h-px bg-linear-to-r from-transparent via-stone-300 dark:via-primary/30 to-transparent dark:shadow-[0_0_4px_rgba(255,159,102,0.3)]" />
@@ -241,20 +242,20 @@ export default function AboutPage() {
                     <span className="inline-flex items-center gap-1 font-bold text-amber-700 dark:text-[#FFC078] dark:drop-shadow-[0_0_6px_rgba(255,192,120,0.5)]">
                       Silver Medal
                     </span>{" "}
-                    in Iran's National Physics Olympiad, which earned me
+                    in Iran&apos;s National Physics Olympiad, which earned me
                     recognition from the Iran National Elites Foundation. Since
-                    then, I've been fascinated by the intersection of
-                    mathematics, electromagnetics, and software — pursuing
-                    projects that bridge theory, simulation, and real-world
-                    engineering.
+                    then, I&apos;ve been drawn to work where mathematics,
+                    electromagnetics, and software meet: from C#/.NET/WPF
+                    tooling in my bachelor thesis to Python and C++ workflows
+                    for simulation, visualization, and automation.
                   </p>
 
                   <div className="h-px bg-linear-to-r from-transparent via-stone-300 dark:via-primary/30 to-transparent dark:shadow-[0_0_4px_rgba(255,159,102,0.3)]" />
 
                   <p className="text-lg md:text-xl leading-relaxed font-medium">
-                    I'm preparing for my<span className="px-2 py-0.5 bg-terracotta/10 dark:bg-primary/20 text-terracotta dark:text-primary font-bold rounded dark:shadow-[0_0_12px_rgba(255,159,102,0.3)] dark:border dark:border-primary/30">
+                    I&apos;m preparing for my<span className="px-2 py-0.5 bg-terracotta/10 dark:bg-primary/20 text-terracotta dark:text-primary font-bold rounded dark:shadow-[0_0_12px_rgba(255,159,102,0.3)] dark:border dark:border-primary/30">
                       Master&apos;s Thesis (2026)
-                      </span>by building validated simulation projects and documenting them with short blog write-ups and full reports in the corresponding <Link href="https://github.com/mmaharebi" className="text-secondary underline dark:text-secondary" target="_blank">Github repositories</Link>.
+                      </span>by building validated simulation projects and documenting them with short blog write-ups, full reports, and reproducible code in the corresponding <Link href="https://github.com/mmaharebi" className="text-secondary underline dark:text-secondary" target="_blank">GitHub repositories</Link>.
                   </p>
                 </div>
 
