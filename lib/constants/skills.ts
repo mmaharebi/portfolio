@@ -2,7 +2,7 @@ import { Code, Cpu, Layers, Radio } from "lucide-react";
 
 export interface Skill {
   name: string;
-  level: number;
+  experience: string;
   category: "languages" | "frameworks" | "tools" | "research";
   icon?: string;
 }
@@ -25,10 +25,11 @@ export const SKILLS_DATA: SkillCategory[] = [
     icon: Code,
     color: "primary",
     skills: [
-      { name: "Python", level: 95, category: "languages" },
-      { name: "MATLAB", level: 90, category: "languages" },
-      { name: "JavaScript / TypeScript", level: 85, category: "languages" },
-      { name: "C++", level: 72, category: "languages" },
+      { name: "Python", experience: "Broad practical use", category: "languages" },
+      { name: "JavaScript / TypeScript", experience: "Practical frontend use", category: "languages" },
+      { name: "C# / .NET", experience: "Bachelor thesis project", category: "languages" },
+      { name: "Java", experience: "Academic / TA experience", category: "languages" },
+      { name: "C++", experience: "Simulation & visualization", category: "languages" },
     ],
   },
   {
@@ -36,10 +37,11 @@ export const SKILLS_DATA: SkillCategory[] = [
     icon: Layers,
     color: "secondary",
     skills: [
-      { name: "NumPy / SciPy (SciPy Stack)", level: 92, category: "frameworks" },
-      { name: "MATLAB Signal Processing & Optimization", level: 88, category: "frameworks" },
-      { name: "React & Next.js", level: 82, category: "frameworks" },
-      { name: "Tailwind CSS", level: 85, category: "frameworks" },
+      { name: "React & Next.js", experience: "Practical frontend use", category: "frameworks" },
+      { name: ".NET / WPF / MVVM", experience: "Bachelor thesis project", category: "frameworks" },
+      { name: "PostgreSQL / Prisma", experience: "Database integration", category: "frameworks" },
+      { name: "Angular", experience: "Basic exposure", category: "frameworks" },
+      { name: "NumPy / SciPy", experience: "Scientific computing", category: "frameworks" },
     ],
   },
   {
@@ -47,10 +49,11 @@ export const SKILLS_DATA: SkillCategory[] = [
     icon: Cpu,
     color: "accent",
     skills: [
-      { name: "Git & GitHub", level: 92, category: "tools" },
-      { name: "Jupyter", level: 92, category: "tools" },
-      { name: "VS Code", level: 95, category: "tools" },
-      { name: "LaTeX", level: 90, category: "tools" },
+      { name: "Git & GitHub", experience: "Daily workflow", category: "tools" },
+      { name: "CSS / SCSS / Tailwind", experience: "UI styling", category: "tools" },
+      { name: "Linux", experience: "Daily workflow", category: "tools" },
+      { name: "VS Code", experience: "Daily workflow", category: "tools" },
+      { name: "LaTeX", experience: "Academic writing", category: "tools" },
     ],
   },
   {
@@ -58,34 +61,34 @@ export const SKILLS_DATA: SkillCategory[] = [
     icon: Radio,
     color: "primary",
     skills: [
-      { name: "Antenna Design & Arrays", level: 90, category: "research" },
-      { name: "Digital Communications & DSP", level: 88, category: "research" },
-      { name: "EM Simulation (CST / HFSS / ADS)", level: 87, category: "research" },
-      { name: "5G/6G Systems & Link Concepts", level: 84, category: "research" },
+      { name: "Computational Modeling", experience: "Research use", category: "research" },
+      { name: "Digital Communications & DSP", experience: "Academic focus", category: "research" },
+      { name: "EM Simulation", experience: "RF / microwave projects", category: "research" },
+      { name: "Python / C++ Scientific Computing", experience: "Practical use", category: "research" },
     ],
   },
 ];
 
 export const RESEARCH_INTERESTS: ResearchInterest[] = [
   {
-    name: "5G/6G Communication Systems",
+    name: "Communication Systems & DSP",
     description:
-      "Signal processing, system modeling, and link-level optimization for next-generation wireless networks.",
+      "Signal processing, system modeling, and communication theory for wireless and digital systems.",
   },
   {
-    name: "Applied Electromagnetics & RF Design",
+    name: "Applied Electromagnetics & RF Simulation",
     description:
-      "Antenna arrays, microwave circuits, and electromagnetic wave propagation analysis through simulation and measurement.",
+      "Antenna, microwave, and electromagnetic field analysis using simulation-driven engineering workflows.",
   },
   {
-    name: "Signal Processing & Optimization",
+    name: "Scientific Computing & Simulation Tools",
     description:
-      "Algorithm design for detection, estimation, and adaptive filtering with applications in communication and sensing.",
+      "Numerical modeling, scripting, and reproducible computation for research and engineering analysis.",
   },
   {
-    name: "Computational Electromagnetics & Simulation",
+    name: "Technical Software for Engineering Workflows",
     description:
-      "Numerical modeling (FEM, FDTD) and multi-domain simulation for microwave and communication system analysis.",
+      "Practical tools that connect data, simulation results, visualization, and documentation.",
   },
 ];
 

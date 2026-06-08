@@ -21,7 +21,7 @@ export default function InteractiveSkills() {
           <Sparkles className="w-4 h-4 text-terracotta dark:text-primary dark:drop-shadow-[0_0_8px_rgba(255,159,102,0.6)]" />
           <span className="text-sm font-semibold text-terracotta dark:text-primary">Technical Expertise</span>
         </div>
-        <h2 className="text-3xl md:text-4xl font-extrabold text-stone-800 dark:text-white mb-4 dark:drop-shadow-[0_0_25px_rgba(255,159,102,0.25)]">Skills</h2>
+        <h2 className="text-3xl md:text-4xl font-extrabold text-stone-800 dark:text-white mb-4 dark:drop-shadow-[0_0_25px_rgba(255,159,102,0.25)]">Skills &amp; Tech Stack</h2>
         <p className="text-base md:text-lg text-stone-600 dark:text-stone-300 max-w-2xl mx-auto font-medium">
           A blend of engineering fundamentals and modern development
         </p>

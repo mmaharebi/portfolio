@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "motion/react";
 import { useState } from "react";
-import { type SkillCategory, SKILL_COLOR_MAP, type Skill } from "@/lib/constants/skills";
+import { type SkillCategory, SKILL_COLOR_MAP } from "@/lib/constants/skills";
 
 interface SkillCategoryCardProps {
   category: SkillCategory;
@@ -98,8 +98,8 @@ export default function SkillCategoryCard({ category, categoryIndex }: SkillCate
               onHoverEnd={() => setHoveredSkill(null)}
               className="group"
             >
-              {/* Skill Name and Percentage */}
-              <div className="flex justify-between items-center mb-2">
+              {/* Skill Name and Experience */}
+              <div className="flex flex-wrap justify-between items-center gap-2">
                 <span
                   className={`text-sm font-semibold transition-colors ${
                     isHovered ? `${colors.text} dark:text-primary dark:drop-shadow-[0_0_8px_rgba(255,159,102,0.4)]` : "text-stone-700 dark:text-stone-300"
@@ -108,55 +108,14 @@ export default function SkillCategoryCard({ category, categoryIndex }: SkillCate
                   {skill.name}
                 </span>
                 <motion.span
-                  className={`text-xs font-bold ${colors.text} dark:text-primary dark:drop-shadow-[0_0_6px_rgba(255,159,102,0.5)]`}
+                  className={`px-2 py-0.5 rounded-full bg-white/70 dark:bg-[#252220] border ${colors.border} text-xs font-bold ${colors.text} dark:text-primary dark:drop-shadow-[0_0_6px_rgba(255,159,102,0.5)]`}
                   animate={{
-                    scale: isHovered ? 1.2 : 1,
+                    scale: isHovered ? 1.04 : 1,
                   }}
                   transition={{ duration: 0.2 }}
                 >
-                  {skill.level}%
+                  {skill.experience}
                 </motion.span>
-              </div>
-
-              {/* Progress Bar */}
-              <div className="relative h-2 bg-stone-200 dark:bg-[#252220] rounded-full overflow-hidden dark:shadow-inner">
-                {/* Background shimmer */}
-                <motion.div
-                  className="absolute inset-0 bg-linear-to-r from-transparent via-white/40 to-transparent"
-                  animate={{
-                    x: isHovered ? ["-100%", "200%"] : "-100%",
-                  }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: isHovered ? Infinity : 0,
-                    ease: "linear",
-                  }}
-                />
-
-                {/* Animated fill */}
-                <motion.div
-                  className={`h-full ${colors.fill} rounded-full relative`}
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${skill.level}%` }}
-                  viewport={{ once: true }}
-                  transition={{
-                    duration: 1.2,
-                    delay: skillIndex * 0.1,
-                    ease: "easeOut",
-                  }}
-                >
-                  {/* Glow effect */}
-                  <motion.div
-                    className={`absolute right-0 top-0 h-full w-8 blur-sm ${colors.fill}`}
-                    animate={{
-                      opacity: isHovered ? [0.5, 1, 0.5] : 0.5,
-                    }}
-                    transition={{
-                      duration: 1,
-                      repeat: Infinity,
-                    }}
-                  />
-                </motion.div>
               </div>
             </motion.div>
           );
