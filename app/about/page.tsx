@@ -108,6 +108,17 @@ const projectsData: Project[] = [
     highlight: true,
   },
   {
+    title: "Symulation",
+    description:
+      "Interactive C++ simulation lab for physics, electromagnetics, and numerical visualization, featuring real-time GUI controls, six documented modules, lightweight GitHub demos, and a clean public-release setup.",
+    technologies: ["C++17", "CMake", "raylib", "ImGui", "Eigen", "CGAL"],
+    tags: ["Simulation", "Numerical Methods", "Electromagnetics", "FEM"],
+    year: "2026",
+    category: "Software",
+    githubUrl: "https://github.com/mmaharebi/symulation",
+    highlight: true,
+  },
+  {
     title: "Persian-Language Storefront UI",
     description:
       "Frontend project for a Persian-language storefront interface with RTL-aware UI patterns, commerce-oriented layout, and reusable React/Next.js components.",
