@@ -116,6 +116,7 @@ const projectsData: Project[] = [
     year: "2026",
     category: "Software",
     githubUrl: "https://github.com/mmaharebi/symulation",
+    demoUrl: "/blog/symulation",
     highlight: true,
   },
   {
